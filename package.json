@@ -1,0 +1,15 @@
+{
+  "name": "VisualEmergency",
+  "private": true,
+  "version": "1.0.0",
+  "description": "急救全程监控可视化系统",
+  "repository": "https://github.com/BME319/VisualEmergency",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  },
+  "scripts": {
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8888 -c-1 ./www"
+  }
+}
