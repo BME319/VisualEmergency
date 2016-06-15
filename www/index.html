@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="VisualEmergency">
+  <head>
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
+    <title></title>
+
+    <link href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="lib/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
+    <!-- 自定义css -->
+    <link href="css/mystyle.css" rel="stylesheet">
+    <!--angularjs js -->
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-ui-router.min.js"></script>
+    <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+
+    <!-- 第三方js -->
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/directives.js"></script>
+
+  </head>
+  <body class="container"> 
+    <div class="row clearfix">
+                <ul class="nav nav-pills navbar-right" style="padding-top:57px">
+                    <li onclick="activetag(this)" class="active"><a href="#/home">首页</a> </li>
+                    <li onclick="activetag(this)" class="dropdown"><a href="#/deliver">分流信息</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/deliver/OperationRoom">手术室</a> </li>
+                            <li><a href="#/deliver/ICURoom">ICU</a> </li>
+                            <li><a href="#/deliver/CommonRoom">普通病房</a> </li>
+                            <li><a href="#/deliver/BurnRoom">烧伤病房</a> </li>
+                            <li><a href="#/deliver/SeriousInjuredRoom">重伤病房</a> </li>
+                            <li><a href="#/deliver/OutPatientRoom">门诊</a> </li>
+                            <li><a href="#/deliver/RescueStaffDistribution">救治人员分布</a> </li>
+                        </ul>
+                    </li>
+                    <li onclick="activetag(this)" ><a href="#/analysis">数据分析</a> </li>
+                </ul>
+            <div class="page-header">
+              <h1>急救全程监控可视化系统 <small>{{subHeader}}</small></h1>
+            </div>            
+    </div>
+    <div ui-view></div>
+
+    <script>
+      function activetag(e){
+        $("ul.navbar-right li").removeClass('active');
+        $(e).addClass('active');
+      }
+    </script>
+  </body>
+</html>

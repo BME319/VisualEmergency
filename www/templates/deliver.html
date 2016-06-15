@@ -1,0 +1,51 @@
+<div class="row">
+  <div ng-repeat="place in places" class="col-xs-6 col-lg-4"> 
+		<div class="thumbnail">
+	    <img alt="300x200" ng-src="{{place.imgUrl}}" />
+	    <div class="caption">
+	      <div class="row clearfix">
+	        <div class="col-md-4 column">
+	          <h4>
+	            <b>
+	              {{place.name}}
+	            </b>
+	          </h4>
+	        </div>
+	        <div class="col-md-4 column">
+	          <h5>
+	            <font color="red" style="font-size:28px">{{place.num}}</font> 人
+	          </h5>
+	        </div>
+	        <div class="col-md-4 column" style="text-align: right">
+	        	<a type="button" class="btn btn-primary" href="#/deliver/{{place.action}}">详细</a>
+	          <!-- <input type="button" class="btn btn-primary" value="详细" href="#/deliver/{{place.action}}"/> -->
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div class="col-xs-6 col-lg-4">
+		<div class="thumbnail">
+	    <img alt="300x200" src="http://10.12.43.35:8003/../../Content/image/RescueStaffDistribution.jpg" />
+	    <div class="caption">
+	      <div class="row clearfix">
+	        <div class="col-md-4 column">
+	          <h4>
+	            <b>
+	              救治人员{{place.name}}
+	            </b>
+	          </h4>
+	        </div>
+	        <div class="col-md-4 column">
+	          <h5>
+	            <font color="red" style="font-size:28px">2{{place.num}}</font> 人
+	          </h5>
+	        </div>
+	        <div class="col-md-4 column" style="text-align: right">
+	          <a type="button" class="btn btn-primary" href="#/deliver/RescueStaffDistribution">详细</a>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+  </div>	
+</div>
