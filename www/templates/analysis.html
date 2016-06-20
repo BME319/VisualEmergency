@@ -1,1 +1,40 @@
-analysis.html
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-2">
+       
+          <div>门诊分析</div>
+          <ul class="nav nav-sidebar">
+            <li ><a ui-sref=".ClinicDate">按日期统计</a></li>
+            <li><a href="#/analysis/ClinicDepartment">按科室统计</a></li>
+            <li><a href="#/analysis/ClinicNationality">按国籍统计</a></li>
+          </ul>
+
+          <div>住院分析</div>
+          <ul class="nav nav-sidebar">
+            
+            <li><a href="#/analysis/InpatientDate">按日期统计</a></li>
+            <li><a href="#/analysis/InpatientWard">按病房统计</a></li>
+            <li><a href="#/analysis/InpatientDoctor">按医生统计</a></li>
+            <li><a href="#/analysis/InpatientAverageDay">平均住院日</a></li>
+            <li><a href="#/analysis/OccupancyRate">病床使用率</a></li>
+          </ul>
+
+          <div>手术分析</div>
+          <ul class="nav nav-sidebar">
+            <li><a href="#/analysis/OperationStatusGrade">按手术状态和等级统计</a></li>
+          </ul>
+
+          <div>诊断分析</div>
+          <ul class="nav nav-sidebar">
+            <li><a href="#/analysis/DiagnosisScale">诊断量</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-10">
+        
+          <div ui-view></div>
+   
+        </div>
+      </div>
+  
+  </div>
