@@ -16,6 +16,8 @@
     <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 
     <!-- 第三方js -->
+    <script src="lib/echarts3/echarts.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -25,34 +27,44 @@
     <script src="js/directives.js"></script>
 
   </head>
-  <body class="container"> 
-    <div class="row clearfix">
-                <ul class="nav nav-pills navbar-right" style="padding-top:57px">
-                    <li onclick="activetag(this)" class="active"><a href="#/home">首页</a> </li>
-                    <li onclick="activetag(this)" class="dropdown"><a href="#/deliver">分流信息</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#/deliver/OperationRoom">手术室</a> </li>
-                            <li><a href="#/deliver/ICURoom">ICU</a> </li>
-                            <li><a href="#/deliver/CommonRoom">普通病房</a> </li>
-                            <li><a href="#/deliver/BurnRoom">烧伤病房</a> </li>
-                            <li><a href="#/deliver/SeriousInjuredRoom">重伤病房</a> </li>
-                            <li><a href="#/deliver/OutPatientRoom">门诊</a> </li>
-                            <li><a href="#/deliver/RescueStaffDistribution">救治人员分布</a> </li>
-                        </ul>
-                    </li>
-                    <li onclick="activetag(this)" ><a href="#/analysis">数据分析</a> </li>
-                </ul>
-            <div class="page-header">
-              <h1>急救全程监控可视化系统 <small>{{subHeader}}</small></h1>
-            </div>            
-    </div>
+  <body class="container-fluid"> 
+      <ul class="nav nav-pills navbar-right" style="padding-top:57px">
+          <li id='home'><a href="#/home">首页</a> </li>
+          <li id='deli' role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#/deliver">分流信息</a>
+              <ul class="dropdown-menu">
+                  <li><a href="#/deliver/OperationRoom">手术室</a> </li>
+                  <li><a href="#/deliver/ICURoom">ICU</a> </li>
+                  <li><a href="#/deliver/CommonRoom">普通病房</a> </li>
+                  <li><a href="#/deliver/BurnRoom">烧伤病房</a> </li>
+                  <li><a href="#/deliver/SeriousInjuredRoom">重伤病房</a> </li>
+                  <li><a href="#/deliver/OutPatientRoom">门诊</a> </li>
+                  <li><a href="#/deliver/RescueStaffDistribution">救治人员分布</a> </li>
+              </ul>
+          </li>
+          <li id='anal'><a href="#/analysis">数据分析</a> </li>
+          <li id="Inqu" class="dropdown"><a href="#/Inquiry">信息查询</a>
+              <ul class="dropdown-menu">
+                  <li><a href="#/Inquiry/Doctor">医生信息</a> </li>
+                  <li><a href="#/Inquiry/OperationRoom">手术室信息</a> </li>
+                  <li><a href="#/Inquiry/Assist">辅助信息</a> </li>
+                  <li><a href="#/Inquiry/Deck">甲板信息</a> </li>
+                  <li><a href="#/Inquiry/InjuriedPatient">重伤患者信息详情</a> </li>
+                  <li><a href="#/Inquiry/IndentityPatient">重要身份患者信息详情</a> </li>
+              </ul>
+          </li>          
+      </ul>
+      <div class="page-header">
+        <h1>急救全程监控可视化系统 <small>{{subHeader}}</small></h1>
+      </div> 
+                 
     <div ui-view></div>
 
     <script>
-      function activetag(e){
-        $("ul.navbar-right li").removeClass('active');
-        $(e).addClass('active');
-      }
+      $('ul.nav li.dropdown').hover(function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(300);
+      }, function() {
+        $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(300);
+      });
     </script>
   </body>
 </html>
