@@ -1,20 +1,56 @@
-<!-- <nav class="navbar navbar-default">
-  <a class="navbar-brand" href="#">急救全程监控可视化系统</a>
-  <ul class="nav navbar-nav">
-    <li class="active"><a ui-sref="home">首页</a></li>
-    <li class="dropdown">
-      <a href="#/deliver">分流信息 <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-      	<li><a href="/Deliver/OperationRoom">手术室</a> </li>
-        <li><a href="/Deliver/ICURoom">ICU</a> </li>
-        <li><a href="/Deliver/CommonRoom">普通病房</a> </li>
-        <li><a href="/Deliver/BurnRoom">烧伤病房</a> </li>
-        <li><a href="/Deliver/SeriousInjuredRoom">重伤病房</a> </li>
-        <li><a href="/Deliver/OutPatientRoom">门诊</a> </li>
-        <li><a href="/Deliver/RescueStaffDistribution">救治人员分布</a> </li>
-      </ul>
-    </li>
-    <li><a ui-sref="statistics">数据分析</a></li>
-  </ul>
-</nav>   -->
-<p>home</p>
+<div class="row">
+<a class="thumbnail">
+ <img class="img-responsive" alt="Responsive image" class="thumbnail" ng-src="{{home.imgUrl1}}"/>
+ </a>
+</div>  
+
+
+   
+<div class = "row">
+   
+   <div class = "col-sm-6 col-md-6">
+      <div class = "thumbnail">
+         <img ng-src="{{home.imgUrl2}}" alt = "Generic placeholder thumbnail"/>
+      
+
+       <div class="caption">
+        
+          <div class="col-md-4 column">
+            <h4>
+              <b>
+                分流信息
+              </b>
+            </h4>
+          </div>
+          
+          
+          <div class="col-md-4 column" style="text-align: right">
+            <a type="button" class="btn btn-primary"  href = "#/deliver" >详细</a> 
+          </div>
+        </div>
+      </div>
+   </div>
+   
+   <div class = "col-sm-6 col-md-6">
+      <div class = "thumbnail">
+         <img ng-src="{{home.imgUrl3}}" alt = "Generic placeholder thumbnail"/>
+      
+     
+        <div class="caption">
+          <div class="col-md-4 column">
+            <h4>
+              <b>
+                分析
+              </b>
+            </h4>
+          </div>
+          
+          <div class="col-md-4 column" style="text-align: right">
+            <a type="button" class="btn btn-primary"  href = "#/analysis" >详细</a> 
+          </div>
+      </div>
+      </div>
+   </div>
+
+   
+</div>
