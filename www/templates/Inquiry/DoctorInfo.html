@@ -1,3 +1,32 @@
-<div>
-信息查询之医生信息
+<div id="tableContainer" class="tableContainer">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
+      <thead class="DoctorsInfo_fixedHeader">
+        <tr>
+          <th></th>
+          <th>医生ID</th>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>所属科室</th>
+          <th>职务</th>
+          <th>医生级别</th>
+          <th>目前状态</th>
+          <th>前出地区</th>
+        </tr>
+      </thead>
+      <tbody class="DoctorsInfo_scrollContent">
+        <tr ng-repeat="DoctorInfo in DoctorInfos">
+          <td>
+            <a href=""><img src="image/loc.jpg"></a>
+          </td>
+          <td>{{DoctorInfo.DoctorId}}</td>
+          <td>{{DoctorInfo.DoctorName}}</td>
+          <td>{{}}</td>
+          <td>{{DoctorInfo.Affiliation}}</td>
+          <td>{{DoctorInfo.Occupation}}</td>
+          <td>{{DoctorInfo.Position}}</td>
+          <td>{{DoctorInfo.Status}}</td>
+          <td>{{DoctorInfo.DutyRoom}}</td>
+        </tr>
+      </tbody>
+    </table>
 </div>
