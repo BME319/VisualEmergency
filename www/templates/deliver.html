@@ -1,20 +1,17 @@
+<div class="container">
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<div class="thumbnail">
 	    <img alt="300x200" src="{{p.imgUrl}}" />
 	    <div class="caption">
 	      <div class="row clearfix">
-	        <div class="col-md-6 column">
+	        <div class="col-md-9 column">
 	          <h4>
 	            <b>
 	              {{p.name}}
 	            </b>
+	            <font color="red" style="font-size:28px;padding-left:10px">{{p.ALLNum|number}}</font> 人
 	          </h4>
-	        </div>
-	        <div class="col-md-3 column">
-	          <h5>
-	            <font color="red" style="font-size:28px">{{OutPNum}}</font> 人
-	          </h5>
 	        </div>
 	        <div class="col-md-3 column" style="text-align: right">
 	          <a type="button" class="btn btn-primary" href="#/deliver/RescueStaffDistribution">详细</a>
@@ -28,25 +25,21 @@
 	    <img alt="300x200" ng-src="{{place.imgUrl}}" />
 	    <div class="caption">
 	      <div class="row clearfix">
-	        <div class="col-md-6 column">
+	        <div class="col-md-9 column">
 	          <h4>
 	            <b>
-	              {{place.name}}
+	              {{place.name}} 
 	            </b>
+	            <font color="red" style="font-size:28px;padding-left:10px">{{place.Num|number}}</font> 人
 	          </h4>
-	        </div>
-	        <div class="col-md-3 column">
-	          <h5>
-	            <font color="red" style="font-size:28px">{{ALLNum}}</font> 人
-	          </h5>
 	        </div>
 	        <div class="col-md-3 column" style="text-align: right">
 	        	<a type="button" class="btn btn-primary" href="#/deliver/{{place.action}}">详细</a>
-	          <!-- <input type="button" class="btn btn-primary" value="详细" href="#/deliver/{{place.action}}"/> -->
 	        </div>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 	
+</div>
 </div>

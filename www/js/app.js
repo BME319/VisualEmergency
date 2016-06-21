@@ -125,7 +125,8 @@ angular.module('VisualEmergency',['ui.router','controllers','services','filters'
       case 'deli':$('li#deli').addClass('active');break;
       case 'anal':$('li#anal').addClass('active');break;
       case 'Inqu':$('li#Inqu').addClass('active');break;
-      default:$('li#home').addClass('active');break;
+      case 'home':$('li#home').addClass('active');break;
+      default:$('li#anal').addClass('active');break;
     }
     var subHeader_dict={
       OperationRoom:'手术室实时情况',
