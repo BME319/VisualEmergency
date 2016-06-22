@@ -23,7 +23,20 @@ angular.module('services',['ngResource'])
 	var serve={};
 	var abort = $q.defer;
 
+  // 张桠童
+  var deckInfoDetail = function(){
+    return $resource(CONFIG.baseUrl + ':route/:id',{},{
+      deckInfoDetail:{method:'GET', params:{route: 'deckInfoDetail', id:'@id'}, timeout: 100000},
+    });
+  };
 
+  var Info = function(){
+    return $resource(CONFIG.baseUrl + ':route',{},{
+      PatientBios:{method:'GET', params:{route: 'PatientBios', PId:'@PId'}, timeout: 100000},
+      PatientDetails:{method:'GET', params:{route: 'PatientDetails', PId:'@PId'}, timeout: 100000},
+    });
+  };
+  
   //DeliverInfo
 
   //DeckInfo
@@ -50,6 +63,8 @@ angular.module('services',['ngResource'])
       path:'MstUser',
     },{
       GetDoctorsInfo:{method:'GET',params:{route:'DoctorsInfo',DoctorId:'@DoctorId',Affiliation:'@Affiliation',Status:'@Status',DoctorName:'@DoctorName',Position:'@Position'},timeout:10000},
+      // 张桠童添加
+      DoctorInfoDetail:{method:'GET',params:{route:'DoctorInfoDetail',DoctorId:'@DoctorId'},timeout:10000},
     });
   };
   //PsTrnOutpatient
@@ -58,6 +73,8 @@ angular.module('services',['ngResource'])
       path:'TrnOrderingSurgery',
     },{
       GetSurgeriesInfo:{method:'GET',params:{route:'SurgeriesInfo',SurgeryRoom1:'@SurgeryRoom1',SurgeryRoom2:'@SurgeryRoom2',SurgeryDateTime:'@SurgeryDateTime',SurgeryDeptCode:'@SurgeryDeptCode'},timeout:10000},
+      // 张桠童添加
+      SurgeriesInfoDetail:{method:'GET',params:{route:'SurgeriesInfoDetail', RoomId:'@RoomId'},timeout:10000},
     });
   };
   var orderings = function(){
@@ -98,6 +115,8 @@ angular.module('services',['ngResource'])
 			abort.resolve();
 	        $interval(function () {
 	        abort = $q.defer();
+          serve.deckInfoDetail = deckInfoDetail();
+          serve.Info = Info();
 	        serve.DeckInfo = DeckInfo();
           serve.MstUser = MstUser();
           serve.TrnOrderingSurgery = TrnOrderingSurgery();
@@ -109,6 +128,8 @@ angular.module('services',['ngResource'])
           serve.Deliver = Deliver();
 	    },0,1);
 	}
+   serve.deckInfoDetail = deckInfoDetail();
+   serve.Info = Info();  
 	 serve.DeckInfo = DeckInfo();
    serve.MstUser = MstUser();
    serve.TrnOrderingSurgery = TrnOrderingSurgery();
@@ -121,7 +142,43 @@ angular.module('services',['ngResource'])
 	 return serve;
 }])
 
+//-------甲板信息、医生详细信息、手术室信息详情、生理生化信息-------- [张桠童]
+.factory('deckInfoDetail', ['$q', '$http', 'Data', function( $q, $http, Data ){
+  var self = this;
+  self.GetdeckInfoDetail = function(id){
+    var deferred = $q.defer();
+    Data.deckInfoDetail.deckInfoDetail({id:id}, function(data, headers){
+      deferred.resolve(data);
+    }, function(err){
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  return self;
+}])
 
+.factory('Info', ['$q', '$http', 'Data', function( $q, $http, Data ){
+  var self = this;
+  self.GetPatientBios = function(PId){
+    var deferred = $q.defer();
+    Data.Info.PatientBios({PId:PId}, function(data, headers){
+      deferred.resolve(data);
+    }, function(err){
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  self.GetPatientDetails = function(PId){
+    var deferred = $q.defer();
+    Data.Info.PatientDetails({PId:PId}, function(data, headers){
+      deferred.resolve(data);
+    }, function(err){
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  return self;
+}])
 
 .factory('DeckInfo', ['$q', '$http', 'Data','Storage','$resource','CONFIG',function ($q, $http, Data,Storage,$resource,CONFIG) { 
   var self = this;
@@ -147,6 +204,16 @@ angular.module('services',['ngResource'])
     });
     return deferred.promise;
   };
+  // 张桠童添加
+  self.GetDoctorInfoDetail = function(DoctorId){
+    var deferred = $q.defer();
+    Data.MstUser.DoctorInfoDetail({DoctorId:DoctorId},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
    return self;
 }])
 .factory('TrnOrderingSurgery',['$q', '$http', 'Data','Storage','$resource','CONFIG',function ($q, $http, Data,Storage,$resource,CONFIG) {
@@ -154,6 +221,16 @@ angular.module('services',['ngResource'])
   self.GetSurgeriesInfo = function(obj){
     var deferred = $q.defer();
     Data.TrnOrderingSurgery.GetSurgeriesInfo(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  // 张桠童添加
+  self.GetSurgeriesInfoDetail = function(RoomId){
+    var deferred = $q.defer();
+    Data.TrnOrderingSurgery.SurgeriesInfoDetail({RoomId:RoomId},function (data,headers) {
       deferred.resolve(data);
     },function (err) {
       deferred.reject(err);
