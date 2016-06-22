@@ -834,7 +834,62 @@ angular.module('controllers',['ngResource','services'])
   listenChartsClick(myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7,myChart8);   
 }])
 
-.controller('analysisCtrl',['$scope','$sce', 'CONFIG', function($scope,$sce,CONFIG){
+.controller('analysisCtrl',['$scope','$sce', 'CONFIG', 'deckInfoDetail', 'Info', 'MstUser', 'TrnOrderingSurgery', 
+  function($scope,$sce,CONFIG,deckInfoDetail,Info,MstUser,TrnOrderingSurgery){
+
+  // 张桠童
+  // 读入甲板信息详情
+  var promise = deckInfoDetail.GetdeckInfoDetail(1);
+  promise.then(function(data){
+    $scope.DeckInfoDetail = data.data;
+    // console.log($scope.DeckInfoDetail);
+  }, function(err){
+    // 无错误读入处理
+  });
+  // 读入医生信息详情
+  var promise = MstUser.GetDoctorInfoDetail('ID02');
+  promise.then(function(data){
+    $scope.DoctorInfoDetail = data.data;
+    // console.log($scope.DoctorInfoDetail);
+  }, function(err){
+    // 无错误读入处理
+  });
+  // 读入手术室详情信息
+  var promise = TrnOrderingSurgery.GetSurgeriesInfoDetail(1);
+  promise.then(function(data){
+    $scope.SurgeriesInfoDetail = data.data;
+    // console.log($scope.SurgeriesInfoDetail);
+  }, function(err){
+    // 无错误读入处理
+  });
+  // 读入生化参数
+  var promise = Info.GetPatientBios('P160505001');
+  promise.then(function(data){
+    $scope.PatientBios = data.data;
+    // console.log($scope.PatientBios);
+  }, function(err){
+    // 无错误读入处理
+  });
+  // 读入生理参数
+  var promise = Info.GetPatientDetails('P160505001');
+  promise.then(function(data){
+    $scope.PatientDetails = data.data;
+    // console.log($scope.PatientDetails);
+  }, function(err){
+    // 无错误读入处理
+  });
+
+  $(".modal").on("show.bs.modal", function() {
+    var height = $(window).height() - 200;
+    $(this).find(".modal-body").css("max-height", height);
+  });
+
+  $scope.test = function(){
+    // $('#ViewDeckInfo').modal('show');
+    // $('#ViewDeckInfo').on('show.bs.modal',function(){
+      // console.log(3);
+    // });
+  };
  
 }])
 
