@@ -31,41 +31,58 @@
           <td>{{KeyPatientInfo.TargetDepartment}}</td>
           <td>{{KeyPatientInfo.DeliverTime}}</td>
           <td>
-            <input type="button"  data-toggle="modal" data-target="#mymodal1" value="查看生理信息" class="btn btn-primary editBtn" href=""/>
-            <div class="modal" id="mymodal1">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">标题</h4>
+            <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientDetails(KeyPatientInfo.PatientId)"/>
+            <!-- 生理参数信息模态框（Modal） -->
+            <div class="modal fade" id="ViewPatientDetails">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" 
+                           aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                           生理参数信息
+                        </h4>
+                     </div>
+                     <div class="modal-body">
+                        <p>血氧饱和度：{{PatientDetails.Oxygen}}</p>
+                        <p>脉搏：{{PatientDetails.Pulse}}</p>
+                        <p>心率：{{PatientDetails.HeartRate}}</p>
+                        <p>呼吸：{{PatientDetails.Breath}}</p>
+                        <p>神智：{{PatientDetails.Consciousness}}</p>
+                        <p>血压：{{PatientDetails.DBP}}，{{PatientDetails.SBP}}</p>
+                        <p>体温：{{PatientDetails.Temperature}}</p>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                     </div>
                   </div>
-                  <div class="modal-body">
-                    <p>生理信息</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                  </div>
-                </div>
-              </div>
+               </div>
             </div>
-            <input type="button" data-toggle="modal" data-target="#mymodal2" value="查看生化信息" class="btn btn-primary editBtn" href=""/>
-            <div class="modal" id="mymodal2">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">标题</h4>
+
+            <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientBios(KeyPatientInfo.PatientId)"/>
+            <!-- 生化参数信息模态框（Modal） -->
+            <div class="modal fade" id="ViewPatientBios">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" 
+                           aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                           生化参数信息
+                        </h4>
+                     </div>
+                     <div class="modal-body">
+                        <p ng-repeat = "PatientBio in PatientBios">{{PatientBio.des}}：{{PatientBio.val}}</p>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                        </button>
+                     </div>
                   </div>
-                  <div class="modal-body">
-                    <p>生化信息</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                  </div>
-                </div>
-              </div>
+               </div>
             </div>
           </td>
         </tr>
