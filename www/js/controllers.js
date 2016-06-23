@@ -25,6 +25,11 @@ angular.module('controllers',['ngResource','services'])
 }])
 
 .controller('deliverRoomCtrl',['$scope','$rootScope','$stateParams','$state','$interval','chartTool','PatientsByDB','PatientDeptDeliver','Deliver','Info',  function($scope,$rootScope,$stateParams,$state,$interval,chartTool,PatientsByDB,PatientDeptDeliver,Deliver,Info){
+  // $scope.getChartSize=function(){
+  $scope.chartHeight='height:'+(window.innerHeight-$('.page-header').height())/2+'px';
+  console.log($scope.chartHeight);
+    console.log($('.page-header'));
+  // }
   $scope.renderCharts=[false,true,true,true,true,true,true,true];
   $scope.patients={};
   //更新TABLE的函数
@@ -66,11 +71,11 @@ angular.module('controllers',['ngResource','services'])
     $scope.$apply(function(){
       if(i<3){
         // $('#table').removeClass('col-xs-8').addClass('col-xs-12');
-        $('#table').removeClass('col-md-8').removeClass('col-sm-6');
+        $('#table').removeClass('col-lg-8').removeClass('col-md-8').removeClass('col-sm-6').addClass('col-xs-offset-1');
         $scope.renderCharts=[true,true,true,false,false,false,false,false];
       }else{
         // $('#table').removeClass('col-xs-12').addClass('col-xs-8');
-        $('#table').addClass('col-md-8').addClass('col-sm-6');
+        $('#table').addClass('col-lg-8').addClass('col-md-8').addClass('col-sm-6').removeClass('col-xs-offset-1');
         for(j=3;j<8;++j){
           if(j!=i)
             $scope.renderCharts[j]=false;
