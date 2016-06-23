@@ -1,40 +1,42 @@
-<div id="tableContainer" class="tableContainer">
-    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-      <thead class="SurgeriesInfo_fixedHeader">
-        <tr>
-          <th>手术室Id</th>
-          <th>手术室</th>
-          <th>手术间</th>
-          <th>台次</th>
-          <th>手术时间</th>
-          <th>手术科室</th>
-          <th>患者Id</th>
-          <th>患者姓名</th>
-          <th>术前诊断</th>
-          <th>手术名称</th>
-          <th>手术医师</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody class="SurgeriesInfo_scrollContent">
-        <tr ng-repeat="SurgeryInfo in SurgeryInfos">
-          <td>{{SurgeryInfo.SurgeryRoomId}}</td>
-          <td>{{SurgeryInfo.SurgeryRoom1}}</td>
-          <td>{{SurgeryInfo.SurgeryRoom2}}</td>
-          <td>{{SurgeryInfo.SurgeryTable}}</td>
-          <td>{{SurgeryInfo.SurgeryDate}}</td>
-          <td>{{SurgeryInfo.SurgeryDeptCode}}</td>
-          <td>{{SurgeryInfo.PatientId}}</td>
-          <td>{{SurgeryInfo.PatientName}}</td>
-          <td>{{SurgeryInfo.Diagnosis}}</td>
-          <td>{{SurgeryInfo.SurgeryName}}</td>
-          <td>{{SurgeryInfo.SurgeryDoctor}}</td>
-          <td>
-            <input type="button"  data-toggle="modal" data-target="#ViewSurgeriesInfoDetail" value="查看手术室详细信息" class="btn btn-primary editBtn" href="" ng-click = "readSurgeriesInfoDetail(SurgeryInfo.SurgeryRoomId)"/>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container">
+  <div>
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
+        <thead>
+          <tr>
+            <th>手术室Id</th>
+            <th>手术室</th>
+            <th>手术间</th>
+            <th>台次</th>
+            <th>手术时间</th>
+            <th>手术科室</th>
+            <th>患者Id</th>
+            <th>患者姓名</th>
+            <th>术前诊断</th>
+            <th>手术名称</th>
+            <th>手术医师</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="SurgeryInfo in SurgeryInfos">
+            <td>{{SurgeryInfo.SurgeryRoomId}}</td>
+            <td>{{SurgeryInfo.SurgeryRoom1}}</td>
+            <td>{{SurgeryInfo.SurgeryRoom2}}</td>
+            <td>{{SurgeryInfo.SurgeryTable}}</td>
+            <td>{{SurgeryInfo.SurgeryDate}}</td>
+            <td>{{SurgeryInfo.SurgeryDeptCode}}</td>
+            <td>{{SurgeryInfo.PatientId}}</td>
+            <td>{{SurgeryInfo.PatientName}}</td>
+            <td>{{SurgeryInfo.Diagnosis}}</td>
+            <td>{{SurgeryInfo.SurgeryName}}</td>
+            <td>{{SurgeryInfo.SurgeryDoctor}}</td>
+            <td>
+              <input type="button"  data-toggle="modal" data-target="#ViewSurgeriesInfoDetail" value="详细" class="btn btn-primary editBtn" href="" ng-click = "readSurgeriesInfoDetail(SurgeryInfo.SurgeryRoomId)"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
 </div>
 
 <!-- 手术室信息详情模态框（Modal） -->

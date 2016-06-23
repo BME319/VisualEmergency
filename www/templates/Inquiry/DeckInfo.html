@@ -1,34 +1,36 @@
-<div id="tableContainer" class="tableContainer">
-    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-      <thead  class="DeckInfo_fixedHeader">
-        <tr>
-          <th>ID</th>
-          <th>甲板名称</th>
-          <th>甲板分区列表</th>
-          <th>病床总数</th>
-          <th>可用病床</th>
-          <th>手术室总数</th>
-          <th>可用手术室</th>
-          <th>值班室</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody class="DeckInfo_scrollContent">
-        <tr ng-repeat="Deck in Decks">
-          <td>{{Deck.ID}}</td>
-          <td>{{Deck.DeckName}}</td>
-          <td>{{Deck.DeckSectionNames}}</td>
-          <td>{{Deck.BedCount}}</td>
-          <td>{{Deck.BedAvailCount}}</td>
-          <td>{{Deck.SurgeryRoomCount}}</td>
-          <td>{{Deck.SurgeryRoomAvailCount}}</td>
-          <td>{{Deck.DutyRoomCount}}</td>
-          <td>
-          <input type="button"  data-toggle="modal" data-target="#ViewDeckInfo" value="查看甲板信息" class="btn btn-primary editBtn" href="" ng-click = "readDeckInfo(Deck.ID)"/>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container">
+  <div >
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
+        <thead  >
+          <tr>
+            <th>ID</th>
+            <th>甲板名称</th>
+            <th>甲板分区列表</th>
+            <th>病床总数</th>
+            <th>可用病床</th>
+            <th>手术室总数</th>
+            <th>可用手术室</th>
+            <th>值班室</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr ng-repeat="Deck in Decks">
+            <td>{{Deck.ID}}</td>
+            <td>{{Deck.DeckName}}</td>
+            <td>{{Deck.DeckSectionNames}}</td>
+            <td>{{Deck.BedCount}}</td>
+            <td>{{Deck.BedAvailCount}}</td>
+            <td>{{Deck.SurgeryRoomCount}}</td>
+            <td>{{Deck.SurgeryRoomAvailCount}}</td>
+            <td>{{Deck.DutyRoomCount}}</td>
+            <td>
+            <input type="button"  data-toggle="modal" data-target="#ViewDeckInfo" value="查看甲板信息" class="btn btn-primary editBtn" href="" ng-click = "readDeckInfo(Deck.ID)"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
 </div>
 <!-- 甲板信息详情模态框（Modal） -->
 <div class="modal fade" id="ViewDeckInfo">

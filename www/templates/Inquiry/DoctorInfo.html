@@ -1,68 +1,63 @@
-<div id="tableContainer" class="tableContainer">
-    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-      <thead class="DoctorsInfo_fixedHeader">
-        <tr>
-          <th>医生ID</th>
-          <th>姓名</th>
-          <th>性别</th>
-          <th>所属科室</th>
-          <th>职务</th>
-          <th>医生级别</th>
-          <th>目前状态</th>
-          <th>前出地区</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody class="DoctorsInfo_scrollContent">
-        <tr ng-repeat="DoctorInfo in DoctorInfos">
-          <td>{{DoctorInfo.DoctorId}}</td>
-          <td>{{DoctorInfo.DoctorName}}</td>
-          <td>{{}}</td>
-          <td>{{DoctorInfo.Affiliation}}</td>
-          <td>{{DoctorInfo.Occupation}}</td>
-          <td>{{DoctorInfo.Position}}</td>
-          <td>{{DoctorInfo.Status}}</td>
-          <td>{{DoctorInfo.DutyRoom}}</td>
-          <td>
-          <input type="button"  data-toggle="modal" data-target="#ViewDoctorInfoDetail" value="查看医生详细信息" class="btn btn-primary editBtn" href="" ng-click = "readDoctorInfoDetail(DoctorInfo.DoctorId)"/>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-<!-- 医生信息详情模态框（Modal） -->
-<div class="modal fade" id="ViewDoctorInfoDetail">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" 
-               aria-hidden="true">×
-            </button>
-            <h4 class="modal-title" id="myModalLabel">
-               医生信息详情
-            </h4>
-         </div>
-         <div class="modal-body">
+<div class="container">
+  <div >
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
+        <thead >
+          <tr>
+            <th>医生ID</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>所属科室</th>
+            <th>职务</th>
+            <th>医生级别</th>
+            <th>目前状态</th>
+            <th>前出地区</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr ng-repeat="DoctorInfo in DoctorInfos">
+            <td>{{DoctorInfo.DoctorId}}</td>
+            <td>{{DoctorInfo.DoctorName}}</td>
+            <td>{{}}</td>
+            <td>{{DoctorInfo.Affiliation}}</td>
+            <td>{{DoctorInfo.Occupation}}</td>
+            <td>{{DoctorInfo.Position}}</td>
+            <td>{{DoctorInfo.Status}}</td>
+            <td>{{DoctorInfo.DutyRoom}}</td>
+            <td>
+            <input type="button"  data-toggle="modal" data-target="#ViewDoctorInfoDetail" value="查看医生详细信息" class="btn btn-primary editBtn" href="" ng-click = "readDoctorInfoDetail(DoctorInfo.DoctorId)"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <!-- 医生信息详情模态框（Modal） -->
+  <div class="modal fade" id="ViewDoctorInfoDetail">
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" 
+                 aria-hidden="true">×
+              </button>
+              <h4 class="modal-title" id="myModalLabel">
+                 医生信息详情
+              </h4>
+           </div>
+           <div class="modal-body">
 
-            <!-- <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">医生信息详情</h3>
-              </div>
-              <div class="panel-body"> -->
-                <p>医生Id：{{DoctorInfoDetail.DoctorId}}</p>
-                <p>医生姓名：{{DoctorInfoDetail.DoctorName}}</p>
-                <p>所属科室：{{DoctorInfoDetail.DeptName}}</p>
-                <p>医生级别：{{DoctorInfoDetail.PositionName}}</p>
-                <p>目前状态：{{DoctorInfoDetail.DutyStatus}}</p>
-                <p>医生简介：{{DoctorInfoDetail.DoctorIntro}}</p>
-              <!-- </div>
-            </div> -->
+              <p>医生Id：{{DoctorInfoDetail.DoctorId}}</p>
+              <p>医生姓名：{{DoctorInfoDetail.DoctorName}}</p>
+              <p>所属科室：{{DoctorInfoDetail.DeptName}}</p>
+              <p>医生级别：{{DoctorInfoDetail.PositionName}}</p>
+              <p>目前状态：{{DoctorInfoDetail.DutyStatus}}</p>
+              <p>医生简介：{{DoctorInfoDetail.DoctorIntro}}</p>
 
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-            </button>
-         </div>
-      </div>
-   </div>
+           </div>
+           <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+              </button>
+           </div>
+        </div>
+     </div>
+  </div>
 </div>

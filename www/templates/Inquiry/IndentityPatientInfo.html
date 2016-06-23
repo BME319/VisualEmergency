@@ -1,42 +1,40 @@
-
-<div id="tableContainer" class="tableContainer">
-    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-      <thead class="KeyPatientsInfo_fixedHeader">
-        <tr>
-          <th></th>
-          <th>患者ID</th>
-          <th>姓名</th>
-          <th>性别</th>
-          <th>年龄</th>
-          <th>身份信息</th>
-          <th>诊断</th>
-          <th>伤情等级</th>
-          <th>后送科室</th>
-          <th>后送时间</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody class="KeyPatientsInfo_scrollContent">
-        <tr ng-repeat="KeyPatientInfo in KeyPatientInfos">
-          <td>
-            <a href=""><img src="image/loc.png"></a>
-          </td>
-          <td>{{KeyPatientInfo.PatientId}}</td>
-          <td>{{KeyPatientInfo.PatientName}}</td>
-          <td>{{KeyPatientInfo.Sex}}</td>
-          <td>{{KeyPatientInfo.Age}}</td>
-          <td>{{KeyPatientInfo.Job}}</td>
-          <td>{{KeyPatientInfo.Diagnosis}}</td>
-          <td>{{KeyPatientInfo.InjuryLevel}}</td>
-          <td>{{KeyPatientInfo.TargetDepartment}}</td>
-          <td>{{KeyPatientInfo.DeliverTime}}</td>
-          <td>
-            <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientDetails(KeyPatientInfo.PatientId)"/>
-            <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientBios(KeyPatientInfo.PatientId)"/>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="container">
+  <div >
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
+        <thead >
+          <tr>
+            <th>患者ID</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>身份信息</th>
+            <th>诊断</th>
+            <th>伤情等级</th>
+            <th>后送科室</th>
+            <th>后送时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr ng-repeat="KeyPatientInfo in KeyPatientInfos">
+            <td>{{KeyPatientInfo.PatientId}}</td>
+            <td>{{KeyPatientInfo.PatientName}}</td>
+            <td>{{KeyPatientInfo.Sex}}</td>
+            <td>{{KeyPatientInfo.Age}}</td>
+            <td>{{KeyPatientInfo.Job}}</td>
+            <td>{{KeyPatientInfo.Diagnosis}}</td>
+            <td>{{KeyPatientInfo.InjuryLevel}}</td>
+            <td>{{KeyPatientInfo.TargetDepartment}}</td>
+            <td>{{KeyPatientInfo.DeliverTime}}</td>
+            <td>
+              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientDetails(KeyPatientInfo.PatientId)"/>
+              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientBios(KeyPatientInfo.PatientId)"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
     <!-- 生理参数信息模态框（Modal） -->
     <div class="modal fade" id="ViewPatientDetails">
        <div class="modal-dialog">
