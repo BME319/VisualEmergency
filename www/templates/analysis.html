@@ -1,54 +1,49 @@
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-2">
-       
-          <div>门诊分析</div>
-          <ul class="nav nav-sidebar">
-            <li ><a ui-sref=".ClinicDate">按日期统计</a></li>
-            <li><a href="#/analysis/ClinicDepartment">按科室统计</a></li>
-            <li><a href="#/analysis/ClinicNationality">按国籍统计</a></li>
-          </ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-2">
+      <div>门诊分析</div>
+      <ul class="nav nav-sidebar">
+        <li ><a ui-sref=".ClinicDate">按日期统计</a></li>
+        <li><a href="#/analysis/ClinicDepartment">按科室统计</a></li>
+        <li><a href="#/analysis/ClinicNationality">按国籍统计</a></li>
+      </ul>
 
-          <div>住院分析</div>
-          <ul class="nav nav-sidebar">
-            
-            <li><a href="#/analysis/InpatientDate">按日期统计</a></li>
-            <li><a href="#/analysis/InpatientWard">按病房统计</a></li>
-            <li><a href="#/analysis/InpatientDoctor">按医生统计</a></li>
-            <li><a href="#/analysis/InpatientAverageDay">平均住院日</a></li>
-            <li><a href="#/analysis/OccupancyRate">病床使用率</a></li>
-          </ul>
+      <div>住院分析</div>
+      <ul class="nav nav-sidebar">
+        <li><a href="#/analysis/InpatientDate">按日期统计</a></li>
+        <li><a href="#/analysis/InpatientWard">按病房统计</a></li>
+        <li><a href="#/analysis/InpatientDoctor">按医生统计</a></li>
+        <li><a href="#/analysis/InpatientAverageDay">平均住院日</a></li>
+        <li><a href="#/analysis/OccupancyRate">病床使用率</a></li>
+      </ul>
 
-          <div>手术分析</div>
-          <ul class="nav nav-sidebar">
-            <li><a href="#/analysis/OperationStatusGrade">按手术状态和等级统计</a></li>
-          </ul>
+      <div>手术分析</div>
+      <ul class="nav nav-sidebar">
+        <li><a href="#/analysis/OperationStatusGrade">按手术状态和等级统计</a></li>
+      </ul>
 
-          <div>诊断分析</div>
-          <ul class="nav nav-sidebar">
-            <li><a href="#/analysis/DiagnosisScale">诊断量</a></li>
-          </ul>
-        </div>
-        <div class="col-xs-10">
-        
-          <div ui-view></div>
-   
-        </div>
-      </div>
-  
+      <div>诊断分析</div>
+	      <ul class="nav nav-sidebar">
+	        <li><a href="#/analysis/DiagnosisScale">诊断量</a></li>
+	      </ul>
+	  </div>
+    <div class="col-xs-10">
+    	<div ui-view></div>
+    </div>
   </div>
+  
+</div>
 
-<a href="" data-toggle="modal" data-target="#ViewDeckInfo" ng-click = "test()">甲板信息详情</a>
+<!-- <a href="" data-toggle="modal" data-target="#ViewDeckInfo" ng-click = "test()">甲板信息详情</a>
 <a href="" data-toggle="modal" data-target="#ViewDoctorInfoDetail" ng-click = "test()">医生信息详情</a>
 <a href="" data-toggle="modal" data-target="#ViewSurgeriesInfoDetail" ng-click = "test()">手术室信息详情</a>
 <a href="" data-toggle="modal" data-target="#ViewPatientBios" ng-click = "test()">生化参数</a>
-<a href="" data-toggle="modal" data-target="#ViewPatientDetails" ng-click = "test()">生理参数</a>
+<a href="" data-toggle="modal" data-target="#ViewPatientDetails" ng-click = "test()">生理参数</a> -->
 
 
 
-<!-- 甲板信息详情模态框（Modal） -->
-<div class="modal fade" id="ViewDeckInfo">
+<!-- <div class="modal fade" id="ViewDeckInfo">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
@@ -62,7 +57,6 @@
          <div class="modal-body">
 
             <div class="panel-group" id="accordion">
-              <!-- First Panel -->
               <div class="panel panel-primary">
                   <div class="panel-heading">
                        <h4 class="panel-title">
@@ -95,7 +89,6 @@
                   </div>
               </div>
               
-              <!-- Second Panel -->
               <div class="panel panel-primary">
                   <div class="panel-heading">
                        <h4 class="panel-title">
@@ -130,7 +123,6 @@
                   </div>
               </div>
               
-              <!-- Third Panel -->
               <div class="panel panel-primary">
                   <div class="panel-heading">
                        <h4 class="panel-title">
@@ -173,10 +165,9 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
 
-<!-- 医生信息详情模态框（Modal） -->
-<div class="modal fade" id="ViewDoctorInfoDetail">
+<!-- <div class="modal fade" id="ViewDoctorInfoDetail">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
@@ -189,19 +180,13 @@
          </div>
          <div class="modal-body">
 
-            <!-- <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">医生信息详情</h3>
-              </div>
-              <div class="panel-body"> -->
+
                 <p>医生Id：{{DoctorInfoDetail.DoctorId}}</p>
                 <p>医生姓名：{{DoctorInfoDetail.DoctorName}}</p>
                 <p>所属科室：{{DoctorInfoDetail.DeptName}}</p>
                 <p>医生级别：{{DoctorInfoDetail.PositionName}}</p>
                 <p>目前状态：{{DoctorInfoDetail.DutyStatus}}</p>
                 <p>医生简介：{{DoctorInfoDetail.DoctorIntro}}</p>
-              <!-- </div>
-            </div> -->
 
          </div>
          <div class="modal-footer">
@@ -210,10 +195,9 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
 
-<!-- 手术室信息详情模态框（Modal） -->
-<div class="modal fade" id="ViewSurgeriesInfoDetail">
+<!-- <div class="modal fade" id="ViewSurgeriesInfoDetail">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
@@ -280,10 +264,9 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
 
-<!-- 生化参数信息模态框（Modal） -->
-<div class="modal fade" id="ViewPatientBios">
+<!-- <div class="modal fade" id="ViewPatientBios">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
@@ -303,10 +286,9 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
 
-<!-- 生理参数信息模态框（Modal） -->
-<div class="modal fade" id="ViewPatientDetails">
+<!-- <div class="modal fade" id="ViewPatientDetails">
    <div class="modal-dialog">
       <div class="modal-content">
          <div class="modal-header">
@@ -332,9 +314,9 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
 
-<style type="text/css">
+<!-- <style type="text/css">
 
   #ViewDeckInfo .modal-dialog{
     width: 50%;
@@ -350,4 +332,4 @@
     overflow: auto;
   }
 
-</style>
+</style> -->

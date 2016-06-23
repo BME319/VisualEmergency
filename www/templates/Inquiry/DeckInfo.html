@@ -2,7 +2,6 @@
     <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
       <thead  class="DeckInfo_fixedHeader">
         <tr>
-          <th></th>
           <th>ID</th>
           <th>甲板名称</th>
           <th>甲板分区列表</th>
@@ -11,13 +10,11 @@
           <th>手术室总数</th>
           <th>可用手术室</th>
           <th>值班室</th>
+          <th>操作</th>
         </tr>
       </thead>
       <tbody class="DeckInfo_scrollContent">
         <tr ng-repeat="Deck in Decks">
-          <td>
-            <a href=""><img src="image/loc.jpg"></a>
-          </td>
           <td>{{Deck.ID}}</td>
           <td>{{Deck.DeckName}}</td>
           <td>{{Deck.DeckSectionNames}}</td>
@@ -26,7 +23,147 @@
           <td>{{Deck.SurgeryRoomCount}}</td>
           <td>{{Deck.SurgeryRoomAvailCount}}</td>
           <td>{{Deck.DutyRoomCount}}</td>
+          <td>
+          <input type="button"  data-toggle="modal" data-target="#ViewDeckInfo" value="查看甲板信息" class="btn btn-primary editBtn" href="" ng-click = "readDeckInfo(Deck.ID)"/>
+          </td>
         </tr>
       </tbody>
     </table>
 </div>
+<!-- 甲板信息详情模态框（Modal） -->
+<div class="modal fade" id="ViewDeckInfo">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" 
+               aria-hidden="true">×
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               甲板信息详情
+            </h4>
+         </div>
+         <div class="modal-body">
+
+            <div class="panel-group" id="accordion">
+              <!-- First Panel -->
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                       <h4 class="panel-title">
+                          <a href=""
+                             data-toggle="collapse"
+                             data-target="#collapseOne">
+                             手术室列表信息
+                          </a>  
+                       </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                      <div class="panel-body">
+                          <table class="table table-bordered">
+                             <thead>
+                                <tr>
+                                   <th>手术室编号</th>
+                                   <th>手术间编号</th>
+                                   <th>状态</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                <tr ng-repeat = "surgeryRoomInfo in DeckInfoDetail.surgeryRoomInfoList">
+                                   <td>{{surgeryRoomInfo.SurgeryRoomId}}</td>
+                                   <td>{{surgeryRoomInfo.SubSurgeryRoomId}}</td>
+                                   <td>{{surgeryRoomInfo.Status}}</td>
+                                </tr>
+                             </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Second Panel -->
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                       <h4 class="panel-title">
+                          <a href=""
+                             data-toggle="collapse"
+                             data-target="#collapseTwo">
+                             病床列表信息
+                          </a>  
+                       </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse">
+                      <div class="panel-body">
+                          <table class="table table-bordered">
+                             <thead>
+                                <tr>
+                                   <th>病床编号</th>
+                                   <th>所在病区</th>
+                                   <th>状态</th>
+                                   <th>伤员姓名</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                <tr ng-repeat = "bedInfo in DeckInfoDetail.bedInfoList">
+                                   <td>{{bedInfo.BedCode}}</td>
+                                   <td>{{bedInfo.WardCode}}</td>
+                                   <td>{{bedInfo.Status}}</td>
+                                   <td>{{bedInfo.PatientName}}</td>
+                                </tr>
+                             </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+              
+              <!-- Third Panel -->
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                       <h4 class="panel-title">
+                          <a href=""
+                             data-toggle="collapse"
+                             data-target="#collapseThree">
+                             值班医生
+                          </a>  
+                       </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse">
+                      <div class="panel-body">
+                          <table class="table table-bordered">
+                             <thead>
+                                <tr>
+                                   <th>医生编号</th>
+                                   <th>姓名</th>
+                                   <th>值班时间</th>
+                                   <th>所属科室</th>
+                                </tr>
+                             </thead>
+                             <tbody>
+                                <tr ng-repeat = "dutyDoctorInfo in DeckInfoDetail.dutyDoctorInfoList">
+                                   <td>{{dutyDoctorInfo.DoctorId}}</td>
+                                   <td>{{dutyDoctorInfo.DoctorName}}</td>
+                                   <td>{{dutyDoctorInfo.Time1}}，{{dutyDoctorInfo.Time2}}</td>
+                                   <td>{{dutyDoctorInfo.Affiliation}}</td>
+                                </tr>
+                             </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+            </button>
+         </div>
+      </div>
+   </div>
+</div>
+<style type="text/css">
+
+  #ViewDeckInfo .modal-dialog{
+    width: 50%;
+  }
+  #ViewDeckInfo .modal-body{
+    overflow: auto;
+  }
+
+</style>
