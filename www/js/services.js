@@ -18,6 +18,11 @@ angular.module('services',['ngResource'])
 .constant('CONFIG', {
   makeUrl: 'http://10.12.43.35:57772/csp/outp/_DeepSee.UserPortal.DashboardViewer.zen?NOTITLE=1&NOMODIFY=1&DASHBOARD=HZDashboards/',
   baseUrl: 'http://10.12.43.35:9090/Api/v1/',  
+  // chart_conf:{
+  //   legend:{
+  //     fontSize:16//图列字体大小
+  //   }
+  // }
 })
 .factory('Data', ['$resource', '$q','$interval' ,'CONFIG','Storage' , function($resource,$q,$interval ,CONFIG,Storage){ 
 	var serve={};
@@ -375,7 +380,7 @@ angular.module('services',['ngResource'])
   };
   return serve;
 }])
-.factory('chartTool',function(){
+.factory('chartTool',['CONFIG',function(CONFIG){
   var serve={};
   serve.initBar = function(seriesName){
     return {
@@ -387,7 +392,8 @@ angular.module('services',['ngResource'])
         trigger : 'axis',
         axisPointer : {
           type : 'shadow'
-        }
+        },
+        formatter:"{b} : {c}"
       },
       toolbox : {
         feature : {
@@ -399,7 +405,7 @@ angular.module('services',['ngResource'])
       },
       xAxis : [{
           type : 'category',
-          data : ['手术中', '手术完成']
+          data : []
         }
       ],
       yAxis : [{
@@ -409,21 +415,25 @@ angular.module('services',['ngResource'])
           }
         }
       ],
-      // grid : {
-      //   x2 : 40
-      // },
       series : [{
           name : seriesName,
           type : 'bar',
-          itemStyle : {
-            normal : {
-              label : {
-                show : true,
-                position : 'inside'
-              }
+          label : {
+            normal:{
+              show : true,
+              position : 'insideTop',
+              textStyle:{fontSize:26 }           
             }
-          },
-          data : []
+          },   
+          // itemStyle : {
+          //   normal : {
+          //     label : {
+          //       show : true,
+          //       position : 'inside'
+          //     }
+          //   }
+          // },
+          data : [0,0]
         }
       ]
     }
@@ -441,6 +451,9 @@ angular.module('services',['ngResource'])
       },
       legend : {
         bottom : 'bottom',
+        textStyle:{
+          fontSize:16
+        },
         data : []
       },
       toolbox : {
@@ -459,10 +472,14 @@ angular.module('services',['ngResource'])
         {
           name : seriesName,
           type : 'pie',
-          radius : [15, '55%'],
+          radius : [0, '70%'],
           center : ['50%', '50%'],
           selectedMode:'single',
-          roseType : 'radius',
+          label: {
+              normal: {
+                  show:false
+              },
+          },          
           data : []
         }
       ]        
@@ -472,7 +489,7 @@ angular.module('services',['ngResource'])
   serve.getOptionBar = function(data){
     return {
       title : {text : data.title },
-      xAxis : {data : data.data.map(d =>d.name) },
+      xAxis : {data : data.data.map(function(d){return {value:d.name,textStyle:{color:'#678',fontSize:16}}})},
       series : [{data : data.data}]
     }
   }
@@ -480,10 +497,10 @@ angular.module('services',['ngResource'])
   serve.getOptionPie = function(data){
     return {
       title : {text : data.title },
-      legend : {data : data.data.map(d =>d.name) },
+      legend : {data : data.data.map(function(d){return d.name}) },
       series : [{data : data.data}]
     }
   }
 
   return serve;
-})
+}])

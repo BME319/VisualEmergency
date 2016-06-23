@@ -1,13 +1,18 @@
-<div>病房：{{room}} <span ng-show="renderCharts[0]">----------------------params ：第{{table.index}}个图，所选项{{table.name}}，共计{{table.value}}人</span></div>
 <div class="row">
-	<div id='chart1' ng-show="renderCharts[1]" style="height:400px" class="col-xs-12 col-md-6"></div>
+<!-- 	<div id='chart1' ng-show="renderCharts[1]" style="height:400px" class="col-xs-12 col-md-6 col-lg-offset-2-"></div>
 	<div id='chart2' ng-show="renderCharts[2]" style="height:400px" class="col-xs-12 col-md-6"></div>
 	<div id='chart3' ng-show="renderCharts[3]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
 	<div id='chart4' ng-show="renderCharts[4]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths" ></div>
 	<div id='chart5' ng-show="renderCharts[5]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
 	<div id='chart6' ng-show="renderCharts[6]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart7' ng-show="renderCharts[7]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div> -->
+	<div id='chart1' ng-show="renderCharts[1]" style="height:400px" class="col-xs-12 col-md-5 col-md-offset-1"></div>
+	<div id='chart2' ng-show="renderCharts[2]" style="height:400px" class="col-xs-12 col-md-5"></div>
+	<div id='chart3' ng-show="renderCharts[3]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart4' ng-show="renderCharts[4]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths" ></div>
+	<div id='chart5' ng-show="renderCharts[5]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart6' ng-show="renderCharts[6]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
 	<div id='chart7' ng-show="renderCharts[7]" style="height:400px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
-
 	<div id='table' ng-show="renderCharts[0]" class="col-xs-12 col-sm-12 col-md-12 pull-right" style="height:400px;background-color:#f9f9f9">
 	  <div id="tableContainer" class="tableContainer">
 	    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
@@ -28,7 +33,7 @@
 	      <tbody class="Patients_scrollContent">
 	        <tr ng-repeat="patient in patients">
 	          <td>
-	            <a href=""><img src="image/loc.jpg"></a>
+	            <a href=""><img src="image/loc.png"></a>
 	          </td>
 	          <td>{{patient.PId}}</td>
 	          <td>{{patient.PatientName}}</td>
@@ -39,8 +44,8 @@
 	          <td>{{patient.InjuryScore}}</td>
 	          <td>{{}}</td>
 	          <td>
-	            <input type="button"  data-toggle="modal" data-target="#mymodal1" value="查看生理信息" class="btn btn-primary editBtn" href=""/>
-	            <div class="modal" id="mymodal1">
+	            <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" ng-click = "readPatientDetails(patient.PId)"/>
+<!-- 	            <div class="modal" id="mymodal1">
 	              <div class="modal-dialog">
 	                <div class="modal-content">
 	                  <div class="modal-header">
@@ -56,9 +61,9 @@
 	                  </div>
 	                </div>
 	              </div>
-	            </div>
-	            <input type="button" data-toggle="modal" data-target="#mymodal2" value="查看生化信息" class="btn btn-primary editBtn" href=""/>
-	            <div class="modal" id="mymodal2">
+	            </div> -->
+	            <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" ng-click = "readPatientBios(patient.PId)"/>
+<!-- 	            <div class="modal" id="mymodal2">
 	              <div class="modal-dialog">
 	                <div class="modal-content">
 	                  <div class="modal-header">
@@ -74,11 +79,61 @@
 	                  </div>
 	                </div>
 	              </div>
-	            </div>
+	            </div> -->
 	          </td>
 	        </tr>
 	      </tbody>
 	    </table>
 		</div>
 	</div>
+  <!-- 生理参数信息模态框（Modal） -->
+  <div class="modal fade" id="ViewPatientDetails">
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" 
+                 aria-hidden="true">×
+              </button>
+              <h4 class="modal-title" id="myModalLabel">
+                 生理参数信息
+              </h4>
+           </div>
+           <div class="modal-body">
+              <p>血氧饱和度：{{PatientDetails.Oxygen}}</p>
+              <p>脉搏：{{PatientDetails.Pulse}}</p>
+              <p>心率：{{PatientDetails.HeartRate}}</p>
+              <p>呼吸：{{PatientDetails.Breath}}</p>
+              <p>神智：{{PatientDetails.Consciousness}}</p>
+              <p>血压：{{PatientDetails.DBP}}，{{PatientDetails.SBP}}</p>
+              <p>体温：{{PatientDetails.Temperature}}</p>
+           </div>
+           <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+              </button>
+           </div>
+        </div>
+     </div>
+  </div>
+  <!-- 生化参数信息模态框（Modal） -->
+  <div class="modal fade" id="ViewPatientBios">
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" 
+                 aria-hidden="true">×
+              </button>
+              <h4 class="modal-title" id="myModalLabel">
+                 生化参数信息
+              </h4>
+           </div>
+           <div class="modal-body">
+              <p ng-repeat = "PatientBio in PatientBios">{{PatientBio.des}}：{{PatientBio.val}}</p>
+           </div>
+           <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+              </button>
+           </div>
+        </div>
+     </div>
+  </div>	
 </div>
