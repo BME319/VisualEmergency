@@ -17,32 +17,69 @@ angular.module('services',['ngResource'])
 }])
 .constant('CONFIG', {
   makeUrl: 'http://10.12.43.35:57772/csp/outp/_DeepSee.UserPortal.DashboardViewer.zen?NOTITLE=1&NOMODIFY=1&DASHBOARD=HZDashboards/',
-  baseUrl: 'http://121.43.107.106:9090/Api/v1/',  //RESTful 服务器  121.43.107.106:9000
+  baseUrl: 'http://10.12.43.35:9090/Api/v1/',  
+  // chart_conf:{
+  //   legend:{
+  //     fontSize:16//图列字体大小
+  //   }
+  // }
 })
 .factory('Data', ['$resource', '$q','$interval' ,'CONFIG','Storage' , function($resource,$q,$interval ,CONFIG,Storage){ 
 	var serve={};
 	var abort = $q.defer;
 
-  //李泽南
-	var DeckInfo = function(){
-		return $resource(CONFIG.baseUrl + ':route',{
-			
-		},{
-			GetDeckInfo:{method:'GET',params:{route:'deckInfo'},timeout:10000},
-		});
-	};
+  // 张桠童
+  var deckInfoDetail = function(){
+    return $resource(CONFIG.baseUrl + ':route/:id',{},{
+      deckInfoDetail:{method:'GET', params:{route: 'deckInfoDetail', id:'@id'}, timeout: 100000},
+    });
+  };
+
+  var Info = function(){
+    return $resource(CONFIG.baseUrl + ':route',{},{
+      PatientBios:{method:'GET', params:{route: 'PatientBios', PId:'@PId'}, timeout: 100000},
+      PatientDetails:{method:'GET', params:{route: 'PatientDetails', PId:'@PId'}, timeout: 100000},
+    });
+  };
+  
+  //DeliverInfo
+
+  //DeckInfo
+  var DeckInfo = function(){
+    return $resource(CONFIG.baseUrl + ':route',{
+      
+    },{
+      GetDeckInfo:{method:'GET',params:{route:'deckInfo'},timeout:10000},
+    });
+  };
+  //Deliver
+  var Deliver = function(){
+    return $resource(CONFIG.baseUrl+":route",{},{
+      InjuryInfoByToPlace:{method:'GET',params:{route:'InjuryInfoByToPlace',ToPlace:'@ToPlace'},timeout:10000},
+      BedsByDept:{method:'GET',params:{route:'BedsByDept',DeptCode:'@DeptCode'},timeout:10000},
+      DeliverWays:{method:'GET',params:{route:'DeliverWays',DeptCode:'@DeptCode'},timeout:10000},
+      InjuryStatus:{method:'GET',params:{route:'InjuryStatus'},timeout:10000},
+      InjuryPeople:{method:'GET',params:{route:'InjuryPeople'},timeout:10000},
+      Savors:{method:'GET',params:{route:'Savors'},timeout:10000}
+    })
+  }
   var MstUser = function(){
     return $resource(CONFIG.baseUrl + ':path/:route',{
       path:'MstUser',
     },{
       GetDoctorsInfo:{method:'GET',params:{route:'DoctorsInfo',DoctorId:'@DoctorId',Affiliation:'@Affiliation',Status:'@Status',DoctorName:'@DoctorName',Position:'@Position'},timeout:10000},
+      // 张桠童添加
+      DoctorInfoDetail:{method:'GET',params:{route:'DoctorInfoDetail',DoctorId:'@DoctorId'},timeout:10000},
     });
   };
+  //PsTrnOutpatient
   var TrnOrderingSurgery = function(){
     return $resource(CONFIG.baseUrl + ':path/:route',{
       path:'TrnOrderingSurgery',
     },{
       GetSurgeriesInfo:{method:'GET',params:{route:'SurgeriesInfo',SurgeryRoom1:'@SurgeryRoom1',SurgeryRoom2:'@SurgeryRoom2',SurgeryDateTime:'@SurgeryDateTime',SurgeryDeptCode:'@SurgeryDeptCode'},timeout:10000},
+      // 张桠童添加
+      SurgeriesInfoDetail:{method:'GET',params:{route:'SurgeriesInfoDetail', RoomId:'@RoomId'},timeout:10000},
     });
   };
   var orderings = function(){
@@ -61,35 +98,92 @@ angular.module('services',['ngResource'])
   };
   var DeliverInfo=function()
   {
-    return $resource(CONFIG.baseUrl+':path/:route',{path:'DeliverInfo',},{
-      GetDeliverInfoNum: {method:'GET',params:{route: 'Num'}, timeout:100000},
+    return $resource(CONFIG.baseUrl+'Num',{},{
+      GetDeliverInfoNum: {method:'GET'}, timeout:100000}
+    );
+  };
+  var PatientsByDB = function(){
+    return $resource(CONFIG.baseUrl + ':route',{
+    },{
+      GetPatientsByDB:{method:'GET',params:{route:'PatientsByDB',DeptCode:'@DeptCode',Type:'@Type'},timeout:10000},
+    });
+  };
+  var PatientDeptDeliver = function(){
+    return $resource(CONFIG.baseUrl + ':route',{
+    },{
+      GetPatientDeptDeliver:{method:'GET',params:{route:'PatientDeptDeliver',DeptCode:'@DeptCode',DeliverWay:'@DeliverWay'},timeout:10000},
     });
   };
 
-  //赵艳霞
 
 	serve.abort = function($scope){
 			abort.resolve();
 	        $interval(function () {
 	        abort = $q.defer();
+          serve.deckInfoDetail = deckInfoDetail();
+          serve.Info = Info();
 	        serve.DeckInfo = DeckInfo();
           serve.MstUser = MstUser();
           serve.TrnOrderingSurgery = TrnOrderingSurgery();
           serve.orderings = orderings();
           serve.KeyPatientsInfo = KeyPatientsInfo();
+          serve.PatientsByDB = PatientsByDB();
+          serve.PatientDeptDeliver = PatientDeptDeliver();
           serve.DeliverInfo = DeliverInfo();
+          serve.Deliver = Deliver();
 	    },0,1);
 	}
+   serve.deckInfoDetail = deckInfoDetail();
+   serve.Info = Info();  
 	 serve.DeckInfo = DeckInfo();
    serve.MstUser = MstUser();
    serve.TrnOrderingSurgery = TrnOrderingSurgery();
    serve.orderings = orderings();
    serve.KeyPatientsInfo = KeyPatientsInfo();
    serve.DeliverInfo = DeliverInfo(); 
+   serve.PatientsByDB = PatientsByDB();
+   serve.PatientDeptDeliver = PatientDeptDeliver();
+   serve.Deliver = Deliver();
 	 return serve;
 }])
 
+//-------甲板信息、医生详细信息、手术室信息详情、生理生化信息-------- [张桠童]
+.factory('deckInfoDetail', ['$q', '$http', 'Data', function( $q, $http, Data ){
+  var self = this;
+  self.GetdeckInfoDetail = function(id){
+    var deferred = $q.defer();
+    Data.deckInfoDetail.deckInfoDetail({id:id}, function(data, headers){
+      deferred.resolve(data);
+    }, function(err){
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  return self;
+}])
 
+.factory('Info', ['$q', '$http', 'Data', function( $q, $http, Data ){
+  var self = this;
+  self.GetPatientBios = function(PId){
+    var deferred = $q.defer();
+    Data.Info.PatientBios({PId:PId}, function(data, headers){
+      deferred.resolve(data);
+    }, function(err){
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  self.GetPatientDetails = function(PId){
+    var deferred = $q.defer();
+    Data.Info.PatientDetails({PId:PId}, function(data, headers){
+      deferred.resolve(data);
+    }, function(err){
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  return self;
+}])
 
 .factory('DeckInfo', ['$q', '$http', 'Data','Storage','$resource','CONFIG',function ($q, $http, Data,Storage,$resource,CONFIG) { 
   var self = this;
@@ -115,6 +209,16 @@ angular.module('services',['ngResource'])
     });
     return deferred.promise;
   };
+  // 张桠童添加
+  self.GetDoctorInfoDetail = function(DoctorId){
+    var deferred = $q.defer();
+    Data.MstUser.DoctorInfoDetail({DoctorId:DoctorId},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
    return self;
 }])
 .factory('TrnOrderingSurgery',['$q', '$http', 'Data','Storage','$resource','CONFIG',function ($q, $http, Data,Storage,$resource,CONFIG) {
@@ -122,6 +226,16 @@ angular.module('services',['ngResource'])
   self.GetSurgeriesInfo = function(obj){
     var deferred = $q.defer();
     Data.TrnOrderingSurgery.GetSurgeriesInfo(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  // 张桠童添加
+  self.GetSurgeriesInfoDetail = function(RoomId){
+    var deferred = $q.defer();
+    Data.TrnOrderingSurgery.SurgeriesInfoDetail({RoomId:RoomId},function (data,headers) {
       deferred.resolve(data);
     },function (err) {
       deferred.reject(err);
@@ -181,8 +295,92 @@ angular.module('services',['ngResource'])
   };
   return self;
 }])
+.factory('PatientsByDB',['$q','$http','Data','Storage','$resource','CONFIG',function ($q, $http, Data,Storage,$resource,CONFIG){
+  var self = this;
+  self.GetPatientsByDB = function(obj){
+     var deferred = $q.defer();
+    Data.PatientsByDB.GetPatientsByDB(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  return self;
+}])
+.factory('PatientDeptDeliver',['$q','$http','Data','Storage','$resource','CONFIG',function ($q, $http, Data,Storage,$resource,CONFIG){
+  var self = this;
+  self.GetPatientDeptDeliver = function(obj){
+     var deferred = $q.defer();
+    Data.PatientDeptDeliver.GetPatientDeptDeliver(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  return self;
+}])
 
-.factory('chartTool',function(){
+.factory('Deliver',['$q','$http','Data','Storage','$resource','CONFIG',function ($q, $http, Data,Storage,$resource,CONFIG){
+  var serve = {};
+  serve.InjuryInfoByToPlace = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.InjuryInfoByToPlace(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.BedsByDept = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.BedsByDept(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.DeliverWays = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.DeliverWays(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.InjuryStatus = function(){
+     var deferred = $q.defer();
+    Data.Deliver.InjuryStatus({},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.Savors = function(){
+     var deferred = $q.defer();
+    Data.Deliver.Savors({},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.InjuryPeople = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.InjuryPeople(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  return serve;
+}])
+.factory('chartTool',['CONFIG',function(CONFIG){
   var serve={};
   serve.initBar = function(seriesName){
     return {
@@ -194,7 +392,8 @@ angular.module('services',['ngResource'])
         trigger : 'axis',
         axisPointer : {
           type : 'shadow'
-        }
+        },
+        formatter:"{b} : {c}"
       },
       toolbox : {
         feature : {
@@ -206,7 +405,7 @@ angular.module('services',['ngResource'])
       },
       xAxis : [{
           type : 'category',
-          data : ['手术中', '手术完成']
+          data : []
         }
       ],
       yAxis : [{
@@ -216,21 +415,25 @@ angular.module('services',['ngResource'])
           }
         }
       ],
-      // grid : {
-      //   x2 : 40
-      // },
       series : [{
           name : seriesName,
           type : 'bar',
-          itemStyle : {
-            normal : {
-              label : {
-                show : true,
-                position : 'inside'
-              }
+          label : {
+            normal:{
+              show : true,
+              position : 'insideTop',
+              textStyle:{fontSize:26 }           
             }
-          },
-          data : []
+          },   
+          // itemStyle : {
+          //   normal : {
+          //     label : {
+          //       show : true,
+          //       position : 'inside'
+          //     }
+          //   }
+          // },
+          data : [0,0]
         }
       ]
     }
@@ -248,6 +451,9 @@ angular.module('services',['ngResource'])
       },
       legend : {
         bottom : 'bottom',
+        textStyle:{
+          fontSize:16
+        },
         data : []
       },
       toolbox : {
@@ -266,10 +472,14 @@ angular.module('services',['ngResource'])
         {
           name : seriesName,
           type : 'pie',
-          radius : [15, '55%'],
+          radius : [0, '70%'],
           center : ['50%', '50%'],
           selectedMode:'single',
-          roseType : 'radius',
+          label: {
+              normal: {
+                  show:false
+              },
+          },          
           data : []
         }
       ]        
@@ -279,7 +489,7 @@ angular.module('services',['ngResource'])
   serve.getOptionBar = function(data){
     return {
       title : {text : data.title },
-      xAxis : {data : data.data.map(d =>d.name) },
+      xAxis : {data : data.data.map(function(d){return {value:d.name,textStyle:{color:'#678',fontSize:16}}})},
       series : [{data : data.data}]
     }
   }
@@ -287,10 +497,10 @@ angular.module('services',['ngResource'])
   serve.getOptionPie = function(data){
     return {
       title : {text : data.title },
-      legend : {data : data.data.map(d =>d.name) },
+      legend : {data : data.data.map(function(d){return d.name}) },
       series : [{data : data.data}]
     }
   }
 
   return serve;
-})
+}])

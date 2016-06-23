@@ -2,9 +2,9 @@
 <html ng-app="VisualEmergency">
   <head>
     <meta charset="utf-8">
-    <!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
     <title></title>
-
+    <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
     <link href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- <link href="lib/bootstrap-3.3.6-dist/css/bootstrap-theme.min.css" rel="stylesheet"> -->
     <!-- 自定义css -->
@@ -16,8 +16,14 @@
     <script src="lib/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 
     <!-- 第三方js -->
-    <script src="lib/echarts3/echarts.min.js"></script>
     <script src="lib/angular-resource/angular-resource.min.js"></script>
+    <script src="lib/echarts3/echarts.min.js"></script>
+    <script src="lib/echarts3/theme/dark.js"></script>
+    <script src="lib/echarts3/theme/macarons.js"></script>
+    <script src="lib/echarts3/theme/infographic.js"></script>
+    <script src="lib/echarts3/theme/roma.js"></script>
+    <script src="lib/echarts3/theme/shine.js"></script>
+    <script src="lib/echarts3/theme/vintage.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -32,16 +38,17 @@
           <li id='home'><a href="#/home">首页</a> </li>
           <li id='deli' role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#/deliver">分流信息</a>
               <ul class="dropdown-menu">
-                  <li><a href="#/deliver/OperationRoom">手术室</a> </li>
-                  <li><a href="#/deliver/ICURoom">ICU</a> </li>
-                  <li><a href="#/deliver/CommonRoom">普通病房</a> </li>
-                  <li><a href="#/deliver/BurnRoom">烧伤病房</a> </li>
-                  <li><a href="#/deliver/SeriousInjuredRoom">重伤病房</a> </li>
+                  <li><a href="#/deliver/Dept01">手术室</a> </li>
+                  <li><a href="#/deliver/Dept03">ICU</a> </li>
+                  <li><a href="#/deliver/Dept05">普通病房</a> </li>
+                  <li><a href="#/deliver/Dept04">烧伤病房</a> </li>
+                  <li><a href="#/deliver/Dept02">重伤病房</a> </li>
+
                   <li><a href="#/deliver/OutPatientRoom">门诊</a> </li>
                   <li><a href="#/deliver/RescueStaffDistribution">救治人员分布</a> </li>
               </ul>
           </li>
-          <li id='anal'><a href="#/analysis">数据分析</a> </li>
+          <li id='anal'><a href="#/analysis/ClinicDate">数据分析</a> </li>
           <li id="Inqu" class="dropdown"><a href="#/Inquiry">信息查询</a>
               <ul class="dropdown-menu">
                   <li><a href="#/Inquiry/Doctor">医生信息</a> </li>
@@ -54,11 +61,10 @@
           </li>          
       </ul>
       <div class="page-header">
-        <h1>急救全程监控可视化系统 <small>{{subHeader}}</small></h1>
+        <h1>急救全程监控可视化系统 <small style="color: #cc0000">{{subHeader}}</small></h1>
       </div> 
-                 
-    <div ui-view></div>
 
+    <div ui-view></div>
     <script>
       $('ul.nav li.dropdown').hover(function() {
         $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(300);
