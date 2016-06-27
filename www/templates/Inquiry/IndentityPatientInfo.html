@@ -1,7 +1,12 @@
-<div class="container">
-  <div >
+<div class="col-lg-10 col-lg-offset-1">
+  <div class="btn-group" role="group" style="float:right;padding-bottom:5px">
+    <button type="button" class="btn btn-default" style="width:80px;height:40px" ng-click="KeyPatientsfilter(1)" href="#/Inquiry/InjuriedPatient">历史信息</button>
+    <button type="button" class="btn btn-default" style="width:80px;height:40px" ng-click="KeyPatientsfilter(0)" href="#/Inquiry/InjuriedPatient">当前信息</button>
+    <button type="button" class="btn btn-default" style="width:80px;height:40px" ng-click="KeyPatientsfilter('')" href="#/Inquiry/InjuriedPatient">全部</button>
+  </div>
+  <div id="tableContainer" class="tableContainer">
       <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-        <thead >
+        <thead class="KeyPatientsInfo_fixedHeader">
           <tr>
             <th>患者ID</th>
             <th>姓名</th>
@@ -15,7 +20,7 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody >
+        <tbody class="KeyPatientsInfo_scrollContent">
           <tr ng-repeat="KeyPatientInfo in KeyPatientInfos">
             <td>{{KeyPatientInfo.PatientId}}</td>
             <td>{{KeyPatientInfo.PatientName}}</td>
@@ -27,8 +32,8 @@
             <td>{{KeyPatientInfo.TargetDepartment}}</td>
             <td>{{KeyPatientInfo.DeliverTime}}</td>
             <td>
-              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientDetails(KeyPatientInfo.PatientId)"/>
-              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientBios(KeyPatientInfo.PatientId)"/>
+              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" style="margin-right:10px;height:40px" ng-click = "readPatientDetails(KeyPatientInfo.PatientId)"/>
+              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" style="height:40px" ng-click = "readPatientBios(KeyPatientInfo.PatientId)"/>
             </td>
           </tr>
         </tbody>
