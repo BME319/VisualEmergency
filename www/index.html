@@ -34,7 +34,41 @@
 
   </head>
   <body class="container-fluid"> 
-      <ul class="nav nav-pills navbar-right" style="padding-top:57px">
+    <div style="position:fixed;height:90px;background-color:#fff;width:100%;border-bottom:1px solid #ddd;z-index:10">
+      <div style="display:inline;width:60%">
+        <h1 style="padding-top:20px">急救全程监控可视化系统 <small style="color: #cc0000">{{subHeader}}</small></h1>
+      </div>
+      <div style="display:inline;width:40%">
+        <ul class="nav nav-pills navbar-right navbar-fixed-top" style="padding-top:46px;padding-left:72%">
+            <li id='home'><a href="#/home">首页</a> </li>
+            <li id='deli' role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#/deliver">分流信息</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#/deliver/Dept01">手术室</a> </li>
+                    <li><a href="#/deliver/Dept03">ICU</a> </li>
+                    <li><a href="#/deliver/Dept05">普通病房</a> </li>
+                    <li><a href="#/deliver/Dept04">烧伤病房</a> </li>
+                    <li><a href="#/deliver/Dept02">重伤病房</a> </li>
+
+                    <li><a href="#/deliver/OutPatientRoom">门诊</a> </li>
+                    <li><a href="#/deliver/RescueStaffDistribution">救治人员分布</a> </li>
+                </ul>
+            </li>
+            <li id='anal'><a href="#/analysis/ClinicDate">数据分析</a> </li>
+            <li id="Inqu" class="dropdown"><a href="#/Inquiry">信息查询</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#/Inquiry/Doctor">医生信息</a> </li>
+                    <li><a href="#/Inquiry/OperationRoom">手术室信息</a> </li>
+                    <li><a href="#/Inquiry/Assist">辅助信息</a> </li>
+                    <li><a href="#/Inquiry/Deck">甲板信息</a> </li>
+                    <li><a href="#/Inquiry/InjuriedPatient">重伤患者信息详情</a> </li>
+                    <li><a href="#/Inquiry/IndentityPatient">重要身份患者信息详情</a> </li>
+                </ul>
+            </li>          
+        </ul>        
+      </div>
+    </div>
+    <div style="height:90px;width:100%;margin-bottom:10px"></div>
+ <!--      <ul class="nav nav-pills navbar-right navbar-fixed-top" style="padding-top:57px;padding-left:70%">
           <li id='home'><a href="#/home">首页</a> </li>
           <li id='deli' role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#/deliver">分流信息</a>
               <ul class="dropdown-menu">
@@ -60,9 +94,10 @@
               </ul>
           </li>          
       </ul>
-      <div class="page-header">
+      <div class="page-header navbar-fixed-top" style="z-index:11!important;background-color:'#555'!important">
         <h1>急救全程监控可视化系统 <small style="color: #cc0000">{{subHeader}}</small></h1>
       </div> 
+      <div style="height:110px;width:100%;background-color:'#fff';z-index:10"></div> -->
 
     <div ui-view></div>
     <script>

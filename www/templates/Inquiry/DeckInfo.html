@@ -1,7 +1,7 @@
-<div class="container">
-  <div >
+<div class="col-lg-10 col-lg-offset-1">
+  <div id="tableContainer" class="tableContainer">
       <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-        <thead  >
+        <thead  class="DeckInfo_fixedHeader">
           <tr>
             <th>ID</th>
             <th>甲板名称</th>
@@ -14,7 +14,7 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody >
+        <tbody class="DeckInfo_scrollContent">
           <tr ng-repeat="Deck in Decks">
             <td>{{Deck.ID}}</td>
             <td>{{Deck.DeckName}}</td>
@@ -25,7 +25,7 @@
             <td>{{Deck.SurgeryRoomAvailCount}}</td>
             <td>{{Deck.DutyRoomCount}}</td>
             <td>
-            <input type="button"  data-toggle="modal" data-target="#ViewDeckInfo" value="查看甲板信息" class="btn btn-primary editBtn" href="" ng-click = "readDeckInfo(Deck.ID)"/>
+            <input type="button"  data-toggle="modal" data-target="#ViewDeckInfo" value="查看甲板信息" class="btn btn-primary editBtn" style="height:40px" ng-click = "readDeckInfo(Deck.ID)"/>
             </td>
           </tr>
         </tbody>

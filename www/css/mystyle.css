@@ -60,10 +60,32 @@ tbody td, thead th {
 }*/
 
 /*lzn*/
+div.tableContainer-deliver {
+    clear: both;
+    
+    height: 430px; 
+    overflow: auto;
+    width: 100% /* Remember to leave 16px for the scrollbar! */
+    -moz-box-shadow: 1.5px 2px 6px #000;
+    -webkit-box-shadow: 1.5px 2px 6px #000;
+    box-shadow: 1.5px 2px 6px #000;
+}
+div.tableContainer-deliver table {
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+div.tableContainer-deliver table thead{
+    background-color:#ccccff;
+    vertical-align: bottom;
+}
+div.tableContainer-deliver table tr{
+    height:53px;
+}
 div.tableContainer {
     clear: both;
     
-    height: 420px; 
+    height: 820px; 
     overflow: auto;
     width: 100% /* Remember to leave 16px for the scrollbar! */
 }
@@ -75,15 +97,18 @@ div.tableContainer table {
    
    
 }
- 
+div.tableContainer table thead{
+    background-color:#ccccff;
+    vertical-align: bottom;
+}
 div.tableContainer table tr{
-    height:33px;
+    height:53px;
 }
 /*DoctorsInfo*/
 tbody.DoctorsInfo_scrollContent {
     margin-top:10px;
     display: block;
-    height: 352px;
+    height: 752px;
     overflow: auto;
     width: 100%;
     
@@ -101,77 +126,77 @@ thead.DoctorsInfo_fixedHeader tr {
 
 thead.DoctorsInfo_fixedHeader th {
    
-    width: 120px;
+    width: 160px;
     text-align: center;
     height:40px;
 }
  
 
 thead.DoctorsInfo_fixedHeader th + th { 
-    width: 120px;
+    width: 170px;
 }
  
 
 thead.DoctorsInfo_fixedHeader th + th + th { 
-    width: 120px;
+    width: 160px;
 }
 thead.DoctorsInfo_fixedHeader th + th + th + th{ 
-    width: 120px;
+    width: 160px;
 }
 thead.DoctorsInfo_fixedHeader th + th + th + th + th{ 
-    width: 120px;
+    width: 170px;
 }
 thead.DoctorsInfo_fixedHeader th + th + th + th + th + th{
-    width: 120px;
+    width: 170px;
 }
 thead.DoctorsInfo_fixedHeader th + th + th + th + th + th + th{
-    width:120px;
+    width:150px;
 }
 thead.DoctorsInfo_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:120px;
+    width:150px;
 }
 thead.DoctorsInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:150px;
+    width:170px;
 }
 
 tbody.DoctorsInfo_scrollContent td {
-    width: 120px;
+    width: 160px;
     height:33px;
     
 }
  
 
 tbody.DoctorsInfo_scrollContent td + td { 
-    width: 120px;
+    width: 170px;
 }
  
 
 tbody.DoctorsInfo_scrollContent td + td + td { 
-    width: 120px;
+    width: 160px;
 }
 tbody.DoctorsInfo_scrollContent td + td + td + td{ 
-    width: 120px;
+    width: 160px;
 }
 tbody.DoctorsInfo_scrollContent td + td + td + td + td{ 
-    width: 120px;
+    width: 170px;
 }
 tbody.DoctorsInfo_scrollContent td + td + td + td + td + td{
-    width: 120px;
+    width: 170px;
 }
 tbody.DoctorsInfo_scrollContent td + td + td + td + td + td + td{ 
-    width: 120px;
+    width: 150px;
 }
 tbody.DoctorsInfo_scrollContent td + td + td + td + td + td + td + td{
-    width: 120px;
+    width: 150px;
 }
 tbody.DoctorsInfo_scrollContent td + td + td + td + td + td + td + td + td{
-    width: 150px;
+    width: 170px;
 }
 /*DeckInfo*/
 tbody.DeckInfo_scrollContent {
     margin-top:10px;
     display: block;
-    height: 352px;
+    height: 752px;
     overflow: auto;
     width: 100%;
     
@@ -189,77 +214,77 @@ thead.DeckInfo_fixedHeader tr {
 
 thead.DeckInfo_fixedHeader th {
    
-    width: 120px;
+    width: 150px;
     text-align: center;
     height:40px;
 }
  
 
 thead.DeckInfo_fixedHeader th + th { 
-    width: 120px;
+    width: 150px;
 }
  
 
 thead.DeckInfo_fixedHeader th + th + th { 
-    width: 120px;
+    width: 180px;
 }
 thead.DeckInfo_fixedHeader th + th + th + th{ 
-    width: 120px;
+    width: 150px;
 }
 thead.DeckInfo_fixedHeader th + th + th + th + th{ 
-    width: 120px;
+    width: 150px;
 }
 thead.DeckInfo_fixedHeader th + th + th + th + th + th{
-    width: 120px;
+    width: 150px;
 }
 thead.DeckInfo_fixedHeader th + th + th + th + th + th + th{
-    width:120px;
+    width:150px;
 }
 thead.DeckInfo_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:120px;
+    width:150px;
 }
 thead.DeckInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:150px;
+    width:180px;
 }
 
 tbody.DeckInfo_scrollContent td {
-    width: 120px;
+    width: 150px;
     height:33px;
     
 }
  
 
 tbody.DeckInfo_scrollContent td + td { 
-    width: 120px;
+    width: 150px;
 }
  
 
 tbody.DeckInfo_scrollContent td + td + td { 
-    width: 120px;
+    width: 180px;
 }
 tbody.DeckInfo_scrollContent td + td + td + td{ 
-    width: 120px;
+    width: 150px;
 }
 tbody.DeckInfo_scrollContent td + td + td + td + td{ 
-    width: 120px;
+    width: 150px;
 }
 tbody.DeckInfo_scrollContent td + td + td + td + td + td{
-    width: 120px;
+    width: 150px;
 }
 tbody.DeckInfo_scrollContent td + td + td + td + td + td + td{ 
-    width: 120px;
+    width: 150px;
 }
 tbody.DeckInfo_scrollContent td + td + td + td + td + td + td + td{
-    width: 120px;
+    width: 150px;
 }
 tbody.DeckInfo_scrollContent td + td + td + td + td + td + td + td + td{
-    width: 150px;
+    width: 180px;
 }
 /*orderings*/
 tbody.orderings_scrollContent {
     margin-top:10px;
     display: block;
-    height: 352px;
+    height: 752px;
     overflow: auto;
     width: 100%;
     
@@ -277,28 +302,28 @@ thead.orderings_fixedHeader tr {
 
 thead.orderings_fixedHeader th {
     
-    width: 120px;
+    width: 200px;
     text-align: center;
     height:40px;
 }
  
 
 thead.orderings_fixedHeader th + th { 
-    width: 140px;
+    width: 200px;
 }
  
 
 thead.orderings_fixedHeader th + th + th { 
-    width: 180px;
+    width: 200px;
 }
 thead.orderings_fixedHeader th + th + th + th{ 
-    width: 120px;
+    width: 200px;
 }
 thead.orderings_fixedHeader th + th + th + th + th{ 
     width: 200px;
 }
 thead.orderings_fixedHeader th + th + th + th + th + th{
-    width: 120px;
+    width: 200px;
 }
 thead.orderings_fixedHeader th + th + th + th + th + th + th{
     width:250px;
@@ -306,27 +331,27 @@ thead.orderings_fixedHeader th + th + th + th + th + th + th{
 
 
 tbody.orderings_scrollContent td {
-    width: 120px;
+    width: 200px;
     height:33px;
 }
  
 
 tbody.orderings_scrollContent td + td { 
-    width: 140px;
+    width: 200px;
 }
  
 
 tbody.orderings_scrollContent td + td + td { 
-    width: 180px;
+    width: 200px;
 }
 tbody.orderings_scrollContent td + td + td + td{ 
-    width: 120px;
+    width: 200px;
 }
 tbody.orderings_scrollContent td + td + td + td + td{ 
     width: 200px;
 }
 tbody.orderings_scrollContent td + td + td + td + td + td{
-    width: 120px;
+    width: 200px;
 }
 tbody.orderings_scrollContent td + td + td + td + td + td + td{ 
     width: 250px;
@@ -335,7 +360,7 @@ tbody.orderings_scrollContent td + td + td + td + td + td + td{
 tbody.SurgeriesInfo_scrollContent {
     margin-top:10px;
     display: block;
-    height: 352px;
+    height: 752px;
     overflow: auto;
     width: 100%;
     
@@ -353,43 +378,43 @@ thead.SurgeriesInfo_fixedHeader tr {
 
 thead.SurgeriesInfo_fixedHeader th {
    
-    width: 50px;
+    width: 80px;
     text-align: center;
     height:40px;
 }
  
 
 thead.SurgeriesInfo_fixedHeader th + th { 
-    width: 50px;
+    width: 80px;
 }
  
 
 thead.SurgeriesInfo_fixedHeader th + th + th { 
-    width: 50px;
+    width: 80px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th{ 
-    width: 50px;
+    width: 100px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th + th{ 
-    width: 80px;
+    width: 100px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th{
-    width: 80px;
+    width: 100px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th{
-    width:80px;
+    width:160px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:200px;
+    width:230px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:100px;
+    width:160px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th{ 
     width:150px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th + th{ 
-    width:70px;
+    width:100px;
 }
 thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th + th + th{ 
     width:130px;
@@ -397,43 +422,43 @@ thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th 
 
 
 tbody.SurgeriesInfo_scrollContent td {
-    width: 50px;
+    width: 80px;
     height:33px;
     
 }
  
 
 tbody.SurgeriesInfo_scrollContent td + td { 
-    width: 50px;
+    width: 80px;
 }
  
 
 tbody.SurgeriesInfo_scrollContent td + td + td { 
-    width: 50px;
+    width: 80px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td{ 
-    width: 50px;
+    width: 100px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td + td{ 
-    width: 80px;
+    width: 100px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td{
-    width: 80px;
+    width: 100px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td{ 
-    width: 80px;
+    width: 160px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td{
-    width: 200px;
+    width: 230px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td{
-    width: 100px;
+    width: 160px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td{
     width: 150px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td + td{
-    width: 70px;
+    width: 100px;
 }
 tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td + td + td{
     width: 130px;
@@ -442,7 +467,7 @@ tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + t
 tbody.KeyPatientsInfo_scrollContent {
     margin-top:10px;
     display: block;
-    height: 352px;
+    height: 752px;
     overflow: auto;
     width: 100%;
     
@@ -460,83 +485,83 @@ thead.KeyPatientsInfo_fixedHeader tr {
 
 thead.KeyPatientsInfo_fixedHeader th {
     
-    width: 100px;
+    width: 130px;
     text-align: center;
     height:40px;
 }
  
 
 thead.KeyPatientsInfo_fixedHeader th + th {
-    width: 80px;
+    width: 130px;
 }
  
 
 thead.KeyPatientsInfo_fixedHeader th + th + th {
-    width: 80px;
+    width: 130px;
 }
 thead.KeyPatientsInfo_fixedHeader th + th + th + th{ 
-    width: 80px;
+    width: 130px;
 }
 thead.KeyPatientsInfo_fixedHeader th + th + th + th + th{ 
-    width: 80px;
+    width: 130px;
 }
 thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th{ 
-    width: 80px;
+    width: 130px;
 }
 thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th{ 
-    width:100px;
+    width:130px;
 }
 thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:100px;
+    width:130px;
 }
 thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:160px;
+    width:170px;
 }
 thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th + th + th{ 
-    width:260px;
+    width:270px;
 }
 
 tbody.KeyPatientsInfo_scrollContent td { 
     
-    width: 100px;
+    width: 130px;
     height:33px;
 }
  
 
 tbody.KeyPatientsInfo_scrollContent td + td { 
-    width: 80px;
+    width: 130px;
 }
  
 
 tbody.KeyPatientsInfo_scrollContent td + td + td { 
-    width: 80px;
+    width: 130px;
 }
 tbody.KeyPatientsInfo_scrollContent td + td + td + td{ 
-    width: 80px;
+    width: 130px;
 }
 tbody.KeyPatientsInfo_scrollContent td + td + td + td + td{ 
-    width: 80px;
+    width: 130px;
 }
 tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td{ 
-    width: 80px;
+    width: 130px;
 }
 tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td{ 
-    width: 100px;
+    width: 130px;
 }
 tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td{ 
-    width: 100px;
+    width: 130px;
 }
 tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td + td{ 
-    width: 160px;
+    width: 170px;
 }
 tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td + td + td{ 
-    width: 260px;
+    width: 270px;
 }
 /*deliver*/
 tbody.Patients_scrollContent {
     margin-top:10px;
     display: block;
-    height: 352px;
+    height: 364px;
     overflow: auto;
     width: 100%;
     
@@ -575,7 +600,7 @@ thead.Patients_fixedHeader th + th + th + th + th{
     width: 100px;
 }
 thead.Patients_fixedHeader th + th + th + th + th + th{
-    width: 100px;
+    width: 200px;
 }
 thead.Patients_fixedHeader th + th + th + th + th + th + th{
     width:100px;
@@ -584,10 +609,10 @@ thead.Patients_fixedHeader th + th + th + th + th + th + th + th{
     width:100px;
 }
 thead.Patients_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:100px;
+    width:200px;
 }
 thead.Patients_fixedHeader th + th + th + th + th + th + th + th + th + th{ 
-    width:300px;
+    width:150px;
 }
 
 tbody.Patients_scrollContent td {
@@ -612,7 +637,7 @@ tbody.Patients_scrollContent td + td + td + td + td{
     width: 100px;
 }
 tbody.Patients_scrollContent td + td + td + td + td + td{
-    width: 100px;
+    width: 200px;
 }
 tbody.Patients_scrollContent td + td + td + td + td + td + td{ 
     width: 100px;
@@ -621,8 +646,8 @@ tbody.Patients_scrollContent td + td + td + td + td + td + td + td{
     width: 100px;
 }
 tbody.Patients_scrollContent td + td + td + td + td + td + td + td + td{
-    width: 100px;
+    width: 200px;
 }
 tbody.Patients_scrollContent td + td + td + td + td + td + td + td + td + td{
-    width: 300px;
+    width: 150px;
 }

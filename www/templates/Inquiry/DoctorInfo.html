@@ -1,7 +1,8 @@
-<div class="container">
-  <div >
+<div class="col-lg-10 col-lg-offset-1">
+  <div style="float:right;padding-bottom:5px"> <b>Search:</b> <input ng-model="query" /> </div>
+  <div id="tableContainer" class="tableContainer">
       <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-        <thead >
+        <thead class="DoctorsInfo_fixedHeader">
           <tr>
             <th>医生ID</th>
             <th>姓名</th>
@@ -14,8 +15,8 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody >
-          <tr ng-repeat="DoctorInfo in DoctorInfos">
+        <tbody class="DoctorsInfo_scrollContent">
+          <tr ng-repeat="DoctorInfo in DoctorInfos|filter:query">
             <td>{{DoctorInfo.DoctorId}}</td>
             <td>{{DoctorInfo.DoctorName}}</td>
             <td>{{}}</td>
@@ -25,11 +26,12 @@
             <td>{{DoctorInfo.Status}}</td>
             <td>{{DoctorInfo.DutyRoom}}</td>
             <td>
-            <input type="button"  data-toggle="modal" data-target="#ViewDoctorInfoDetail" value="查看医生详细信息" class="btn btn-primary editBtn" href="" ng-click = "readDoctorInfoDetail(DoctorInfo.DoctorId)"/>
+            <input type="button"  data-toggle="modal" data-target="#ViewDoctorInfoDetail" value="查看详细信息" class="btn btn-primary editBtn" style="height:40px" ng-click = "readDoctorInfoDetail(DoctorInfo.DoctorId)"/>
             </td>
           </tr>
         </tbody>
       </table>
+    </div>
   </div>
   <!-- 医生信息详情模态框（Modal） -->
   <div class="modal fade" id="ViewDoctorInfoDetail">

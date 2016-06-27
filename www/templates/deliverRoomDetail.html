@@ -1,51 +1,52 @@
-<div class="row" ng-controller="deliverRoomCtrl" ng-init="getChartSize()">
+<div class="row">
 	<div id='chart1' ng-show="renderCharts[1]" style="height:440px" class="col-xs-12 col-md-5 col-md-offset-1"></div>
 	<div id='chart2' ng-show="renderCharts[2]" style="height:440px" class="col-xs-12 col-md-5"></div>
+</div>
+<div class="row">
+  <div id="leftMargin" style="height:430px;display:inline"></div>
 	<div id='chart3' ng-show="renderCharts[3]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
 	<div id='chart4' ng-show="renderCharts[4]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths" ></div>
 	<div id='chart5' ng-show="renderCharts[5]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
 	<div id='chart6' ng-show="renderCharts[6]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
 	<div id='chart7' ng-show="renderCharts[7]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
-	<div id='table' ng-show="renderCharts[0]" class="col-xs-10 col-xs-offset-1 col-sm-10 col-md-10" style="background-color:'#f9f9f9'">
-	<div class="container">
-		<div id="tableContainer" class="tableContainer">
-		    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-		      <thead class="Patients_fixedHeader">
-		        <tr>
-		          <th></th>
-		          <th>病人Id</th>
-		          <th>姓名</th>
-		          <th>性别</th>
-		          <th>年龄</th>
-		          <th>负伤地点</th>
-		          <th>战伤等级</th>
-		          <th>战伤计分</th>
-		          <th>救治人员</th>
-		          <th>操作</th>
-		        </tr>
-		      </thead>
-		      <tbody class="Patients_scrollContent">
-		        <tr ng-repeat="patient in patients">
-		          <td>
-		            <a href=""><img src="image/loc.png"></a>
-		          </td>
-		          <td>{{patient.PId}}</td>
-		          <td>{{patient.PatientName}}</td>
-		          <td>{{}}</td>
-		          <td>{{patient.Age}}</td>
-		          <td>{{patient.Location}}</td>
-		          <td>{{patient.InjuryLevel}}</td>
-		          <td>{{patient.InjuryScore}}</td>
-		          <td>{{}}</td>
-		          <td>
-		            <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" ng-click = "readPatientDetails(patient.PId)"/>
-		            <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" ng-click = "readPatientBios(patient.PId)"/>
-		          </td>
-		        </tr>
-		      </tbody>
-		    </table>
-		</div>
-	</div>
+	<div id='table' ng-show="renderCharts[0]" class="col-xs-9 col-sm-9 col-md-9" >
+  	<div class="tableContainer-deliver">
+	    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
+	      <thead class="Patients_fixedHeader">
+	        <tr>
+	          <th></th>
+	          <th>病人Id</th>
+	          <th>姓名</th>
+	          <th>性别</th>
+	          <th>年龄</th>
+	          <th>负伤地点</th>
+	          <th>战伤等级</th>
+	          <th>战伤计分</th>
+	          <th>救治人员</th>
+	          <th><input type="button" value="返回" style="float:right;margin-right:20px" class="btn btn-primary editBtn btn-danger" ng-click = "closeTable()"/></th>
+	        </tr>
+	      </thead>
+	      <tbody class="Patients_scrollContent">
+	        <tr ng-repeat="patient in patients">
+	          <td>
+	            <a href=""><img src="image/loc.png"></a>
+	          </td>
+	          <td>{{patient.PId}}</td>
+	          <td>{{patient.PatientName}}</td>
+	          <td>{{}}</td>
+	          <td>{{patient.Age}}</td>
+	          <td>{{patient.Location}}</td>
+	          <td>{{patient.InjuryLevel}}</td>
+	          <td>{{patient.InjuryScore}}</td>
+	          <td>{{}}</td>
+	          <td>
+	            <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="生理" class="btn btn-primary editBtn" ng-click = "readPatientDetails(patient.PId)"/>
+	            <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="生化" class="btn btn-primary editBtn" ng-click = "readPatientBios(patient.PId)"/>
+	          </td>
+	        </tr>
+	      </tbody>
+	    </table>
+  	</div>
   <!-- 生理参数信息模态框（Modal） -->
   <div class="modal fade" id="ViewPatientDetails">
      <div class="modal-dialog">
@@ -96,4 +97,5 @@
         </div>
      </div>
   </div>	
+</div>
 </div>
