@@ -1,30 +1,22 @@
-
-
-<!-- <label style="position:relative;left:950px">
-  <div class="input-label">
-    选择医嘱状态
-  </div>
-  <select ng-model="Status" ng-options="value for value in values" ng-change="changeStatus()" style="width:90px;height:25px">
-  </select>
-
-</label> -->
-<div class="dropdown" style="position:relative;left:1350px">
-  <button class="btn btn-default  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<div class="col-lg-10 col-lg-offset-1">
+  <div class="col-lg-4" style="float:right;padding-bottom:5px;text-align:right">
+    <button class="btn btn-danger  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="margin-right:40px">
     选择医嘱状态
     <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li ng-click="orderingsfilter('')"><a href="#/Inquiry/Assist">all</a></li>
-    <li ng-click="orderingsfilter(1)"><a href="#/Inquiry/Assist">1</a></li>
-    <li ng-click="orderingsfilter(2)"><a href="#/Inquiry/Assist">2</a></li>
-    <li ng-click="orderingsfilter(3)"><a href="#/Inquiry/Assist">3</a></li>
-    <li ng-click="orderingsfilter(4)"><a href="#/Inquiry/Assist">4</a></li>
-  </ul>
-</div>
-<div class="container">
-  <div >
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+      <li ng-click="orderingsfilter('')"><a href="#/Inquiry/Assist">all</a></li>
+      <li ng-click="orderingsfilter(1)"><a href="#/Inquiry/Assist">1</a></li>
+      <li ng-click="orderingsfilter(2)"><a href="#/Inquiry/Assist">2</a></li>
+      <li ng-click="orderingsfilter(3)"><a href="#/Inquiry/Assist">3</a></li>
+      <li ng-click="orderingsfilter(4)"><a href="#/Inquiry/Assist">4</a></li>
+    </ul>
+    <b>Search:</b> <input ng-model="query"/>
+  </div>
+
+  <div id="tableContainer" class="tableContainer">
       <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-        <thead >
+        <thead class="orderings_fixedHeader">
           <tr>
             <th>患者ID</th>
             <th>姓名</th>
@@ -35,8 +27,8 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody >
-          <tr ng-repeat="ordering in orderings">
+        <tbody class="orderings_scrollContent">
+          <tr ng-repeat="ordering in orderings|filter:query">
             <td>{{ordering.PatientId}}</td>
             <td>{{ordering.PatientName}}</td>
             <td>{{ordering.OrderName}}</td>
@@ -44,8 +36,8 @@
             <td>{{ordering.ApplyDepartment}}</td>
             <td>{{ordering.TargetDepartment}}</td>
             <td>
-              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientDetails(ordering.PatientId)"/>
-              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" href="" ng-click = "readPatientBios(ordering.PatientId)"/>
+              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" style="margin-right:10px;height:40px" ng-click = "readPatientDetails(ordering.PatientId)"/>
+              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" style="height:40px" ng-click = "readPatientBios(ordering.PatientId)"/>
             </td>
           </tr>
         </tbody>

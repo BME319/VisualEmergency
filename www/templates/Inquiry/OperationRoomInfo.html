@@ -1,7 +1,9 @@
-<div class="container">
-  <div>
+
+<div class="col-lg-10 col-lg-offset-1">
+  <div style="float:right;padding-bottom:5px"> <b>Search:</b> <input ng-model="query" /> </div>
+  <div id="tableContainer" class="tableContainer">
       <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
-        <thead>
+        <thead class="SurgeriesInfo_fixedHeader">
           <tr>
             <th>手术室Id</th>
             <th>手术室</th>
@@ -17,8 +19,8 @@
             <th>操作</th>
           </tr>
         </thead>
-        <tbody>
-          <tr ng-repeat="SurgeryInfo in SurgeryInfos">
+        <tbody class="SurgeriesInfo_scrollContent">
+          <tr ng-repeat="SurgeryInfo in SurgeryInfos|filter:query">
             <td>{{SurgeryInfo.SurgeryRoomId}}</td>
             <td>{{SurgeryInfo.SurgeryRoom1}}</td>
             <td>{{SurgeryInfo.SurgeryRoom2}}</td>
@@ -31,7 +33,7 @@
             <td>{{SurgeryInfo.SurgeryName}}</td>
             <td>{{SurgeryInfo.SurgeryDoctor}}</td>
             <td>
-              <input type="button"  data-toggle="modal" data-target="#ViewSurgeriesInfoDetail" value="详细" class="btn btn-primary editBtn" href="" ng-click = "readSurgeriesInfoDetail(SurgeryInfo.SurgeryRoomId)"/>
+              <input type="button"  data-toggle="modal" data-target="#ViewSurgeriesInfoDetail" value="详细" class="btn btn-primary editBtn" style="height:40px" ng-click = "readSurgeriesInfoDetail(SurgeryInfo.SurgeryRoomId)"/>
             </td>
           </tr>
         </tbody>

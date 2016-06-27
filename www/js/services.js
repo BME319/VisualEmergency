@@ -60,7 +60,10 @@ angular.module('services',['ngResource'])
       DeliverWays:{method:'GET',params:{route:'DeliverWays',DeptCode:'@DeptCode'},timeout:10000},
       InjuryStatus:{method:'GET',params:{route:'InjuryStatus'},timeout:10000},
       InjuryPeople:{method:'GET',params:{route:'InjuryPeople'},timeout:10000},
-      Savors:{method:'GET',params:{route:'Savors'},timeout:10000}
+      Savors:{method:'GET',params:{route:'Savors'},timeout:10000},
+      InjuryStat:{method:'GET',params:{route:'InjuryStat'},timeout:10000},
+      PatientsInfo:{method:'GET',params:{route:'PatientsInfo',Status:'@Status',Place:'@Place'},timeout:10000},
+      PbyDI:{method:'GET',params:{route:'PbyDI',DeptCode:'@DeptCode',InjuryType:'@InjuryType'},timeout:10000}
     })
   }
   var MstUser = function(){
@@ -369,9 +372,36 @@ angular.module('services',['ngResource'])
     });
     return deferred.promise;
   };
-  serve.InjuryPeople = function(obj){
+  serve.InjuryPeople = function(){
      var deferred = $q.defer();
-    Data.Deliver.InjuryPeople(obj,function (data,headers) {
+    Data.Deliver.InjuryPeople({},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.InjuryStat = function(){
+     var deferred = $q.defer();
+    Data.Deliver.InjuryStat({},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.PatientsInfo = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.PatientsInfo(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.PbyDI = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.PbyDI(obj,function (data,headers) {
       deferred.resolve(data);
     },function (err) {
       deferred.reject(err);
