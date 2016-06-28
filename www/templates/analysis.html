@@ -1,15 +1,15 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-2">
-      <div>门诊分析</div>
+    <div class="col-xs-2 col-xs-offset-1">
+      <div class="purple-bar"><p>门诊分析</p></div>
       <ul class="nav nav-sidebar">
         <li ><a ui-sref=".ClinicDate">按日期统计</a></li>
         <li><a href="#/analysis/ClinicDepartment">按科室统计</a></li>
         <li><a href="#/analysis/ClinicNationality">按国籍统计</a></li>
       </ul>
 
-      <div>住院分析</div>
+      <div class="purple-bar"><p>住院分析</p></div>
       <ul class="nav nav-sidebar">
         <li><a href="#/analysis/InpatientDate">按日期统计</a></li>
         <li><a href="#/analysis/InpatientWard">按病房统计</a></li>
@@ -18,318 +18,19 @@
         <li><a href="#/analysis/OccupancyRate">病床使用率</a></li>
       </ul>
 
-      <div>手术分析</div>
+      <div class="purple-bar"><p>手术分析</p></div>
       <ul class="nav nav-sidebar">
         <li><a href="#/analysis/OperationStatusGrade">按手术状态和等级统计</a></li>
       </ul>
 
-      <div>诊断分析</div>
+      <div class="purple-bar"><p>诊断分析</p></div>
 	      <ul class="nav nav-sidebar">
 	        <li><a href="#/analysis/DiagnosisScale">诊断量</a></li>
 	      </ul>
 	  </div>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
     	<div ui-view></div>
     </div>
   </div>
   
 </div>
-
-<!-- <a href="" data-toggle="modal" data-target="#ViewDeckInfo" ng-click = "test()">甲板信息详情</a>
-<a href="" data-toggle="modal" data-target="#ViewDoctorInfoDetail" ng-click = "test()">医生信息详情</a>
-<a href="" data-toggle="modal" data-target="#ViewSurgeriesInfoDetail" ng-click = "test()">手术室信息详情</a>
-<a href="" data-toggle="modal" data-target="#ViewPatientBios" ng-click = "test()">生化参数</a>
-<a href="" data-toggle="modal" data-target="#ViewPatientDetails" ng-click = "test()">生理参数</a> -->
-
-
-
-<!-- <div class="modal fade" id="ViewDeckInfo">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" 
-               aria-hidden="true">×
-            </button>
-            <h4 class="modal-title" id="myModalLabel">
-               甲板信息详情
-            </h4>
-         </div>
-         <div class="modal-body">
-
-            <div class="panel-group" id="accordion">
-              <div class="panel panel-primary">
-                  <div class="panel-heading">
-                       <h4 class="panel-title">
-                          <a href=""
-                             data-toggle="collapse"
-                             data-target="#collapseOne">
-                             手术室列表信息
-                          </a>  
-                       </h4>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
-                      <div class="panel-body">
-                          <table class="table table-bordered">
-                             <thead>
-                                <tr>
-                                   <th>手术室编号</th>
-                                   <th>手术间编号</th>
-                                   <th>状态</th>
-                                </tr>
-                             </thead>
-                             <tbody>
-                                <tr ng-repeat = "surgeryRoomInfo in DeckInfoDetail.surgeryRoomInfoList">
-                                   <td>{{surgeryRoomInfo.SurgeryRoomId}}</td>
-                                   <td>{{surgeryRoomInfo.SubSurgeryRoomId}}</td>
-                                   <td>{{surgeryRoomInfo.Status}}</td>
-                                </tr>
-                             </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-              
-              <div class="panel panel-primary">
-                  <div class="panel-heading">
-                       <h4 class="panel-title">
-                          <a href=""
-                             data-toggle="collapse"
-                             data-target="#collapseTwo">
-                             病床列表信息
-                          </a>  
-                       </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <table class="table table-bordered">
-                             <thead>
-                                <tr>
-                                   <th>病床编号</th>
-                                   <th>所在病区</th>
-                                   <th>状态</th>
-                                   <th>伤员姓名</th>
-                                </tr>
-                             </thead>
-                             <tbody>
-                                <tr ng-repeat = "bedInfo in DeckInfoDetail.bedInfoList">
-                                   <td>{{bedInfo.BedCode}}</td>
-                                   <td>{{bedInfo.WardCode}}</td>
-                                   <td>{{bedInfo.Status}}</td>
-                                   <td>{{bedInfo.PatientName}}</td>
-                                </tr>
-                             </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-              
-              <div class="panel panel-primary">
-                  <div class="panel-heading">
-                       <h4 class="panel-title">
-                          <a href=""
-                             data-toggle="collapse"
-                             data-target="#collapseThree">
-                             值班医生
-                          </a>  
-                       </h4>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse">
-                      <div class="panel-body">
-                          <table class="table table-bordered">
-                             <thead>
-                                <tr>
-                                   <th>医生编号</th>
-                                   <th>姓名</th>
-                                   <th>值班时间</th>
-                                   <th>所属科室</th>
-                                </tr>
-                             </thead>
-                             <tbody>
-                                <tr ng-repeat = "dutyDoctorInfo in DeckInfoDetail.dutyDoctorInfoList">
-                                   <td>{{dutyDoctorInfo.DoctorId}}</td>
-                                   <td>{{dutyDoctorInfo.DoctorName}}</td>
-                                   <td>{{dutyDoctorInfo.Time1}}，{{dutyDoctorInfo.Time2}}</td>
-                                   <td>{{dutyDoctorInfo.Affiliation}}</td>
-                                </tr>
-                             </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-            </div>
-
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-            </button>
-         </div>
-      </div>
-   </div>
-</div> -->
-
-<!-- <div class="modal fade" id="ViewDoctorInfoDetail">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" 
-               aria-hidden="true">×
-            </button>
-            <h4 class="modal-title" id="myModalLabel">
-               医生信息详情
-            </h4>
-         </div>
-         <div class="modal-body">
-
-
-                <p>医生Id：{{DoctorInfoDetail.DoctorId}}</p>
-                <p>医生姓名：{{DoctorInfoDetail.DoctorName}}</p>
-                <p>所属科室：{{DoctorInfoDetail.DeptName}}</p>
-                <p>医生级别：{{DoctorInfoDetail.PositionName}}</p>
-                <p>目前状态：{{DoctorInfoDetail.DutyStatus}}</p>
-                <p>医生简介：{{DoctorInfoDetail.DoctorIntro}}</p>
-
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-            </button>
-         </div>
-      </div>
-   </div>
-</div> -->
-
-<!-- <div class="modal fade" id="ViewSurgeriesInfoDetail">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" 
-               aria-hidden="true">×
-            </button>
-            <h4 class="modal-title" id="myModalLabel">
-               手术室信息详情
-            </h4>
-         </div>
-         <div class="modal-body">
-            <table class="table table-bordered">
-             <thead>
-                <tr>
-                   <th>患者Id</th>
-                   <th>患者姓名</th>
-                   <th>手术名称</th>
-                   <th>术前诊断</th>
-                   <th>病情</th>
-                   <th>手术时间</th>
-                   <th>手术室</th>
-                   <th>手术间</th>
-                   <th>台次</th>
-                   <th>隔离标志</th>
-                   <th>手术等级</th>
-                   <th>手术科室</th>
-                   <th>手术医师</th>
-                   <th>助手</th>
-                   <th>输血医师</th>
-                   <th>麻醉方法</th>
-                   <th>麻醉医师</th>
-                   <th>台上护士</th>
-                   <th>供应护士</th>
-                </tr>
-             </thead>
-             <tbody>
-                <tr ng-repeat = "SurgeriesInfo in SurgeriesInfoDetail">
-                   <td>{{SurgeriesInfo.PatientId}}</td>
-                   <td>{{SurgeriesInfo.PatientName}}</td>
-                   <td>{{SurgeriesInfo.SurgeryName}}</td>
-                   <td>{{SurgeriesInfo.Diagnosis}}</td>
-                   <td>{{SurgeriesInfo.DiseaseCondition}}</td>
-                   <td>{{SurgeriesInfo.SurgeryDate}}</td>
-                   <td>{{SurgeriesInfo.SurgeryRoom1}}</td>
-                   <td>{{SurgeriesInfo.SurgeryRoom2}}</td>
-                   <td>{{SurgeriesInfo.SurgeryTable}}</td>
-                   <td>{{SurgeriesInfo.IsolationFlag}}</td>
-                   <td>{{SurgeriesInfo.SurgeryLevel}}</td>
-                   <td>{{SurgeriesInfo.SurgeryDept}}</td>
-                   <td>{{SurgeriesInfo.SurgeryDoctor}}</td>
-                   <td>{{SurgeriesInfo.Assistant1}}&nbsp;&nbsp;{{SurgeriesInfo.Assistant2}}&nbsp;&nbsp;{{SurgeriesInfo.Assistant3}}&nbsp;&nbsp;{{SurgeriesInfo.Assistant4}}</td>
-                   <td>{{SurgeriesInfo.TransfusionDoctor}}</td>
-                   <td>{{SurgeriesInfo.AnesthesiaMethod}}</td>
-                   <td>{{SurgeriesInfo.AnesthesiaDoctor1}}&nbsp;&nbsp;{{SurgeriesInfo.AnesthesiaDoctor2}}</td>
-                   <td>{{SurgeriesInfo.TableNurse1}}&nbsp;&nbsp;{{SurgeriesInfo.TableNurse2}}</td>
-                   <td>{{SurgeriesInfo.SupplyNurse1}}&nbsp;&nbsp;{{SurgeriesInfo.SupplyNurse2}}</td>                
-                </tr>
-             </tbody>
-          </table>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-            </button>
-         </div>
-      </div>
-   </div>
-</div> -->
-
-<!-- <div class="modal fade" id="ViewPatientBios">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" 
-               aria-hidden="true">×
-            </button>
-            <h4 class="modal-title" id="myModalLabel">
-               生化参数信息
-            </h4>
-         </div>
-         <div class="modal-body">
-            <p ng-repeat = "PatientBio in PatientBios">{{PatientBio.des}}：{{PatientBio.val}}</p>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-            </button>
-         </div>
-      </div>
-   </div>
-</div> -->
-
-<!-- <div class="modal fade" id="ViewPatientDetails">
-   <div class="modal-dialog">
-      <div class="modal-content">
-         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" 
-               aria-hidden="true">×
-            </button>
-            <h4 class="modal-title" id="myModalLabel">
-               生理参数信息
-            </h4>
-         </div>
-         <div class="modal-body">
-            <p>血氧饱和度：{{PatientDetails.Oxygen}}</p>
-            <p>脉搏：{{PatientDetails.Pulse}}</p>
-            <p>心率：{{PatientDetails.HeartRate}}</p>
-            <p>呼吸：{{PatientDetails.Breath}}</p>
-            <p>神智：{{PatientDetails.Consciousness}}</p>
-            <p>血压：{{PatientDetails.DBP}}，{{PatientDetails.SBP}}</p>
-            <p>体温：{{PatientDetails.Temperature}}</p>
-         </div>
-         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-            </button>
-         </div>
-      </div>
-   </div>
-</div> -->
-
-<!-- <style type="text/css">
-
-  #ViewDeckInfo .modal-dialog{
-    width: 50%;
-  }
-  #ViewDeckInfo .modal-body{
-    overflow: auto;
-  }
-
-  #ViewSurgeriesInfoDetail .modal-dialog{
-    width: 80%;
-  }
-  #ViewSurgeriesInfoDetail .modal-body{
-    overflow: auto;
-  }
-
-</style> -->

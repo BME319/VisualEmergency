@@ -1,6 +1,6 @@
 <div class="col-lg-10 col-lg-offset-1">
   <div class="col-lg-4" style="float:right;padding-bottom:5px;text-align:right">
-    <button class="btn btn-danger  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="margin-right:40px">
+    <button class="btn btn-success  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="margin-right:40px">
     选择医嘱状态
     <span class="caret"></span>
     </button>
@@ -11,7 +11,7 @@
       <li ng-click="orderingsfilter(3)"><a href="#/Inquiry/Assist">3</a></li>
       <li ng-click="orderingsfilter(4)"><a href="#/Inquiry/Assist">4</a></li>
     </ul>
-    <b>Search:</b> <input ng-model="query"/>
+    <b>搜 索:</b> <input ng-model="query"/>
   </div>
 
   <div id="tableContainer" class="tableContainer">
@@ -36,8 +36,8 @@
             <td>{{ordering.ApplyDepartment}}</td>
             <td>{{ordering.TargetDepartment}}</td>
             <td>
-              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" style="margin-right:10px;height:40px" ng-click = "readPatientDetails(ordering.PatientId)"/>
-              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" style="height:40px" ng-click = "readPatientBios(ordering.PatientId)"/>
+              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="生理信息" class="btn btn-primary editBtn" style="margin-right:10px;height:40px" ng-click = "readPatientDetails(ordering.PatientId)"/>
+              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="生化信息" class="btn btn-primary editBtn" style="height:40px" ng-click = "readPatientBios(ordering.PatientId)"/>
             </td>
           </tr>
         </tbody>

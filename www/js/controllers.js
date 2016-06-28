@@ -1009,7 +1009,7 @@ angular.module('controllers',['ngResource','services'])
 }])
 .controller('IndentityPatientInfoCtrl',['$scope','Storage','KeyPatientsInfo','Info',function($scope,Storage,KeyPatientsInfo,Info){
   $scope.KeyPatientInfos={};
-  KeyPatientsInfo.GetKeyPatientsInfobyInjury({type:'1'}).then(
+  KeyPatientsInfo.GetKeyPatientsInfobyJob({type:''}).then(
       function(data){
           $scope.KeyPatientInfos=data.data;
          
@@ -1017,7 +1017,7 @@ angular.module('controllers',['ngResource','services'])
           console.log(e)
       });
   $scope.KeyPatientsfilter = function(f){
-     KeyPatientsInfo.GetKeyPatientsInfobyInjury({type:f}).then(
+     KeyPatientsInfo.GetKeyPatientsInfobyJob({type:f}).then(
       function(data){
           $scope.KeyPatientInfos=data.data;
          
