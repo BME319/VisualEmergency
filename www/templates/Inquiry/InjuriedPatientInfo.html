@@ -85,6 +85,7 @@
               </h4>
            </div>
            <div class="modal-body">
+              <p ng-if = "!PatientBios">无生化参数信息</p>
               <p ng-repeat = "PatientBio in PatientBios">{{PatientBio.des}}：{{PatientBio.val}}</p>
            </div>
            <div class="modal-footer">
