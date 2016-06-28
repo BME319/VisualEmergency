@@ -5,11 +5,12 @@
     <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li ng-click="orderingsfilter('')"><a href="#/Inquiry/Assist">all</a></li>
-      <li ng-click="orderingsfilter(1)"><a href="#/Inquiry/Assist">1</a></li>
-      <li ng-click="orderingsfilter(2)"><a href="#/Inquiry/Assist">2</a></li>
-      <li ng-click="orderingsfilter(3)"><a href="#/Inquiry/Assist">3</a></li>
-      <li ng-click="orderingsfilter(4)"><a href="#/Inquiry/Assist">4</a></li>
+      <li ng-click="orderingsfilter('')"><a href="#/Inquiry/Assist">全部</a></li>
+      <li ng-click="orderingsfilter(1)"><a href="#/Inquiry/Assist">已保存</a></li>
+      <li ng-click="orderingsfilter(2)"><a href="#/Inquiry/Assist">已提交</a></li>
+      <li ng-click="orderingsfilter(3)"><a href="#/Inquiry/Assist">已确认</a></li>
+      <li ng-click="orderingsfilter(4)"><a href="#/Inquiry/Assist">已执行</a></li>
+      <li ng-click="orderingsfilter(10)"><a href="#/Inquiry/Assist">作废</a></li>
     </ul>
     <b>搜 索:</b> <input ng-model="query"/>
   </div>
@@ -32,8 +33,8 @@
             <td>{{ordering.PatientId}}</td>
             <td>{{ordering.PatientName}}</td>
             <td>{{ordering.OrderName}}</td>
-            <td>{{ordering.Status}}</td>
-            <td>{{ordering.ApplyDepartment}}</td>
+            <td><div my-orderingstatus="{{ordering.Status}}"></div></td>
+            <td><div my-orderingdept="{{ordering.ApplyDepartment}}"></div></td>
             <td>{{ordering.TargetDepartment}}</td>
             <td>
               <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="生理信息" class="btn btn-primary editBtn" style="margin-right:10px;height:40px" ng-click = "readPatientDetails(ordering.PatientId)"/>
