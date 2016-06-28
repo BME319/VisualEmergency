@@ -40,6 +40,12 @@
 .purple-bar p{
     font-size:22px;
 }
+.my-table-pie{
+    display:inline;
+    width:58.5%;
+    position: relative;
+    float: left;
+}
 /*
 thead, tbody, tr, td, th { display: block; }
 .my-scroll-table tr:after {
@@ -71,8 +77,7 @@ tbody td, thead th {
 /*lzn*/
 div.tableContainer-deliver {
     clear: both;
-    
-    height: 430px; 
+    height: 410px; 
     overflow: auto;
     width: 100% /* Remember to leave 16px for the scrollbar! */
     -moz-box-shadow: 1.5px 2px 6px #000;
@@ -582,20 +587,19 @@ tbody td {
 
 thead.Patients_fixedHeader tr {
     display: block;
-    
+    max-height:35px;
 }
- 
+thead.Patients_fixedHeader tr th{
+    text-align: center;
+}
 
 thead.Patients_fixedHeader th {
-   
     width: 50px;
-    text-align: center;
-    height:40px;
 }
  
 
 thead.Patients_fixedHeader th + th { 
-    width: 100px;
+    width: 110px;
 }
  
 
@@ -603,10 +607,10 @@ thead.Patients_fixedHeader th + th + th {
     width: 100px;
 }
 thead.Patients_fixedHeader th + th + th + th{ 
-    width: 100px;
+    width: 75px;
 }
 thead.Patients_fixedHeader th + th + th + th + th{ 
-    width: 100px;
+    width: 75px;
 }
 thead.Patients_fixedHeader th + th + th + th + th + th{
     width: 200px;
@@ -615,13 +619,14 @@ thead.Patients_fixedHeader th + th + th + th + th + th + th{
     width:100px;
 }
 thead.Patients_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:100px;
+    width:80px;
 }
 thead.Patients_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:200px;
+    width:190px;
 }
 thead.Patients_fixedHeader th + th + th + th + th + th + th + th + th + th{ 
     width:150px;
+    text-align: center;
 }
 
 tbody.Patients_scrollContent td {
@@ -632,7 +637,7 @@ tbody.Patients_scrollContent td {
  
 
 tbody.Patients_scrollContent td + td { 
-    width: 100px;
+    width: 110px;
 }
  
 
@@ -640,10 +645,10 @@ tbody.Patients_scrollContent td + td + td {
     width: 100px;
 }
 tbody.Patients_scrollContent td + td + td + td{ 
-    width: 100px;
+    width: 75px;
 }
 tbody.Patients_scrollContent td + td + td + td + td{ 
-    width: 100px;
+    width: 75px;
 }
 tbody.Patients_scrollContent td + td + td + td + td + td{
     width: 200px;
@@ -652,11 +657,100 @@ tbody.Patients_scrollContent td + td + td + td + td + td + td{
     width: 100px;
 }
 tbody.Patients_scrollContent td + td + td + td + td + td + td + td{
-    width: 100px;
+    width: 80px;
 }
 tbody.Patients_scrollContent td + td + td + td + td + td + td + td + td{
-    width: 200px;
+    width: 190px;
 }
 tbody.Patients_scrollContent td + td + td + td + td + td + td + td + td + td{
+    width: 150px;
+}
+
+/*deliver bar chart table*/
+tbody.Patients_scrollContent1 {
+    margin-top:10px;
+    display: block;
+    height: 364px;
+    overflow: auto;
+    width: 100%;
+}
+thead.Patients_fixedHeader1 tr {
+    display: block;
+    max-height:35px;
+}
+thead.Patients_fixedHeader1 tr th{
+    text-align: center;
+} 
+
+thead.Patients_fixedHeader1 th {
+    width: 50px;
+}
+ 
+
+thead.Patients_fixedHeader1 th + th { 
+    width: 120px;
+}
+ 
+
+thead.Patients_fixedHeader1 th + th + th { 
+    width: 120px;
+}
+thead.Patients_fixedHeader1 th + th + th + th{ 
+    width: 100px;
+}
+thead.Patients_fixedHeader1 th + th + th + th + th{ 
+    width: 100px;
+}
+thead.Patients_fixedHeader1 th + th + th + th + th + th{
+    width: 250px;
+}
+thead.Patients_fixedHeader1 th + th + th + th + th + th + th{
+    width:100px;
+}
+thead.Patients_fixedHeader1 th + th + th + th + th + th + th + th{ 
+    width:100px;
+}
+thead.Patients_fixedHeader1 th + th + th + th + th + th + th + th + th{ 
+    width:300px;
+}
+thead.Patients_fixedHeader1 th + th + th + th + th + th + th + th + th + th{ 
+    width:150px;
+    text-align: center;
+}
+
+tbody.Patients_scrollContent1 td {
+    width: 50px;
+    height:33px;
+    
+}
+ 
+
+tbody.Patients_scrollContent1 td + td { 
+    width: 120px;
+}
+ 
+
+tbody.Patients_scrollContent1 td + td + td { 
+    width: 120px;
+}
+tbody.Patients_scrollContent1 td + td + td + td{ 
+    width: 100px;
+}
+tbody.Patients_scrollContent1 td + td + td + td + td{ 
+    width: 100px;
+}
+tbody.Patients_scrollContent1 td + td + td + td + td + td{
+    width: 250px;
+}
+tbody.Patients_scrollContent1 td + td + td + td + td + td + td{ 
+    width: 100px;
+}
+tbody.Patients_scrollContent1 td + td + td + td + td + td + td + td{
+    width: 100px;
+}
+tbody.Patients_scrollContent1 td + td + td + td + td + td + td + td + td{
+    width: 300px;
+}
+tbody.Patients_scrollContent1 td + td + td + td + td + td + td + td + td + td{
     width: 150px;
 }

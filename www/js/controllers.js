@@ -93,14 +93,18 @@ angular.module('controllers',['ngResource','services'])
     tableIndex=i,dataIndex=params.dataIndex;
     $scope.$apply(function(){
       if(i<3){
-        // $('#table').removeClass('col-xs-8').addClass('col-xs-12');
+        $scope.selectedchart={name:i==1?'床位信息统计':'后送方式统计',item:params.name}
+        $('.Patients_scrollContent').addClass('Patients_scrollContent1').removeClass('Patients_scrollContent');
+        $('.Patients_fixedHeader').addClass('Patients_fixedHeader1').removeClass('Patients_fixedHeader');
         $('#leftMargin').addClass('col-xs-1');
-        $('#table').removeClass('col-lg-8').removeClass('col-md-8').removeClass('col-sm-6').css({"margin-left":"70px"});
+        $('#table').removeClass('my-table-pie').addClass('col-xs-9').css({"margin-left":"70px"});
         $scope.renderCharts=[true,true,true,false,false,false,false,false];
       }else{
-        // $('#table').removeClass('col-xs-12').addClass('col-xs-8');
+        $scope.selectedchart={name:dataPie[i-3].title,item:params.name}
+        $('.Patients_scrollContent1').addClass('Patients_scrollContent').removeClass('Patients_scrollContent1');
+        $('.Patients_fixedHeader1').addClass('Patients_fixedHeader').removeClass('Patients_fixedHeader1');
         $('#leftMargin').addClass('col-xs-1');
-        $('#table').addClass('col-lg-8').addClass('col-md-8').addClass('col-sm-6').css({"margin-left":""});
+        $('#table').addClass('my-table-pie').removeClass('col-xs-9').css({"margin-left":""});
         for(j=3;j<8;++j){
           if(j!=i)
             $scope.renderCharts[j]=false;
@@ -118,13 +122,12 @@ angular.module('controllers',['ngResource','services'])
   }
   function listenChartsClick(){
     for(var i in arguments){
-      if(arguments[i]._chartsMap instanceof Object){
+      if((arguments[i] instanceof Object) && (arguments[i]._chartsMap instanceof Object)){
         listenChart(arguments[i]);
       }
     }
   }
 
-  var myChart1 = echarts.init(document.getElementById('chart1'),'macarons');
   var data1={
     title:'床位信息统计',
     data:[
@@ -132,10 +135,7 @@ angular.module('controllers',['ngResource','services'])
       {value : 0, name : '待入床数', type: 0 }
     ]
   }
-  myChart1.setOption(chartTool.initBar('手术状态统计'));
-  myChart1.setOption(chartTool.getOptionBar(data1));
 
-  myChart2 = echarts.init(document.getElementById('chart2'),'macarons');
   var data2 = {
     title:'后送方式',
     data:[
@@ -143,21 +143,45 @@ angular.module('controllers',['ngResource','services'])
       {value : 0, name : '直升机', code:'Helicopter', way:1 }
     ]
   }
-  myChart2.setOption(chartTool.initBar('后送方式'));
-  myChart2.setOption(chartTool.getOptionBar(data2));
+var myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7;
+var theme_dict={
+  Dept01:['blue','blue'],
+  Dept02:['shine','shine'],
+  Dept03:['roma','roma'],
+  Dept04:['red','infographic'],
+  Dept05:['green','green'],
+  OutPatientRoom:['infographic','infographic'],
+}
+function initcharts(){
+  console.log(arguments[0][0]);
+  if(myChart1 instanceof Object){
+    myChart1.dispose();
+    myChart2.dispose();
+    myChart3.dispose();
+    myChart4.dispose();
+    myChart5.dispose();
+    myChart6.dispose();
+    myChart7.dispose();
+  }
 
-
-  myChart3 = echarts.init(document.getElementById('chart3'),'macarons');
-  myChart4 = echarts.init(document.getElementById('chart4'),'shine');
-  myChart5 = echarts.init(document.getElementById('chart5'),'roma');
-  myChart6 = echarts.init(document.getElementById('chart6'),'infographic');
-  myChart7 = echarts.init(document.getElementById('chart7'));
+  myChart1 = echarts.init(document.getElementById('chart1'),arguments[0][0]);
+  myChart2 = echarts.init(document.getElementById('chart2'),arguments[0][0]);
+  myChart3 = echarts.init(document.getElementById('chart3'),arguments[0][1]);
+  myChart4 = echarts.init(document.getElementById('chart4'),arguments[0][1]);
+  myChart5 = echarts.init(document.getElementById('chart5'),arguments[0][1]);
+  myChart6 = echarts.init(document.getElementById('chart6'),arguments[0][1]);
+  myChart7 = echarts.init(document.getElementById('chart7'),arguments[0][1]);
   
+  myChart1.setOption(chartTool.initBar('手术状态统计'));
+  myChart2.setOption(chartTool.initBar('后送方式'));
   myChart3.setOption(chartTool.initPie('伤员数量'));
   myChart4.setOption(chartTool.initPie('伤员数量'));
   myChart5.setOption(chartTool.initPie('伤员数量'));
   myChart6.setOption(chartTool.initPie('伤员数量'));
   myChart7.setOption(chartTool.initPie('伤员数量'));
+
+  listenChartsClick(myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7);
+}
   
   var dataPie = [
     {title : '伤势统计', data : [{value : 10, name : '轻伤'}, {value : 5, name : '中度伤'}, {value : 15, name : '重伤'}, {value : 25, name : '危重伤'}] },
@@ -219,12 +243,12 @@ angular.module('controllers',['ngResource','services'])
     }
   }
   $scope.$watch('$stateParams.place',function(){
+    initcharts(theme_dict[$stateParams.place]);
     $interval.cancel($rootScope.timer);
     $interval.cancel($rootScope.tableTimer);
     $rootScope.timer=$interval(function(){loadData($stateParams.place)},5000);
   })
   loadData($stateParams.place);
-
   $(window).on("resize.doResize", function (){
     $scope.$apply(function(){
       myChart1.resize();
@@ -240,7 +264,7 @@ angular.module('controllers',['ngResource','services'])
     $(window).off("resize.doResize"); //remove the handler added earlier
   });
 
-  listenChartsClick(myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7); 
+   
 
   // 读入modal所需生理生化信息
   $scope.readPatientDetails = function(PatientId){
@@ -286,8 +310,8 @@ angular.module('controllers',['ngResource','services'])
   var tableIndex=null,dataIndex=null;
   function showTable(i,params){
     $interval.cancel($rootScope.tableTimer2);
-    if(i<2)
-      return;
+    // if(i<2)
+      // return;
     if(tableIndex==i && params.dataIndex==dataIndex){
       tableIndex=null;
       $('#leftMargin').removeClass('col-xs-1');
@@ -299,12 +323,18 @@ angular.module('controllers',['ngResource','services'])
     tableIndex=i,dataIndex=params.dataIndex;
     $scope.$apply(function(){
       if(i<4){
+        $scope.selectedchart={name:i==1?'救治人员分布':i==2?'患者状态统计':'伤员分布',item:params.name}
+        $('.Patients_scrollContent').addClass('Patients_scrollContent1').removeClass('Patients_scrollContent');
+        $('.Patients_fixedHeader').addClass('Patients_fixedHeader1').removeClass('Patients_fixedHeader');
         $('#leftMargin').addClass('col-xs-1');
-        $('#table').removeClass('col-sm-8').addClass('col-sm-9').css({"margin-left":"70px"});
+        $('#table').removeClass('my-table-pie').addClass('col-xs-9').css({"margin-left":"70px"});
         $scope.renderCharts=[true,true,true,true,false,false,false,false,false];
-      }else if(i>100){
+      }else{
+        $scope.selectedchart={name:dataPie[i-4].title,item:params.name}
+        $('.Patients_scrollContent1').addClass('Patients_scrollContent').removeClass('Patients_scrollContent1');
+        $('.Patients_fixedHeader1').addClass('Patients_fixedHeader').removeClass('Patients_fixedHeader1');
         $('#leftMargin').addClass('col-xs-1');
-        $('#table').addClass('col-sm-8').removeClass('col-sm-9').css({"margin-left":""});
+        $('#table').addClass('my-table-pie').removeClass('col-xs-9').css({"margin-left":""});
         for(j=4;j<9;++j){
           if(j!=i)
             $scope.renderCharts[j]=false;
@@ -334,7 +364,7 @@ angular.module('controllers',['ngResource','services'])
     }
   }
 
-  var myChart1 = echarts.init(document.getElementById('chart1'));
+  var myChart1 = echarts.init(document.getElementById('chart1'),'blue');
   var data1={
     title:'救治人员分布',
     data:[
@@ -358,7 +388,7 @@ angular.module('controllers',['ngResource','services'])
   myChart1.setOption(chartTool.initBar('救治人员分布'));
   // myChart1.setOption(chartTool.getOptionBar(data1));
 
-  var myChart2 = echarts.init(document.getElementById('chart2'));
+  var myChart2 = echarts.init(document.getElementById('chart2'),'green');
   var data2={
     title:'患者状态统计',
     data:[
@@ -384,7 +414,7 @@ angular.module('controllers',['ngResource','services'])
   myChart2.setOption(chartTool.initBar('患者状态统计'));
   // myChart2.setOption(chartTool.getOptionBar(data2));
 
-  myChart3 = echarts.init(document.getElementById('chart3'));
+  myChart3 = echarts.init(document.getElementById('chart3'),'gray');
   var data3={
     title:'伤员分布',
     data:[

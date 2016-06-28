@@ -68,7 +68,7 @@
                                 <tr ng-repeat = "surgeryRoomInfo in DeckInfoDetail.surgeryRoomInfoList">
                                    <td>{{surgeryRoomInfo.SurgeryRoomId}}</td>
                                    <td>{{surgeryRoomInfo.SubSurgeryRoomId}}</td>
-                                   <td>{{surgeryRoomInfo.Status}}</td>
+                                   <td>{{surgeryRoomInfo.Status==1?'不可用':'可用'}}</td>
                                 </tr>
                              </tbody>
                           </table>
@@ -98,7 +98,7 @@
                                 <tr ng-repeat = "bedInfo in DeckInfoDetail.bedInfoList">
                                    <td>{{bedInfo.BedCode}}</td>
                                    <td>{{bedInfo.WardCode}}</td>
-                                   <td>{{bedInfo.Status}}</td>
+                                   <td>{{bedInfo.Status==1?'不可用':'可用'}}</td>
                                    <td>{{bedInfo.PatientName}}</td>
                                 </tr>
                              </tbody>
