@@ -49,13 +49,9 @@
             <div class="panel-group" id="accordion">
               <!-- First Panel -->
               <div class="panel panel-primary">
-                  <div class="panel-heading">
-                       <h4 class="panel-title">
-                          <a href=""
-                             data-toggle="collapse"
-                             data-target="#collapseOne">
-                             手术室列表信息
-                          </a>  
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapseOne">
+                       <h4 class="panel-title"   style="width:100%">
+                          手术室列表信息 
                        </h4>
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse in">
@@ -72,7 +68,7 @@
                                 <tr ng-repeat = "surgeryRoomInfo in DeckInfoDetail.surgeryRoomInfoList">
                                    <td>{{surgeryRoomInfo.SurgeryRoomId}}</td>
                                    <td>{{surgeryRoomInfo.SubSurgeryRoomId}}</td>
-                                   <td>{{surgeryRoomInfo.Status}}</td>
+                                   <td>{{surgeryRoomInfo.Status==1?'不可用':'可用'}}</td>
                                 </tr>
                              </tbody>
                           </table>
@@ -82,13 +78,9 @@
               
               <!-- Second Panel -->
               <div class="panel panel-primary">
-                  <div class="panel-heading">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapseTwo">
                        <h4 class="panel-title">
-                          <a href=""
-                             data-toggle="collapse"
-                             data-target="#collapseTwo">
                              病床列表信息
-                          </a>  
                        </h4>
                   </div>
                   <div id="collapseTwo" class="panel-collapse collapse">
@@ -106,7 +98,7 @@
                                 <tr ng-repeat = "bedInfo in DeckInfoDetail.bedInfoList">
                                    <td>{{bedInfo.BedCode}}</td>
                                    <td>{{bedInfo.WardCode}}</td>
-                                   <td>{{bedInfo.Status}}</td>
+                                   <td>{{bedInfo.Status==1?'不可用':'可用'}}</td>
                                    <td>{{bedInfo.PatientName}}</td>
                                 </tr>
                              </tbody>
@@ -117,13 +109,9 @@
               
               <!-- Third Panel -->
               <div class="panel panel-primary">
-                  <div class="panel-heading">
+                  <div class="panel-heading" data-toggle="collapse" data-target="#collapseThree">
                        <h4 class="panel-title">
-                          <a href=""
-                             data-toggle="collapse"
-                             data-target="#collapseThree">
                              值班医生
-                          </a>  
                        </h4>
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse">

@@ -1,17 +1,18 @@
 <div class="col-lg-10 col-lg-offset-1">
   <div class="col-lg-4" style="float:right;padding-bottom:5px;text-align:right">
-    <button class="btn btn-danger  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="margin-right:40px">
+    <button class="btn btn-success  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="margin-right:40px">
     选择医嘱状态
     <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li ng-click="orderingsfilter('')"><a href="#/Inquiry/Assist">all</a></li>
-      <li ng-click="orderingsfilter(1)"><a href="#/Inquiry/Assist">1</a></li>
-      <li ng-click="orderingsfilter(2)"><a href="#/Inquiry/Assist">2</a></li>
-      <li ng-click="orderingsfilter(3)"><a href="#/Inquiry/Assist">3</a></li>
-      <li ng-click="orderingsfilter(4)"><a href="#/Inquiry/Assist">4</a></li>
+      <li ng-click="orderingsfilter('')"><a href="#/Inquiry/Assist">全部</a></li>
+      <li ng-click="orderingsfilter(1)"><a href="#/Inquiry/Assist">已保存</a></li>
+      <li ng-click="orderingsfilter(2)"><a href="#/Inquiry/Assist">已提交</a></li>
+      <li ng-click="orderingsfilter(3)"><a href="#/Inquiry/Assist">已确认</a></li>
+      <li ng-click="orderingsfilter(4)"><a href="#/Inquiry/Assist">已执行</a></li>
+      <li ng-click="orderingsfilter(10)"><a href="#/Inquiry/Assist">作废</a></li>
     </ul>
-    <b>Search:</b> <input ng-model="query"/>
+    <b>搜 索:</b> <input ng-model="query"/>
   </div>
 
   <div id="tableContainer" class="tableContainer">
@@ -32,12 +33,12 @@
             <td>{{ordering.PatientId}}</td>
             <td>{{ordering.PatientName}}</td>
             <td>{{ordering.OrderName}}</td>
-            <td>{{ordering.Status}}</td>
-            <td>{{ordering.ApplyDepartment}}</td>
+            <td><div my-orderingstatus="{{ordering.Status}}"></div></td>
+            <td><div my-orderingdept="{{ordering.ApplyDepartment}}"></div></td>
             <td>{{ordering.TargetDepartment}}</td>
             <td>
-              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="查看生理信息" class="btn btn-primary editBtn" style="margin-right:10px;height:40px" ng-click = "readPatientDetails(ordering.PatientId)"/>
-              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="查看生化信息" class="btn btn-primary editBtn" style="height:40px" ng-click = "readPatientBios(ordering.PatientId)"/>
+              <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="生理信息" class="btn btn-primary editBtn" style="margin-right:10px;height:40px" ng-click = "readPatientDetails(ordering.PatientId)"/>
+              <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="生化信息" class="btn btn-primary editBtn" style="height:40px" ng-click = "readPatientBios(ordering.PatientId)"/>
             </td>
           </tr>
         </tbody>
@@ -85,6 +86,7 @@
               </h4>
            </div>
            <div class="modal-body">
+              <p ng-if = "!PatientBios">无生化参数信息</p>
               <p ng-repeat = "PatientBio in PatientBios">{{PatientBio.des}}：{{PatientBio.val}}</p>
            </div>
            <div class="modal-footer">
