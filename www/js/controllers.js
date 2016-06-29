@@ -8,7 +8,7 @@ angular.module('controllers',['ngResource','services'])
   {imgUrl:'image/zhongshangWard.jpg',name:'重伤病房',action:'SeriousInjuredRoom'},
   {imgUrl:'image/outPatient.jpg',name:'门诊救治人员',action:'OutPatientRoom'},
   ];
-  $scope.p= {'imgUrl':'image/RescueStaffDistribution.jpg',name:'救治人员',action:'OutPatientRoom'};  
+  $scope.p= {'imgUrl':'image/RescueStaffDistribution.jpg',name:'救治人员',action:'OutPatientRoom'};
   var promise_Num = DeliverInfo.GetDeliverInfoNum();
     promise_Num.then(function(data)
     { 
@@ -42,7 +42,7 @@ angular.module('controllers',['ngResource','services'])
       return $scope.patients=data.data;
     },function(e){
         console.log(e)
-    });    
+    });
   }
   function gettable4To7(dept,injuryType){
     Deliver.PbyDI({DeptCode:dept,InjuryType:injuryType})
@@ -53,6 +53,7 @@ angular.module('controllers',['ngResource','services'])
     });
   }
   function indexLengthFix(k){
+    console.log(k);
     return k<10?'00'+k:'0'+k;
   }
   function updateTable(i,params){
@@ -66,10 +67,10 @@ angular.module('controllers',['ngResource','services'])
       return;
     if(i>3 && i<8){
       switch(i){
-        case 4:return gettable4To7($stateParams.place,'Site_'+indexLengthFix(params.dataIndex+1));
-        case 5:return gettable4To7($stateParams.place,'Type_'+indexLengthFix(params.dataIndex+1));
-        case 6:return gettable4To7($stateParams.place,'Class_'+indexLengthFix(params.dataIndex+1));
-        case 7:return gettable4To7($stateParams.place,'Complications_'+indexLengthFix(params.dataIndex+1));
+        case 4:return gettable4To7($stateParams.place,'Site_'+params.data.code);
+        case 5:return gettable4To7($stateParams.place,'Type_'+params.data.code);
+        case 6:return gettable4To7($stateParams.place,'Class_'+params.data.code);
+        case 7:return gettable4To7($stateParams.place,'Complications_'+params.data.code);
       }
     }
   }
@@ -82,6 +83,7 @@ angular.module('controllers',['ngResource','services'])
   var tableIndex=null,dataIndex=null;
   function showTable(i,params){
     $interval.cancel($rootScope.tableTimer);
+    $scope.patients={};
     if(tableIndex==i && params.dataIndex==dataIndex){
       $('#leftMargin').removeClass('col-xs-1');
       tableIndex=null;
@@ -139,56 +141,56 @@ angular.module('controllers',['ngResource','services'])
   var data2 = {
     title:'后送方式',
     data:[
-      {value : 0, name : '急救船', code : 'AmbulanceBoat', way:2 },
-      {value : 0, name : '直升机', code:'Helicopter', way:1 }
+      {value : 0, name : '急救船', way:2 },
+      {value : 0, name : '直升机', way:1 }
     ]
   }
-var myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7;
-var theme_dict={
-  Dept01:['blue','blue'],
-  Dept02:['shine','shine'],
-  Dept03:['roma','roma'],
-  Dept04:['red','infographic'],
-  Dept05:['green','green'],
-  OutPatientRoom:['infographic','infographic'],
-}
-function initcharts(){
-  console.log(arguments[0][0]);
-  if(myChart1 instanceof Object){
-    myChart1.dispose();
-    myChart2.dispose();
-    myChart3.dispose();
-    myChart4.dispose();
-    myChart5.dispose();
-    myChart6.dispose();
-    myChart7.dispose();
+  var myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7;
+  var theme_dict={
+    Dept01:['blue','blue'],
+    Dept02:['shine','shine'],
+    Dept03:['roma','roma'],
+    Dept04:['red','infographic'],
+    Dept05:['green','green'],
+    OutPatientRoom:['infographic','infographic'],
   }
+  function initcharts(){
+    console.log(arguments[0][0]);
+    if(myChart1 instanceof Object){
+      myChart1.dispose();
+      myChart2.dispose();
+      myChart3.dispose();
+      myChart4.dispose();
+      myChart5.dispose();
+      myChart6.dispose();
+      myChart7.dispose();
+    }
 
-  myChart1 = echarts.init(document.getElementById('chart1'),arguments[0][0]);
-  myChart2 = echarts.init(document.getElementById('chart2'),arguments[0][0]);
-  myChart3 = echarts.init(document.getElementById('chart3'),arguments[0][1]);
-  myChart4 = echarts.init(document.getElementById('chart4'),arguments[0][1]);
-  myChart5 = echarts.init(document.getElementById('chart5'),arguments[0][1]);
-  myChart6 = echarts.init(document.getElementById('chart6'),arguments[0][1]);
-  myChart7 = echarts.init(document.getElementById('chart7'),arguments[0][1]);
-  
-  myChart1.setOption(chartTool.initBar('手术状态统计'));
-  myChart2.setOption(chartTool.initBar('后送方式'));
-  myChart3.setOption(chartTool.initPie('伤员数量'));
-  myChart4.setOption(chartTool.initPie('伤员数量'));
-  myChart5.setOption(chartTool.initPie('伤员数量'));
-  myChart6.setOption(chartTool.initPie('伤员数量'));
-  myChart7.setOption(chartTool.initPie('伤员数量'));
+    myChart1 = echarts.init(document.getElementById('chart1'),arguments[0][0]);
+    myChart2 = echarts.init(document.getElementById('chart2'),arguments[0][0]);
+    myChart3 = echarts.init(document.getElementById('chart3'),arguments[0][1]);
+    myChart4 = echarts.init(document.getElementById('chart4'),arguments[0][1]);
+    myChart5 = echarts.init(document.getElementById('chart5'),arguments[0][1]);
+    myChart6 = echarts.init(document.getElementById('chart6'),arguments[0][1]);
+    myChart7 = echarts.init(document.getElementById('chart7'),arguments[0][1]);
+    
+    myChart1.setOption(chartTool.initBar('手术状态统计'));
+    myChart2.setOption(chartTool.initBar('后送方式'));
+    myChart3.setOption(chartTool.initPie('伤员数量'));
+    myChart4.setOption(chartTool.initPie('伤员数量'));
+    myChart5.setOption(chartTool.initPie('伤员数量'));
+    myChart6.setOption(chartTool.initPie('伤员数量'));
+    myChart7.setOption(chartTool.initPie('伤员数量'));
 
-  listenChartsClick(myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7);
-}
+    listenChartsClick(myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7);
+  }
   
   var dataPie = [
-    {title : '伤势统计', data : [{value : 10, name : '轻伤'}, {value : 5, name : '中度伤'}, {value : 15, name : '重伤'}, {value : 25, name : '危重伤'}] },
-    {title : '伤部统计', data : [{value : 10, name : '头部'}, {value : 5, name : '面部'}, {value : 15, name : '颈部'}, {value : 25, name : '胸部'}, {value : 25, name : '背部'}, {value : 25, name : '腹部'}, {value : 25, name : '腰部'}, {value : 25, name : '盆骨'}, {value : 25, name : '脊柱脊髓'}, {value : 25, name : '上肢'}, {value : 25, name : '下肢'}, {value : 25, name : '多发伤'}, {value : 25, name : '其他'}] },
-    {title : '伤类统计', data : [{value : 10, name : '贯通伤'}, {value : 5, name : '非贯通伤'}, {value : 15, name : '穿透伤'}, {value : 25, name : '切线伤'},{value : 10, name : '皮肤及软组织伤'}, {value : 5, name : '骨折'}, {value : 15, name : '断肢和断指（趾）'}, {value : 25, name : '其他'}] },
-    {title : '伤型统计', data : [{value : 10, name : '炸伤'}, {value : 5, name : '枪弹伤'}, {value : 15, name : '刃器伤'}, {value : 25, name : '挤压伤'}, {value : 25, name : '冲击伤'}, {value : 25, name : '撞击伤'}, {value : 25, name : '烧伤'}, {value : 25, name : '冻伤'}, {value : 25, name : '毒剂伤'}, {value : 25, name : '电离辐射伤'}, {value : 25, name : '生物武器伤'}, {value : 25, name : '激光损伤'}, {value : 25, name : '微博损伤'}, {value : 25, name : '海水浸泡伤'}, {value : 25, name : '长航疲劳'}, {value : 25, name : '复合伤'}, {value : 25, name : '其他'}] },
-    {title : '并发症统计', data : [{value : 10, name : '大出血'}, {value : 5, name : '窒息'}, {value : 15, name : '休克'}, {value : 25, name : '抽搐'}, {value : 25, name : '气胸'}, {value : 25, name : '截瘫'}, {value : 25, name : '气性坏疽'}, {value : 25, name : '低温'}, {value : 25, name : '昏迷'}, {value : 25, name : '其他'}]}
+    {title : '伤势统计', data : [{value : 10, name : '轻伤',code:"001"}, {value : 5, name : '中度伤',code:"002"}, {value : 15, name : '重伤',code:"003"}, {value : 25, name : '危重伤',code:"004"}] },
+    {title : '伤部统计', data : [{value : 10, name : '头部',code:"001"}, {value : 5, name : '面部',code:"002"}, {value : 15, name : '颈部',code:"003"}, {value : 25, name : '胸部',code:"004"}, {value : 25, name : '背部',code:"005"}, {value : 25, name : '腹部',code:"006"}, {value : 25, name : '腰部',code:"007"}, {value : 25, name : '盆骨',code:"008"}, {value : 25, name : '脊柱脊髓',code:"009"}, {value : 25, name : '上肢',code:"010"}, {value : 25, name : '下肢',code:"011"}, {value : 25, name : '多发伤',code:"012"}, {value : 25, name : '其他',code:"013"}] },
+    {title : '伤类统计', data : [{value : 10, name : '贯通伤',code:"001"}, {value : 5, name : '非贯通伤',code:"002"}, {value : 15, name : '穿透伤',code:"003"}, {value : 25, name : '切线伤',code:"004"},{value : 10, name : '皮肤及软组织伤',code:"005"}, {value : 5, name : '骨折',code:"006"}, {value : 15, name : '断肢和断指（趾）',code:"007"}, {value : 25, name : '其他',code:"008"}] },
+    {title : '伤型统计', data : [{value : 10, name : '炸伤',code:"001"}, {value : 5, name : '枪弹伤',code:"002"}, {value : 15, name : '刃器伤',code:"003"}, {value : 25, name : '挤压伤',code:"004"}, {value : 25, name : '冲击伤',code:"005"}, {value : 25, name : '撞击伤',code:"006"}, {value : 25, name : '烧伤',code:"007"}, {value : 25, name : '冻伤',code:"008"}, {value : 25, name : '毒剂伤',code:"009"}, {value : 25, name : '电离辐射伤',code:"010"}, {value : 25, name : '生物武器伤',code:"011"}, {value : 25, name : '激光损伤',code:"012"}, {value : 25, name : '微博损伤',code:"013"}, {value : 25, name : '海水浸泡伤',code:"014"}, {value : 25, name : '长航疲劳',code:"015"}, {value : 25, name : '复合伤',code:"016"}, {value : 25, name : '其他',code:"017"}] },
+    {title : '并发症统计', data : [{value : 10, name : '大出血',code:"001"}, {value : 5, name : '窒息',code:"002"}, {value : 15, name : '休克',code:"003"}, {value : 25, name : '抽搐',code:"004"}, {value : 25, name : '气胸',code:"005"}, {value : 25, name : '截瘫',code:"006"}, {value : 25, name : '气性坏疽',code:"007"}, {value : 25, name : '低温',code:"008"}, {value : 25, name : '昏迷',code:"009"}, {value : 25, name : '其他',code:"010"}]}
   ]
   function randerDataPie(res,i){
     var ans={title:dataPie[i].title,data:[]};
@@ -310,8 +312,7 @@ function initcharts(){
   var tableIndex=null,dataIndex=null;
   function showTable(i,params){
     $interval.cancel($rootScope.tableTimer2);
-    // if(i<2)
-      // return;
+    $scope.patients={};
     if(tableIndex==i && params.dataIndex==dataIndex){
       tableIndex=null;
       $('#leftMargin').removeClass('col-xs-1');
@@ -371,17 +372,17 @@ function initcharts(){
       {
         name: "现场急救区",
         value: 0,
-        code:''
+        code:'PLACE|1'
       },
       {
         name: "检伤分流区-01甲板",
         value: 0,
-        code:''
+        code:'PLACE|2'
       },
       {
         name: "检伤分流区-02甲板",
         value: 0,
-        code:''
+        code:'PLACE|3'
       }
     ]
   }
@@ -554,11 +555,6 @@ function initcharts(){
   };
   myChart8.setOption(chartTool.getOptionPie(option8));
 
-  // $scope.$watch('$stateParams.place',function(){
-  //   $interval.cancel($rootScope.timer);
-  //   $interval.cancel($rootScope.tableTimer);
-  //   $rootScope.timer=$interval(function(){loadData($stateParams.place)},5000);
-  // })
   function loadData(){
     Deliver.Savors()
     .then(function(data){
@@ -686,201 +682,7 @@ function initcharts(){
   {imgUrl:'image/InjuriedPatient.jpg',name:'重伤患者信息详情',action:'InjuriedPatient'},
   {imgUrl:'image/OutPatient.jpg',name:'重要身份患者细信息详情',action:'IndentityPatient'},
   ];
-   
 }])
-// .controller('DoctorInfoCtrl',['$scope','Storage','MstUser',function($scope,Storage,MstUser){
-//   $scope.DoctorInfos={};
-//   MstUser.GetDoctorsInfo({DoctorId:'',Affiliation:'',Status:'',DoctorName:'',Position:''}).then(
-//       function(data){
-//           $scope.DoctorInfos=data.data;
-        
-//       },function(e){
-//           console.log(e)
-//       });
-//   // 读入医生信息详情
-//   $scope.readDoctorInfoDetail = function(DoctorId){
-//     var promise = MstUser.GetDoctorInfoDetail(DoctorId);
-//     promise.then(function(data){
-//       $scope.DoctorInfoDetail = data.data;
-//       // console.log($scope.DoctorInfoDetail);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-// }])
-// .controller('OperationRoomInfoCtrl',['$scope','Storage','TrnOrderingSurgery','Info',
-//   function($scope,Storage,TrnOrderingSurgery,Info){
-//   $scope.SurgeryInfos={};
-//   TrnOrderingSurgery.GetSurgeriesInfo({SurgeryRoom1:'',SurgeryRoom2:'',SurgeryDateTime:'',SurgeryDeptCode:''}).then(
-//       function(data){
-//           $scope.SurgeryInfos=data.data;
-         
-//       },function(e){
-//           console.log(e)
-//       });
-//   // 读入手术室详情信息
-//   $scope.readSurgeriesInfoDetail = function(RoomId){
-//     var promise = TrnOrderingSurgery.GetSurgeriesInfoDetail(RoomId);
-//     promise.then(function(data){
-//       $scope.SurgeriesInfoDetail = data.data;
-//       // console.log($scope.SurgeriesInfoDetail);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-//   // 调整modal的尺寸
-//   $(".modal").on("show.bs.modal", function() {
-//     var height = $(window).height() - 200;
-//     $(this).find(".modal-body").css("max-height", height);
-//   });
-
-// }])
-// .controller('AssistInfoCtrl',['$scope','Storage','orderings','Info',function($scope,Storage,orderings,Info){
-//   $scope.orderings={};
-//   orderings.Getorderings({DepartmentCode:'DEPT05',Status:'',ClinicDate:'',PatientName:''}).then(
-//       function(data){
-//           $scope.orderings=data.data;
-         
-//       },function(e){
-//           console.log(e)
-//       });
-//   $scope.Status="";
-//   $scope.values=["所有",1,2,3,4];
-//   $scope.changeStatus=function(){
-//     if($scope.Status=="所有"){
-//       orderings.Getorderings({DepartmentCode:'DEPT05',Status:'',ClinicDate:'',PatientName:''}).then(
-//       function(data){
-//           $scope.orderings=data.data;
-         
-//       },function(e){
-//           console.log(e)
-//       });
-//     }
-//     else{
-//       orderings.Getorderings({DepartmentCode:'DEPT05',Status:$scope.Status,ClinicDate:'',PatientName:''}).then(
-//       function(data){
-//           $scope.orderings=data.data;
-         
-//       },function(e){
-//           console.log(e)
-//       });
-
-//     }
-//   };
-//   // 读入modal所需生理生化信息
-//   $scope.readPatientDetails = function(PatientId){
-//     // 读入生理参数
-//     $scope.PatientDetails = {};
-//     var promise = Info.GetPatientDetails(PatientId);
-//     promise.then(function(data){
-//       $scope.PatientDetails = data.data;
-//       // console.log(data);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-//   $scope.readPatientBios = function(PatientId){
-//     // 读入生化参数
-//     var promise = Info.GetPatientBios(PatientId);
-//     promise.then(function(data){
-//       $scope.PatientBios = data.data;
-//       // console.log(data);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-    
-// }])
-// .controller('DeckInfoCtrl',['$scope','Storage','DeckInfo','deckInfoDetail',function($scope,Storage,DeckInfo,deckInfoDetail){
-//   $scope.Decks={};
-  
-//   DeckInfo.GetDeckInfo().then(
-//       function(data){
-//           $scope.Decks=data.data;
-         
-//       },function(e){
-//           console.log(e)
-//       });
-//   // 读入甲板信息详情
-//   $scope.readDeckInfo = function(RoomId){
-//     var promise = deckInfoDetail.GetdeckInfoDetail(RoomId);
-//     promise.then(function(data){
-//       $scope.DeckInfoDetail = data.data;
-//       // console.log($scope.DeckInfoDetail);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-//   // 调整modal尺寸
-//   $(".modal").on("show.bs.modal", function() {
-//     var height = $(window).height() - 200;
-//     $(this).find(".modal-body").css("max-height", height);
-//   });
-// }])
-// .controller('InjuriedPatientInfoCtrl',['$scope','Storage','KeyPatientsInfo','Info',function($scope,Storage,KeyPatientsInfo,Info){
-//   $scope.KeyPatientInfos={};
-//   KeyPatientsInfo.GetKeyPatientsInfobyInjury({type:'1'}).then(
-//       function(data){
-//           $scope.KeyPatientInfos=data.data;
-         
-//       },function(e){
-//           console.log(e)
-//       });
-//   // 读入modal所需生理生化信息
-//   $scope.readPatientDetails = function(PatientId){
-//     // 读入生理参数
-//     $scope.PatientDetails = {};
-//     var promise = Info.GetPatientDetails(PatientId);
-//     promise.then(function(data){
-//       $scope.PatientDetails = data.data;
-//       // console.log(data);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-//   $scope.readPatientBios = function(PatientId){
-//     // 读入生化参数
-//     var promise = Info.GetPatientBios(PatientId);
-//     promise.then(function(data){
-//       $scope.PatientBios = data.data;
-//       // console.log(data);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-// }])
-// .controller('IndentityPatientInfoCtrl',['$scope','Storage','KeyPatientsInfo','Info',function($scope,Storage,KeyPatientsInfo,Info){
-//   $scope.KeyPatientInfos={};
-//   KeyPatientsInfo.GetKeyPatientsInfobyInjury({type:'1'}).then(
-//       function(data){
-//           $scope.KeyPatientInfos=data.data;
-         
-//       },function(e){
-//           console.log(e)
-//       });
-//   // 读入modal所需生理生化信息
-//   $scope.readPatientDetails = function(PatientId){
-//     // 读入生理参数
-//     $scope.PatientDetails = {};
-//     var promise = Info.GetPatientDetails(PatientId);
-//     promise.then(function(data){
-//       $scope.PatientDetails = data.data;
-//       // console.log(data);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-//   $scope.readPatientBios = function(PatientId){
-//     // 读入生化参数
-//     var promise = Info.GetPatientBios(PatientId);
-//     promise.then(function(data){
-//       $scope.PatientBios = data.data;
-//       // console.log(data);
-//     }, function(err){
-//       // 无错误读入处理
-//     });
-//   };
-// }])
 .controller('DoctorInfoCtrl',['$scope','Storage','MstUser',function($scope,Storage,MstUser){
   $scope.DoctorInfos={};
   MstUser.GetDoctorsInfo({DoctorId:'',Affiliation:'',Status:'',DoctorName:'',Position:''}).then(
