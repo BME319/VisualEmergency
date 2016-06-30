@@ -32,13 +32,14 @@
 }
 
 .purple-bar{
-    width:70%;
+    width:100%;
     height:35px;
     vertical-align: center;
-    background-color:#ddddff;
+    background-color:#2E8B57;
 }
 .purple-bar p{
     font-size:22px;
+    color:#FFFAF0;
 }
 .my-table-pie{
     display:inline;
