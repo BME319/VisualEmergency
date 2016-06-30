@@ -531,6 +531,12 @@ angular.module('services',['ngResource'])
       series : [{data : data.data}]
     }
   }
-
+  serve.dataPie = [
+    {title : '伤势统计', data : [{value : 0, name : '轻伤',code:"001"}, {value : 0, name : '中度伤',code:"002"}, {value : 0, name : '重伤',code:"003"}, {value : 0, name : '危重伤',code:"004"}] },
+    {title : '伤部统计', data : [{value : 0, name : '头部',code:"001"}, {value : 0, name : '面部',code:"002"}, {value : 0, name : '颈部',code:"003"}, {value : 0, name : '胸（背）部',code:"004"}, {value : 0, name : '  腹（腰）部及盆骨（会阴）',code:"005"}, {value : 0, name : '脊柱脊髓',code:"006"}, {value : 0, name : '上肢',code:"007"}, {value : 0, name : '下肢',code:"008"}, {value : 0, name : '多发伤',code:"009"}, {value : 0, name : '其他',code:"010"}] },
+    {title : '伤类统计', data : [{value : 0, name : '炸伤',code:"001"}, {value : 0, name : '枪弹伤',code:"002"}, {value : 0, name : '刃器伤',code:"003"}, {value : 0, name : '挤压伤',code:"004"}, {value : 0, name : '冲击伤',code:"005"}, {value : 0, name : '撞击伤',code:"006"}, {value : 0, name : '烧伤',code:"007"}, {value : 0, name : '冻伤',code:"008"}, {value : 0, name : '毒剂伤',code:"009"}, {value : 0, name : '电离辐射伤',code:"010"}, {value : 0, name : '生物武器伤',code:"011"}, {value : 0, name : '激光损伤',code:"012"}, {value : 0, name : '微博损伤',code:"013"}, {value : 0, name : '复合伤',code:"014"}, {value : 0, name : '海水浸泡伤',code:"015"}, {value : 0, name : '长航疲劳',code:"016"}, {value : 0, name : '其他',code:"017"}] },
+    {title : '伤型统计', data : [{value : 0, name : '贯穿伤',code:"001"}, {value : 0, name : '穿透伤  ',code:"002"}, {value : 0, name : '盲管伤',code:"003"}, {value : 0, name : '切线伤',code:"004"},{value : 0, name : '皮肤及软组织伤（擦伤）',code:"005"}, {value : 0, name : '皮肤及软组织伤（挫伤）',code:"006"}, {value : 0, name : '皮肤及软组织伤（撕裂）',code:"007"}, {value : 0, name : '皮肤及软组织伤（撕脱）',code:"008"}, {value : 0, name : '骨折',code:"009"}, {value : 0, name : '断肢和断指（趾）',code:"010"}, {value : 0, name : '其他',code:"011"}] },
+    {title : '并发症统计', data : [{value : 0, name : '大出血',code:"001"}, {value : 0, name : '窒息',code:"002"}, {value : 0, name : '休克',code:"003"}, {value : 0, name : '抽搐',code:"004"}, {value : 0, name : '气胸',code:"005"}, {value : 0, name : '截瘫',code:"006"}, {value : 0, name : '气性坏疽',code:"007"}, {value : 0, name : '低温',code:"008"}, {value : 0, name : '其他',code:"009"}] }
+  ]
   return serve;
 }])
