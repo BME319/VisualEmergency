@@ -1,15 +1,18 @@
 
 <div class="container-fluid">
+
   <div class="row">
+
     <div class="col-xs-2 col-xs-offset-1">
-      <div class="purple-bar"><p>门诊分析</p></div>
+
+      <div class="purple-bar" style="width:100%"><p>门诊分析</p></div>
       <ul class="nav nav-sidebar">
         <li ><a ui-sref=".ClinicDate">按日期统计</a></li>
         <li><a href="#/analysis/ClinicDepartment">按科室统计</a></li>
         <li><a href="#/analysis/ClinicNationality">按国籍统计</a></li>
       </ul>
 
-      <div class="purple-bar"><p>住院分析</p></div>
+      <div class="purple-bar" style="width:100%"><p>住院分析</p></div>
       <ul class="nav nav-sidebar">
         <li><a href="#/analysis/InpatientDate">按日期统计</a></li>
         <li><a href="#/analysis/InpatientWard">按病房统计</a></li>
@@ -18,19 +21,22 @@
         <li><a href="#/analysis/OccupancyRate">病床使用率</a></li>
       </ul>
 
-      <div class="purple-bar"><p>手术分析</p></div>
+      <div class="purple-bar" style="width:100%"><p>手术分析</p></div>
       <ul class="nav nav-sidebar">
         <li><a href="#/analysis/OperationStatusGrade">按手术状态和等级统计</a></li>
       </ul>
 
-      <div class="purple-bar"><p>诊断分析</p></div>
-	      <ul class="nav nav-sidebar">
-	        <li><a href="#/analysis/DiagnosisScale">诊断量</a></li>
-	      </ul>
-	  </div>
+      <div class="purple-bar" style="width:100%"><p>诊断分析</p></div>
+        <ul class="nav nav-sidebar">
+          <li><a href="#/analysis/DiagnosisScale">诊断量</a></li>
+        </ul>
+
+    </div>
+
     <div class="col-xs-9">
     	<div ui-view></div>
     </div>
+
   </div>
   
 </div>
