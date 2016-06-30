@@ -1,16 +1,17 @@
 <div class="col-lg-10 col-lg-offset-1">
   <div class="col-lg-4" style="float:right;padding-bottom:5px;text-align:right">
-    <button class="btn btn-success  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="margin-right:40px">
-    选择医嘱状态
+    <b>选择医嘱状态: </b>
+    <button class="btn btn-success  dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  style="margin-right:40px;width:80px">
+    {{item}}
     <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li ng-click="orderingsfilter('')"><a href="#/Inquiry/Assist">全部</a></li>
-      <li ng-click="orderingsfilter(1)"><a href="#/Inquiry/Assist">已保存</a></li>
-      <li ng-click="orderingsfilter(2)"><a href="#/Inquiry/Assist">已提交</a></li>
-      <li ng-click="orderingsfilter(3)"><a href="#/Inquiry/Assist">已确认</a></li>
-      <li ng-click="orderingsfilter(4)"><a href="#/Inquiry/Assist">已执行</a></li>
-      <li ng-click="orderingsfilter(10)"><a href="#/Inquiry/Assist">作废</a></li>
+      <li ng-click="orderingsfilter('','全部')"><a href="#/Inquiry/Assist">全部</a></li>
+      <li ng-click="orderingsfilter(1,'已保存')"><a href="#/Inquiry/Assist">已保存</a></li>
+      <li ng-click="orderingsfilter(2,'已提交')"><a href="#/Inquiry/Assist">已提交</a></li>
+      <li ng-click="orderingsfilter(3,'已确认')"><a href="#/Inquiry/Assist">已确认</a></li>
+      <li ng-click="orderingsfilter(4,'已执行')"><a href="#/Inquiry/Assist">已执行</a></li>
+      <li ng-click="orderingsfilter(10,'作废')"><a href="#/Inquiry/Assist">作废</a></li>
     </ul>
     <b>搜 索:</b> <input ng-model="query"/>
   </div>

@@ -102,7 +102,7 @@ angular.module('controllers',['ngResource','services'])
         $('#table').removeClass('my-table-pie').addClass('col-xs-9').css({"margin-left":"70px"});
         $scope.renderCharts=[true,true,true,false,false,false,false,false];
       }else{
-        $scope.selectedchart={name:dataPie[i-3].title,item:params.name}
+        $scope.selectedchart={name:chartTool.dataPie[i-3].title,item:params.name}
         $('.Patients_scrollContent1').addClass('Patients_scrollContent').removeClass('Patients_scrollContent1');
         $('.Patients_fixedHeader1').addClass('Patients_fixedHeader').removeClass('Patients_fixedHeader1');
         $('#leftMargin').addClass('col-xs-1');
@@ -184,19 +184,12 @@ angular.module('controllers',['ngResource','services'])
 
     listenChartsClick(myChart1,myChart2,myChart3,myChart4,myChart5,myChart6,myChart7);
   }
-  
-  var dataPie = [
-    {title : '伤势统计', data : [{value : 10, name : '轻伤',code:"001"}, {value : 5, name : '中度伤',code:"002"}, {value : 15, name : '重伤',code:"003"}, {value : 25, name : '危重伤',code:"004"}] },
-    {title : '伤部统计', data : [{value : 10, name : '头部',code:"001"}, {value : 5, name : '面部',code:"002"}, {value : 15, name : '颈部',code:"003"}, {value : 25, name : '胸部',code:"004"}, {value : 25, name : '背部',code:"005"}, {value : 25, name : '腹部',code:"006"}, {value : 25, name : '腰部',code:"007"}, {value : 25, name : '盆骨',code:"008"}, {value : 25, name : '脊柱脊髓',code:"009"}, {value : 25, name : '上肢',code:"010"}, {value : 25, name : '下肢',code:"011"}, {value : 25, name : '多发伤',code:"012"}, {value : 25, name : '其他',code:"013"}] },
-    {title : '伤类统计', data : [{value : 10, name : '贯通伤',code:"001"}, {value : 5, name : '非贯通伤',code:"002"}, {value : 15, name : '穿透伤',code:"003"}, {value : 25, name : '切线伤',code:"004"},{value : 10, name : '皮肤及软组织伤',code:"005"}, {value : 5, name : '骨折',code:"006"}, {value : 15, name : '断肢和断指（趾）',code:"007"}, {value : 25, name : '其他',code:"008"}] },
-    {title : '伤型统计', data : [{value : 10, name : '炸伤',code:"001"}, {value : 5, name : '枪弹伤',code:"002"}, {value : 15, name : '刃器伤',code:"003"}, {value : 25, name : '挤压伤',code:"004"}, {value : 25, name : '冲击伤',code:"005"}, {value : 25, name : '撞击伤',code:"006"}, {value : 25, name : '烧伤',code:"007"}, {value : 25, name : '冻伤',code:"008"}, {value : 25, name : '毒剂伤',code:"009"}, {value : 25, name : '电离辐射伤',code:"010"}, {value : 25, name : '生物武器伤',code:"011"}, {value : 25, name : '激光损伤',code:"012"}, {value : 25, name : '微博损伤',code:"013"}, {value : 25, name : '海水浸泡伤',code:"014"}, {value : 25, name : '长航疲劳',code:"015"}, {value : 25, name : '复合伤',code:"016"}, {value : 25, name : '其他',code:"017"}] },
-    {title : '并发症统计', data : [{value : 10, name : '大出血',code:"001"}, {value : 5, name : '窒息',code:"002"}, {value : 15, name : '休克',code:"003"}, {value : 25, name : '抽搐',code:"004"}, {value : 25, name : '气胸',code:"005"}, {value : 25, name : '截瘫',code:"006"}, {value : 25, name : '气性坏疽',code:"007"}, {value : 25, name : '低温',code:"008"}, {value : 25, name : '昏迷',code:"009"}, {value : 25, name : '其他',code:"010"}]}
-  ]
+
   function randerDataPie(res,i){
-    var ans={title:dataPie[i].title,data:[]};
+    var ans={title:chartTool.dataPie[i].title,data:[]};
       for(var j=0;j<res.length;++j){
         if(res[j]){
-          ans.data.push(dataPie[i].data[j]);
+          ans.data.push(chartTool.dataPie[i].data[j]);
           ans.data[ans.data.length-1].value=res[j];
         }
       }
@@ -245,6 +238,7 @@ angular.module('controllers',['ngResource','services'])
     }
   }
   $scope.$watch('$stateParams.place',function(){
+    console.log($stateParams.place)
     initcharts(theme_dict[$stateParams.place]);
     $interval.cancel($rootScope.timer);
     $interval.cancel($rootScope.tableTimer);
@@ -331,7 +325,7 @@ angular.module('controllers',['ngResource','services'])
         $('#table').removeClass('my-table-pie').addClass('col-xs-9').css({"margin-left":"70px"});
         $scope.renderCharts=[true,true,true,true,false,false,false,false,false];
       }else{
-        $scope.selectedchart={name:dataPie[i-4].title,item:params.name}
+        $scope.selectedchart={name:chartTool.dataPie[i-4].title,item:params.name}
         $('.Patients_scrollContent1').addClass('Patients_scrollContent').removeClass('Patients_scrollContent1');
         $('.Patients_fixedHeader1').addClass('Patients_fixedHeader').removeClass('Patients_fixedHeader1');
         $('#leftMargin').addClass('col-xs-1');
@@ -365,196 +359,60 @@ angular.module('controllers',['ngResource','services'])
     }
   }
 
-  var myChart1 = echarts.init(document.getElementById('chart1'),'blue');
   var data1={
     title:'救治人员分布',
     data:[
-      {
-        name: "现场急救区",
-        value: 0,
-        code:'PLACE|1'
-      },
-      {
-        name: "检伤分流区-01甲板",
-        value: 0,
-        code:'PLACE|2'
-      },
-      {
-        name: "检伤分流区-02甲板",
-        value: 0,
-        code:'PLACE|3'
-      }
+      {name: "现场急救区", value: 0, code:'PLACE|1'},
+      {name: "检伤分流区-01甲板", value: 0, code:'PLACE|2'},
+      {name: "检伤分流区-02甲板", value: 0, code:'PLACE|3'}
     ]
   }
-  myChart1.setOption(chartTool.initBar('救治人员分布'));
-  // myChart1.setOption(chartTool.getOptionBar(data1));
-
-  var myChart2 = echarts.init(document.getElementById('chart2'),'green');
   var data2={
     title:'患者状态统计',
     data:[
-    {
-            value : 0,
-            name : '已接收',
-            code:1
-          }, {
-            value : 0,
-            name : '已后送',
-            code:2
-          },{
-            value : 0,
-            name: '已送达',
-            code:3
-          },{
-            value : 0,
-            name: '已分诊',
-            code:4
-          }
-        ]
+      {value : 0, name : '已接收', code:1 },
+      {value : 0, name : '已后送', code:2 },
+      {value : 0, name: '已送达', code:3 },
+      {value : 0, name: '已分诊', code:4 }
+    ]
   }
-  myChart2.setOption(chartTool.initBar('患者状态统计'));
-  // myChart2.setOption(chartTool.getOptionBar(data2));
-
-  myChart3 = echarts.init(document.getElementById('chart3'),'gray');
   var data3={
     title:'伤员分布',
     data:[
-        {
-          name: "现场急救区",
-          value: 0,
-          code:'PLACE|1'
-        },
-        {
-          name: "检伤分流区-01甲板",
-          value: 0,
-          code:'PLACE|2'
-        },
-        {
-          name: "检伤分流区-02甲板",
-          value: 0,
-          code:'PLACE|3'
-        }
-      ]
-  }  
-  myChart3.setOption(chartTool.initBar('伤员分布'));
-  // myChart3.setOption(chartTool.getOptionPie(data3));
+      {name: "现场急救区", value: 0, code:'PLACE|1'},
+      {name: "检伤分流区-01甲板", value: 0, code:'PLACE|2'},
+      {name: "检伤分流区-02甲板", value: 0, code:'PLACE|3'}
+    ]
+  }
 
-  var dataPie = [
-    {title : '伤部统计', data : [{value : 10, name : '轻伤'}, {value : 5, name : '中度伤'}, {value : 15, name : '重伤'}, {value : 25, name : '危重伤'}] },
-    {title : '伤型统计', data : [{value : 10, name : '头部'}, {value : 5, name : '面部'}, {value : 15, name : '颈部'}, {value : 25, name : '胸部'}, {value : 25, name : '背部'}, {value : 25, name : '腹部'}, {value : 25, name : '腰部'}, {value : 25, name : '盆骨'}, {value : 25, name : '脊柱脊髓'}, {value : 25, name : '上肢'}, {value : 25, name : '下肢'}, {value : 25, name : '多发伤'}, {value : 25, name : '其他'}] },
-    {title : '伤类统计', data : [{value : 10, name : '贯通伤'}, {value : 5, name : '非贯通伤'}, {value : 15, name : '穿透伤'}, {value : 25, name : '切线伤'},{value : 10, name : '皮肤及软组织伤'}, {value : 5, name : '骨折'}, {value : 15, name : '断肢和断指（趾）'}, {value : 25, name : '其他'}] },
-    {title : '伤势统计', data : [{value : 10, name : '炸伤'}, {value : 5, name : '枪弹伤'}, {value : 15, name : '刃器伤'}, {value : 25, name : '挤压伤'}, {value : 25, name : '冲击伤'}, {value : 25, name : '撞击伤'}, {value : 25, name : '烧伤'}, {value : 25, name : '冻伤'}, {value : 25, name : '毒剂伤'}, {value : 25, name : '电离辐射伤'}, {value : 25, name : '生物武器伤'}, {value : 25, name : '激光损伤'}, {value : 25, name : '微博损伤'}, {value : 25, name : '海水浸泡伤'}, {value : 25, name : '长航疲劳'}, {value : 25, name : '复合伤'}, {value : 25, name : '其他'}] },
-    {title : '并发症统计', data : [{value : 10, name : '大出血'}, {value : 5, name : '窒息'}, {value : 15, name : '休克'}, {value : 25, name : '抽搐'}, {value : 25, name : '气胸'}, {value : 25, name : '截瘫'}, {value : 25, name : '气性坏疽'}, {value : 25, name : '低温'}, {value : 25, name : '昏迷'}, {value : 25, name : '其他'}]}
-  ]
-
-  myChart4 = echarts.init(document.getElementById('chart4'));
-  myChart5 = echarts.init(document.getElementById('chart5'));
-  myChart6 = echarts.init(document.getElementById('chart6'));
-  myChart7 = echarts.init(document.getElementById('chart7'));
-  myChart8 = echarts.init(document.getElementById('chart8'));
+  var myChart1 = echarts.init(document.getElementById('chart1'),'blue');
+  var myChart2 = echarts.init(document.getElementById('chart2'),'green');
+  var myChart3 = echarts.init(document.getElementById('chart3'),'gray');
+  var myChart4 = echarts.init(document.getElementById('chart4'));
+  var myChart5 = echarts.init(document.getElementById('chart5'));
+  var myChart6 = echarts.init(document.getElementById('chart6'));
+  var myChart7 = echarts.init(document.getElementById('chart7'));
+  var myChart8 = echarts.init(document.getElementById('chart8'));
   
+  myChart1.setOption(chartTool.initBar('救治人员分布'));
+  myChart2.setOption(chartTool.initBar('患者状态统计'));
+  myChart3.setOption(chartTool.initBar('伤员分布'));
   myChart4.setOption(chartTool.initPie('伤员数量'));
   myChart5.setOption(chartTool.initPie('伤员数量'));
   myChart6.setOption(chartTool.initPie('伤员数量'));
   myChart7.setOption(chartTool.initPie('伤员数量'));
   myChart8.setOption(chartTool.initPie('伤员数量'));
   
-
-
-  var option4 = {
-    title :'伤型统计',
-    data : [{
-        value : 10,
-        name : '皮肤及软组织挫伤'
-      }, {
-        value : 5,
-        name : '皮肤及软组织撕裂'
-      }, {
-        value : 15,
-        name : '盲管伤'
-      }, {
-        value : 25,
-        name : '穿透伤'
+  function randerDataPie(res,i){
+    var ans={title:chartTool.dataPie[i].title,data:[]};
+      for(var j=0;j<res.length;++j){
+        if(res[j]){
+          ans.data.push(chartTool.dataPie[i].data[j]);
+          ans.data[ans.data.length-1].value=res[j];
+        }
       }
-    ]
-  };
-  myChart4.setOption(chartTool.getOptionPie(option4));
-
-  var option5 = {
-    title : '伤类统计',
-    data : [{
-        value : 3,
-        name : '刃器伤'
-      }, {
-        value : 18,
-        name : '枪弹伤'
-      }, {
-        value : 15,
-        name : '撞击伤'
-      }, {
-        value : 25,
-        name : '烧伤'
-      }
-    ]
-  };
-  myChart5.setOption(chartTool.getOptionPie(option5));
-
-  var option6 = {
-    title : '伤势统计',
-    data : [{
-        value : 3,
-        name : '危重伤'
-      }, {
-        value : 18,
-        name : '轻伤'
-      }, {
-        value : 25,
-        name : '重伤'
-      }
-    ]
-  };
-  myChart6.setOption(chartTool.getOptionPie(option6));
-
-  var option7 = {
-    title : '并发症统计',
-    data : [{
-        value : 3,
-        name : '大出血'
-      }, {
-        value : 18,
-        name : '气性坏疽'
-      }, {
-        value : 15,
-        name : '截瘫'
-      }, {
-        value : 25,
-        name : '窒息'
-      }
-    ]
-  };
-  myChart7.setOption(chartTool.getOptionPie(option7));
-  var option8 = {
-    title : '伤部统计',
-    data : [{
-        value : 10,
-        name : '上肢'
-      }, {
-        value : 5,
-        name : '脊柱脊髓'
-      }, {
-        value : 15,
-        name : '面部'
-      }, {
-        value : 25,
-        name : '颈部'
-      }, {
-        value : 20,
-        name : '腰部及盆骨'
-      }
-    ]
-  };
-  myChart8.setOption(chartTool.getOptionPie(option8));
-
+    return ans;
+  }
   function loadData(){
     Deliver.Savors()
     .then(function(data){
@@ -587,6 +445,12 @@ angular.module('controllers',['ngResource','services'])
     },function(err){
 
     });
+    //伤情信息
+    // myChart4.setOption(chartTool.getOptionPie(option4));
+    // myChart5.setOption(chartTool.getOptionPie(option5));
+    // myChart6.setOption(chartTool.getOptionPie(option6));
+    // myChart7.setOption(chartTool.getOptionPie(option7));
+    // myChart8.setOption(chartTool.getOptionPie(option8));
   }
   loadData();
   $rootScope.timer2=$interval(function(){loadData()},5000);
@@ -732,14 +596,15 @@ angular.module('controllers',['ngResource','services'])
 }])
 .controller('AssistInfoCtrl',['$scope','Storage','orderings','Info',function($scope,Storage,orderings,Info){
   $scope.orderings={};
-  orderings.Getorderings({DepartmentCode:'DEPT05',Status:'',ClinicDate:'',PatientName:''}).then(
-      function(data){
-          $scope.orderings=data.data;
+  // orderings.Getorderings({DepartmentCode:'DEPT05',Status:'',ClinicDate:'',PatientName:''}).then(
+  //     function(data){
+  //         $scope.orderings=data.data;
          
-      },function(e){
-          console.log(e)
-      });
-  $scope.orderingsfilter = function(f){
+  //     },function(e){
+  //         console.log(e)
+  //     });
+  $scope.orderingsfilter = function(f,item){
+    $scope.item=item;
      orderings.Getorderings({DepartmentCode:'DEPT05',Status:f,ClinicDate:'',PatientName:''}).then(
       function(data){
           $scope.orderings=data.data;
@@ -748,6 +613,7 @@ angular.module('controllers',['ngResource','services'])
           console.log(e)
       });
   };
+  $scope.orderingsfilter('','全部');
   // 读入modal所需生理生化信息
   $scope.readPatientDetails = function(PatientId){
     // 读入生理参数
