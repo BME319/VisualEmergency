@@ -116,7 +116,7 @@ angular.module('VisualEmergency',['ui.router','controllers','services','filters'
 
 }])
 .run(['$rootScope','$stateParams','$interval',function($rootScope,$stateParams,$interval){
-  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){   
+  $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     $interval.cancel($rootScope.timer);    
     $("ul.nav li").removeClass('active');
     switch(toState.url.substr(1,4)){

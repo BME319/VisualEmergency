@@ -47,6 +47,28 @@
     position: relative;
     float: left;
 }
+.my-close-x{
+    float:right;
+    margin-right:28px;
+    margin-top:3px;
+    vertical-align:center
+}
+.my-close-x span{
+    font-size: 24px
+}
+.my-close-x:link{
+    color: #FF4081;
+}
+.my-close-x:visited{
+    color:#C62828;
+}
+.my-close-x:hover{
+    color: #F44336;
+}
+.my-close-x:active{
+    color: #FF1744;
+}
+
 /*
 thead, tbody, tr, td, th { display: block; }
 .my-scroll-table tr:after {
@@ -78,7 +100,7 @@ tbody td, thead th {
 /*lzn*/
 div.tableContainer-deliver {
     clear: both;
-    height: 410px; 
+    height: 450px; 
     overflow: auto;
     width: 100% /* Remember to leave 16px for the scrollbar! */
     -moz-box-shadow: 1.5px 2px 6px #000;
@@ -685,6 +707,7 @@ thead.Patients_fixedHeader1 tr th{
 
 thead.Patients_fixedHeader1 th {
     width: 50px;
+    vertical-align: :center;
 }
  
 
