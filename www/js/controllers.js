@@ -1,11 +1,11 @@
 angular.module('controllers',['ngResource','services'])
 .controller('deliverCtrl',['$scope','DeliverInfo',  function($scope,DeliverInfo){
   $scope.places=[
-  {imgUrl:'image/OR.jpg',name:'手术室',action:'OperationRoom'},
-  {imgUrl:'image/ICU.jpg',name:'ICU',action:'ICURoom'},
-  {imgUrl:'image/commonWard.jpg',name:'普通病房',action:'CommonRoom'},
-  {imgUrl:'image/burnWard.jpg',name:'烧伤病房',action:'BurnRoom'},
-  {imgUrl:'image/zhongshangWard.jpg',name:'重伤病房',action:'SeriousInjuredRoom'},
+  {imgUrl:'image/OR.jpg',name:'手术室',action:'Dept01'},
+  {imgUrl:'image/ICU.jpg',name:'ICU',action:'Dept03'},
+  {imgUrl:'image/commonWard.jpg',name:'普通病房',action:'Dept05'},
+  {imgUrl:'image/burnWard.jpg',name:'烧伤病房',action:'Dept04'},
+  {imgUrl:'image/zhongshangWard.jpg',name:'重伤病房',action:'Dept02'},
   {imgUrl:'image/outPatient.jpg',name:'门诊救治人员',action:'OutPatientRoom'},
   ];
   $scope.p= {'imgUrl':'image/RescueStaffDistribution.jpg',name:'救治人员',action:'OutPatientRoom'};

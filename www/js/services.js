@@ -482,7 +482,7 @@ angular.module('services',['ngResource'])
       legend : {
         bottom : 'bottom',
         textStyle:{
-          fontSize:16
+          fontSize:15
         },
         data : []
       },
@@ -502,7 +502,7 @@ angular.module('services',['ngResource'])
         {
           name : seriesName,
           type : 'pie',
-          radius : [0, '70%'],
+          radius : [0, '60%'],
           center : ['50%', '50%'],
           selectedMode:'single',
           label: {

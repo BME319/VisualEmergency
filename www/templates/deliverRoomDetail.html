@@ -1,14 +1,14 @@
 <div class="row">
-	<div id='chart1' ng-show="renderCharts[1]" style="height:440px" class="col-xs-12 col-md-5 col-md-offset-1"></div>
-	<div id='chart2' ng-show="renderCharts[2]" style="height:440px" class="col-xs-12 col-md-5"></div>
+	<div id='chart1' ng-show="renderCharts[1]" style="height:420px" class="col-xs-12 col-md-5 col-md-offset-1"></div>
+	<div id='chart2' ng-show="renderCharts[2]" style="height:420px" class="col-xs-12 col-md-5"></div>
 </div>
 <div class="row">
   <div id="leftMargin" style="height:430px;display:inline"></div>
-	<div id='chart3' ng-show="renderCharts[3]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
-	<div id='chart4' ng-show="renderCharts[4]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths" ></div>
-	<div id='chart5' ng-show="renderCharts[5]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
-	<div id='chart6' ng-show="renderCharts[6]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
-	<div id='chart7' ng-show="renderCharts[7]" style="height:430px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart3' ng-show="renderCharts[3]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart4' ng-show="renderCharts[4]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths" ></div>
+	<div id='chart5' ng-show="renderCharts[5]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart6' ng-show="renderCharts[6]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart7' ng-show="renderCharts[7]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
 	<div id='table' ng-show="renderCharts[0]" class="col-xs-9" >
     <div style="background-color:#9999ff;font-size:22px;display:inline;padding:3px 8px 3px 8px;font-weight:bold;border-radius: 2px; box-shadow: 0 0 2px  #fff inset">{{selectedchart.name}}：{{selectedchart.item}}</div>
   	<div class="tableContainer-deliver">
@@ -24,7 +24,10 @@
 	          <th>战伤等级</th>
 	          <th>战伤计分</th>
 	          <th>救治人员</th>
-	          <th><input type="button" value="返回" style="float:right;margin-right:20px;margin-top:3px" class="btn btn-primary btn-sm btn-danger" ng-click = "closeTable()"/></th>
+	          <th>
+            <!-- <input type="button" value="" style="float:right;margin-right:20px;margin-top:3px" class="btn btn-primary btn-sm btn-danger glyphicon glyphicon-remove" ng-click = "closeTable()"> -->
+              <a href="" class="my-close-x" ng-click = "closeTable()"> <span class="glyphicon glyphicon-remove"></span> </a>
+            </th>
 	        </tr>
 	      </thead>
 	      <tbody class="Patients_scrollContent">
