@@ -403,102 +403,6 @@ angular.module('controllers',['ngResource','services'])
   myChart7.setOption(chartTool.initPie('伤员数量'));
   myChart8.setOption(chartTool.initPie('伤员数量'));
   
-
-
-  // var option4 = {
-  //   title :'伤型统计',
-  //   data : [{
-  //       value : 10,
-  //       name : '皮肤及软组织挫伤'
-  //     }, {
-  //       value : 5,
-  //       name : '皮肤及软组织撕裂'
-  //     }, {
-  //       value : 15,
-  //       name : '盲管伤'
-  //     }, {
-  //       value : 25,
-  //       name : '穿透伤'
-  //     }
-  //   ]
-  // };
-  // myChart4.setOption(chartTool.getOptionPie(option4));
-
-  // var option5 = {
-  //   title : '伤类统计',
-  //   data : [{
-  //       value : 3,
-  //       name : '刃器伤'
-  //     }, {
-  //       value : 18,
-  //       name : '枪弹伤'
-  //     }, {
-  //       value : 15,
-  //       name : '撞击伤'
-  //     }, {
-  //       value : 25,
-  //       name : '烧伤'
-  //     }
-  //   ]
-  // };
-  // myChart5.setOption(chartTool.getOptionPie(option5));
-
-  // var option6 = {
-  //   title : '伤势统计',
-  //   data : [{
-  //       value : 3,
-  //       name : '危重伤'
-  //     }, {
-  //       value : 18,
-  //       name : '轻伤'
-  //     }, {
-  //       value : 25,
-  //       name : '重伤'
-  //     }
-  //   ]
-  // };
-  // myChart6.setOption(chartTool.getOptionPie(option6));
-
-  // var option7 = {
-  //   title : '并发症统计',
-  //   data : [{
-  //       value : 3,
-  //       name : '大出血'
-  //     }, {
-  //       value : 18,
-  //       name : '气性坏疽'
-  //     }, {
-  //       value : 15,
-  //       name : '截瘫'
-  //     }, {
-  //       value : 25,
-  //       name : '窒息'
-  //     }
-  //   ]
-  // };
-  // myChart7.setOption(chartTool.getOptionPie(option7));
-  // var option8 = {
-  //   title : '伤部统计',
-  //   data : [{
-  //       value : 10,
-  //       name : '上肢'
-  //     }, {
-  //       value : 5,
-  //       name : '脊柱脊髓'
-  //     }, {
-  //       value : 15,
-  //       name : '面部'
-  //     }, {
-  //       value : 25,
-  //       name : '颈部'
-  //     }, {
-  //       value : 20,
-  //       name : '腰部及盆骨'
-  //     }
-  //   ]
-  // };
-  // myChart8.setOption(chartTool.getOptionPie(option8));
-
   function randerDataPie(res,i){
     var ans={title:chartTool.dataPie[i].title,data:[]};
       for(var j=0;j<res.length;++j){
@@ -542,6 +446,11 @@ angular.module('controllers',['ngResource','services'])
 
     });
     //伤情信息
+    // myChart4.setOption(chartTool.getOptionPie(option4));
+    // myChart5.setOption(chartTool.getOptionPie(option5));
+    // myChart6.setOption(chartTool.getOptionPie(option6));
+    // myChart7.setOption(chartTool.getOptionPie(option7));
+    // myChart8.setOption(chartTool.getOptionPie(option8));
   }
   loadData();
   $rootScope.timer2=$interval(function(){loadData()},5000);
