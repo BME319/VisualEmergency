@@ -58,13 +58,17 @@
               </h4>
            </div>
            <div class="modal-body">
-              <p>血氧饱和度：{{PatientDetails.Oxygen}}</p>
-              <p>脉搏：{{PatientDetails.Pulse}}</p>
-              <p>心率：{{PatientDetails.HeartRate}}</p>
-              <p>呼吸：{{PatientDetails.Breath}}</p>
-              <p>神智：{{PatientDetails.Consciousness}}</p>
-              <p>血压：{{PatientDetails.DBP}}，{{PatientDetails.SBP}}</p>
-              <p>体温：{{PatientDetails.Temperature}}</p>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
+                <tbody>
+                  <tr> <td>血氧饱和度： {{PatientDetails.Oxygen}}</td> </tr>
+                  <tr> <td>脉搏： {{PatientDetails.Pulse}}</td> </tr>
+                  <tr> <td>心率： {{PatientDetails.HeartRate}}</td> </tr>
+                  <tr> <td>呼吸： {{PatientDetails.Breath}}</td> </tr>
+                  <tr> <td>神智： {{PatientDetails.Consciousness}}</td> </tr>
+                  <tr> <td>血压： {{PatientDetails.DBP}}，{{PatientDetails.SBP}}</td> </tr>
+                  <tr> <td>体温： {{PatientDetails.Temperature}}</td> </tr>
+                </tbody>
+              </table>
            </div>
            <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -87,8 +91,13 @@
               </h4>
            </div>
            <div class="modal-body">
-              <p ng-if = "!PatientBios">无生化参数信息</p>
-              <p ng-repeat = "PatientBio in PatientBios">{{PatientBio.des}}：{{PatientBio.val}}</p>
+              <table width="100%" cellspacing="0" cellpadding="0" border="0" class="scrollTable table-striped">
+                <tbody>
+                  <tr ng-repeat="item in PatientBios">
+                    <td>{{item.type}}： {{item.value}}</td>
+                  </tr>
+                </tbody>
+              </table>
            </div>
            <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">关闭
