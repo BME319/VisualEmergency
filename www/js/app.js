@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('VisualEmergency',['ui.router','controllers','services','filters','directives'])
+angular.module('VisualEmergency',['ui.router','controllers','services','directives'])
 
 .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
   $urlRouterProvider.otherwise("/home");

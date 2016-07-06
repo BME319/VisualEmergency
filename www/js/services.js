@@ -63,6 +63,12 @@ angular.module('services',['ngResource'])
       Savors:{method:'GET',params:{route:'Savors'},timeout:10000},
       InjuryStat:{method:'GET',params:{route:'InjuryStat'},timeout:10000},
       PatientsInfo:{method:'GET',params:{route:'PatientsInfo',Status:'@Status',Place:'@Place'},timeout:10000},
+      DeliWayStat:{method:'GET',params:{route:'DeliWayStat'},timeout:10000},
+      DeptCodeStat:{method:'GET',params:{route:'DeptCodeStat'},timeout:10000},
+      RecuredStat:{method:'GET',params:{route:'RecuredStat'},timeout:10000},
+      RecuredInfoByInjury:{method:'GET',params:{route:'RecuredInfoByInjury',InjuryType:'@InjuryType'},timeout:10000},
+      PatientsByDept:{method:'GET',params:{route:'PatientsByDept',DeptCode:'@DeptCode'},timeout:10000},
+      PatientsByWay:{method:'GET',params:{route:'PatientsByWay',DeliverWay:'@DeliverWay'},timeout:10000},
       PbyDI:{method:'GET',params:{route:'PbyDI',DeptCode:'@DeptCode',InjuryType:'@InjuryType'},timeout:10000}
     })
   }
@@ -185,6 +191,21 @@ angular.module('services',['ngResource'])
     });
     return deferred.promise;
   };
+  self.renderBios=function(data){
+    var bios=['血清钾', '血清钠', '血清钙', '血液PH值', '碳酸氢根', '氯离子', '二氧化碳分压', '葡萄糖', '血红蛋白', '乳酸'];
+    var ans=[];
+    if(Array.isArray(data)){
+      for(var i in data){
+        ans.push({type:data[i].des,value:data[i].val});
+        bios.splice(bios.indexOf(data[i].des),1);
+      }
+    }
+    for(var i in bios){
+      ans.push({type:bios[i],value:''});
+    }
+    return ans;
+  }
+
   return self;
 }])
 
@@ -236,9 +257,9 @@ angular.module('services',['ngResource'])
     return deferred.promise;
   };
   // 张桠童添加
-  self.GetSurgeriesInfoDetail = function(RoomId){
+  self.GetSurgeriesInfoDetail = function(RoomId,OrderNo){
     var deferred = $q.defer();
-    Data.TrnOrderingSurgery.SurgeriesInfoDetail({RoomId:RoomId},function (data,headers) {
+    Data.TrnOrderingSurgery.SurgeriesInfoDetail({PatientId:RoomId,OrderNo:OrderNo},function (data,headers) {
       deferred.resolve(data);
     },function (err) {
       deferred.reject(err);
@@ -399,9 +420,63 @@ angular.module('services',['ngResource'])
     });
     return deferred.promise;
   };
+  serve.DeptCodeStat = function(){
+     var deferred = $q.defer();
+    Data.Deliver.DeptCodeStat({},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.DeliWayStat = function(){
+     var deferred = $q.defer();
+    Data.Deliver.DeliWayStat({},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.RecuredInfoByInjury = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.RecuredInfoByInjury(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.RecuredStat = function(){
+     var deferred = $q.defer();
+    Data.Deliver.RecuredStat({},function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
   serve.PbyDI = function(obj){
      var deferred = $q.defer();
     Data.Deliver.PbyDI(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.PatientsByDept = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.PatientsByDept(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.PatientsByWay = function(obj){
+     var deferred = $q.defer();
+    Data.Deliver.PatientsByWay(obj,function (data,headers) {
       deferred.resolve(data);
     },function (err) {
       deferred.reject(err);
@@ -532,7 +607,7 @@ angular.module('services',['ngResource'])
     }
   }
   serve.dataPie = [
-    {title : '伤势统计', data : [{value : 0, name : '轻伤',code:"001"}, {value : 0, name : '中度伤',code:"002"}, {value : 0, name : '重伤',code:"003"}, {value : 0, name : '危重伤',code:"004"}] },
+    {title : '伤势统计', data : [{value : 0, name : '轻伤',code:"轻伤"}, {value : 0, name : '中度伤',code:"中度伤"}, {value : 0, name : '重伤',code:"重伤"}, {value : 0, name : '危重伤',code:"危重伤"}] },
     {title : '伤部统计', data : [{value : 0, name : '头部',code:"001"}, {value : 0, name : '面部',code:"002"}, {value : 0, name : '颈部',code:"003"}, {value : 0, name : '胸（背）部',code:"004"}, {value : 0, name : '  腹（腰）部及盆骨（会阴）',code:"005"}, {value : 0, name : '脊柱脊髓',code:"006"}, {value : 0, name : '上肢',code:"007"}, {value : 0, name : '下肢',code:"008"}, {value : 0, name : '多发伤',code:"009"}, {value : 0, name : '其他',code:"010"}] },
     {title : '伤类统计', data : [{value : 0, name : '炸伤',code:"001"}, {value : 0, name : '枪弹伤',code:"002"}, {value : 0, name : '刃器伤',code:"003"}, {value : 0, name : '挤压伤',code:"004"}, {value : 0, name : '冲击伤',code:"005"}, {value : 0, name : '撞击伤',code:"006"}, {value : 0, name : '烧伤',code:"007"}, {value : 0, name : '冻伤',code:"008"}, {value : 0, name : '毒剂伤',code:"009"}, {value : 0, name : '电离辐射伤',code:"010"}, {value : 0, name : '生物武器伤',code:"011"}, {value : 0, name : '激光损伤',code:"012"}, {value : 0, name : '微博损伤',code:"013"}, {value : 0, name : '复合伤',code:"014"}, {value : 0, name : '海水浸泡伤',code:"015"}, {value : 0, name : '长航疲劳',code:"016"}, {value : 0, name : '其他',code:"017"}] },
     {title : '伤型统计', data : [{value : 0, name : '贯穿伤',code:"001"}, {value : 0, name : '穿透伤  ',code:"002"}, {value : 0, name : '盲管伤',code:"003"}, {value : 0, name : '切线伤',code:"004"},{value : 0, name : '皮肤及软组织伤（擦伤）',code:"005"}, {value : 0, name : '皮肤及软组织伤（挫伤）',code:"006"}, {value : 0, name : '皮肤及软组织伤（撕裂）',code:"007"}, {value : 0, name : '皮肤及软组织伤（撕脱）',code:"008"}, {value : 0, name : '骨折',code:"009"}, {value : 0, name : '断肢和断指（趾）',code:"010"}, {value : 0, name : '其他',code:"011"}] },
