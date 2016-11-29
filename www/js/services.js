@@ -1,4 +1,4 @@
-angular.module('services',['ngResource'])
+﻿angular.module('services',['ngResource'])
 .factory('Storage', ['$window', function ($window) { 
 	return {
     set: function(key, value) {
@@ -16,13 +16,9 @@ angular.module('services',['ngResource'])
 	};
 }])
 .constant('CONFIG', {
-  makeUrl: 'http://10.12.43.35:57772/csp/outp/_DeepSee.UserPortal.DashboardViewer.zen?NOTITLE=1&NOMODIFY=1&DASHBOARD=HZDashboards/',
-  baseUrl: 'http://10.12.43.35:9090/Api/v1/',  
-  // chart_conf:{
-  //   legend:{
-  //     fontSize:16//图列字体大小
-  //   }
-  // }
+  makeUrl: 'http://121.43.107.106:57772/csp/outp/_DeepSee.UserPortal.DashboardViewer.zen?NOTITLE=1&NOMODIFY=1&DASHBOARD=HZDashboards/',
+  baseUrl: 'http://121.43.107.106:9090/Api/v1/',  
+  socketUrl: 'ws://121.43.107.106:4141'
 })
 .factory('Data', ['$resource', '$q','$interval' ,'CONFIG','Storage' , function($resource,$q,$interval ,CONFIG,Storage){ 
 	var serve={};
@@ -69,7 +65,9 @@ angular.module('services',['ngResource'])
       RecuredInfoByInjury:{method:'GET',params:{route:'RecuredInfoByInjury',InjuryType:'@InjuryType'},timeout:10000},
       PatientsByDept:{method:'GET',params:{route:'PatientsByDept',DeptCode:'@DeptCode'},timeout:10000},
       PatientsByWay:{method:'GET',params:{route:'PatientsByWay',DeliverWay:'@DeliverWay'},timeout:10000},
-      PbyDI:{method:'GET',params:{route:'PbyDI',DeptCode:'@DeptCode',InjuryType:'@InjuryType'},timeout:10000}
+      PbyDI:{method:'GET',params:{route:'PbyDI',DeptCode:'@DeptCode',InjuryType:'@InjuryType'},timeout:10000},
+      BedPlace:{method:'GET',params:{route:'BedPlace'},timeout:10000},
+      rescueLoc:{method:'GET',params:{route:'rescue/location'},timeout:10000}
     })
   }
   var MstUser = function(){
@@ -483,7 +481,120 @@ angular.module('services',['ngResource'])
     });
     return deferred.promise;
   };
+  serve.BedPlace = function(obj){
+    var deferred = $q.defer();
+    Data.Deliver.BedPlace(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
+  serve.rescueLoc = function(obj){
+    var deferred = $q.defer();
+    Data.Deliver.rescueLoc(obj,function (data,headers) {
+      deferred.resolve(data);
+    },function (err) {
+      deferred.reject(err);
+    });
+    return deferred.promise;
+  };
   return serve;
+}])
+.factory('getLoc',['Deliver',function(Deliver){
+  var cDict=['等待手术','术后观察','状态平稳'];
+  // function randomCondition(){
+  //   var bed = arguments[0];
+  //   if(bed==='03' || bed==='05' || bed==='08'){
+  //     return '状态平稳';
+  //   }else{
+  //     return cDict[Math.floor(Math.random()*3)];
+  //   }
+  // }
+  function bedNumber(bedstr){
+    if(bedstr.length>6){
+      if(bedstr.substr(0,3)=='500')
+        return bedstr.slice(6);
+      if(bedstr.length>8 && bedstr.substr(0,6)=='221701')
+        return bedstr.slice(8);
+      return 0;
+    }
+    return 0;
+  }
+  return function(arr,dept){
+    if(dept=='OutPatientRoom')
+      return arr;
+    // if(dept=='Dept01'){
+    //   arr.map(function(patient,index){
+    //     patient.Loc='手术室'+index;
+    //     patinet.Condition = 
+    //   })
+    // }
+    arr.map(function(patient){
+      Deliver.BedPlace({PatientId:patient.PId,DeptCode:dept})
+      .then(function(data){
+        // console.log(data);
+        var loca='';
+        var d=data.toJSON();
+        for(var key in d){
+          loca=loca.concat(d[key]);
+        }
+        // console.log(d);
+        var bedN=bedNumber(loca);
+        if(bedN===0){
+          patient.Loc='待床';
+        }else{
+          patient.Loc=bedN+'床';
+        }
+        if(bedN==='03' || bedN==='05' || bedN==='08'){
+          patient.Condition = '状态平稳';
+        }else{
+          patient.Condition = cDict[patient.Age%3];
+        }
+        // patient.Condition=randomCondition(bedN);
+        return patient;
+      },function(err){
+        patient.Condition=cDict[patient.Age%3];
+        patient.Loc='获取失败';
+        return patient;
+      });
+    });
+    return arr;
+  }
+}])
+.factory('getLoc2',['Deliver',function(Deliver){
+  var loc_dict={
+    5001 : '普通病房',
+    5002 : '重伤病房',
+    5003 : '烧伤病房',
+    5004 : '手术室',
+    5006 : '门诊',
+    5007 : '检伤分流区',
+    221701 : 'ICU'
+  };
+  return function(arr){
+    arr.map(function(patient){
+      Deliver.rescueLoc({PatientId:patient.PId})
+      .then(function(data){
+        var d=data.toJSON();
+        var loca='';
+        for(var key in d){
+          loca=loca.concat(d[key]);
+        }
+        if(loca=='NA'||loca==''){
+          loca='正在运送途中...';
+        }else{
+          loca=loc_dict[loca] || loca;
+        }
+        patient.Loc=loca;
+        return patient;
+      },function(err){
+        patient.Loc='获取失败';
+        return patient;
+      });
+    });
+    return arr;
+  }
 }])
 .factory('chartTool',['CONFIG',function(CONFIG){
   var serve={};
@@ -526,7 +637,7 @@ angular.module('services',['ngResource'])
           label : {
             normal:{
               show : true,
-              position : 'insideTop',
+              position : 'top',
               textStyle:{fontSize:26 }           
             }
           },   
@@ -590,12 +701,29 @@ angular.module('services',['ngResource'])
       ]        
     }
   }
-
-  serve.getOptionBar = function(data){
+  function labelOnData(percentage){
+    return {
+      normal:{
+        show : true,
+        position : 'top',
+        formatter: '{c} ('+ percentage+'%)',
+        textStyle:{fontSize:26 }         
+      }
+    };
+  }
+  function getLabel(data,type){
+    if(!type)
+      return data;
+    var sum=data[0].value+data[2].value;
+    data[0].label=labelOnData(parseInt((data[0].value/sum)*100));
+    data[2].label=labelOnData(parseInt((data[2].value/sum)*100));
+    return data;
+  }
+  serve.getOptionBar = function(data,type){
     return {
       title : {text : data.title },
-      xAxis : {data : data.data.map(function(d){return {value:d.name,textStyle:{color:'#678',fontSize:16}}})},
-      series : [{data : data.data}]
+      xAxis : {data : data.data.map(function(d){return {value:d.name,textStyle:{color:'#456',fontSize:18}}})},
+      series : [{data : getLabel(data.data,type)}]
     }
   }
 
@@ -615,3 +743,8 @@ angular.module('services',['ngResource'])
   ]
   return serve;
 }])
+// .factory('GIS',function(){
+//   var serve={};
+//   serve.gis=window.open("/haizong/haizong-webgis/gis.html","","",true);
+//   return serve;
+// })

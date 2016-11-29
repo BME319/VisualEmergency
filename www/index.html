@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="/image/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/image/favicon.ico" type="image/x-icon">
     <link href="lib/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/ngDialog.min.css" rel="stylesheet">
+    <link href="css/ngDialog-theme-default.min.css" rel="stylesheet">
     <!-- 自定义css -->
     <link href="css/mystyle.css" rel="stylesheet">
     <!--angularjs js -->
@@ -32,6 +34,9 @@
     <script src="lib/echarts3/theme/roma.js"></script>
     <script src="lib/echarts3/theme/shine.js"></script>
     <!-- <script src="lib/echarts3/theme/vintage.js"></script> -->
+
+    <script src="lib/ngDialog.min.js"></script>
+    <script src="lib/socket.io.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -82,6 +87,7 @@
       }, function() {
         $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(300);
       });
+      //gisWnd=window.open("/haizong/haizong-webgis/gis.html","","",true);
     </script>
   </body>
 </html>

@@ -117,7 +117,10 @@ angular.module('VisualEmergency',['ui.router','controllers','services','directiv
 }])
 .run(['$rootScope','$stateParams','$interval',function($rootScope,$stateParams,$interval){
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
-    $interval.cancel($rootScope.timer);    
+    $interval.cancel($rootScope.timer);
+    $interval.cancel($rootScope.timer2);
+    $interval.cancel($rootScope.tableTimer);
+    $interval.cancel($rootScope.tableTimer2);
     $("ul.nav li").removeClass('active');
     switch(toState.url.substr(1,4)){
       case 'deli':$('li#deli').addClass('active');break;
@@ -162,4 +165,5 @@ angular.module('VisualEmergency',['ui.router','controllers','services','directiv
       default:$rootScope.subHeader='';break;
     }
   })
+  $rootScope.GIS=window.open("/haizong/haizong-webgis/gis.html","","",true);
 }])
