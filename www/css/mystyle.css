@@ -1,3 +1,16 @@
+.modal-large-font h4{
+    color: #00B0FF;
+    font-weight:bold;
+    font-size:30px;
+}
+.modal-large-font td{
+    font-size:28px;
+    font-weight:bold;
+}
+.modal-large-font p{
+    font-size:20px;
+    font-weight:bold;
+}
 .col-xs-5ths,
 .col-sm-5ths,
 .col-md-5ths,
@@ -77,667 +90,679 @@
 }
 
 /*lzn*/
-div.tableContainer-deliver {
-    clear: both;
-    height: 450px; 
-    overflow: auto;
-    width: 100% /* Remember to leave 16px for the scrollbar! */
-    -moz-box-shadow: 1.5px 2px 6px #000;
-    -webkit-box-shadow: 1.5px 2px 6px #000;
-    box-shadow: 1.5px 2px 6px #000;
-}
-div.tableContainer-deliver table {
-    text-align: center;
-    float: left;
-    width: 100%;
-}
-div.tableContainer-deliver table thead{
-    background-color:#ccccff;
-    vertical-align: bottom;
-}
-div.tableContainer-deliver table tr{
-    height:53px;
-}
-div.tableContainer {
-    clear: both;
-    
-    height: 820px; 
-    overflow: auto;
-    width: 100% /* Remember to leave 16px for the scrollbar! */
-}
-div.tableContainer table {
-    text-align: center;
-    float: left;
-    width: 100%;
-    
-   
-   
-}
-div.tableContainer table thead{
-    background-color:#ccccff;
-    vertical-align: bottom;
-}
-div.tableContainer table tr{
-    height:53px;
-}
+    div.tableContainer-deliver {
+        clear: both;
+        height: 450px; 
+        overflow: auto;
+        width: 100% /* Remember to leave 16px for the scrollbar! */
+        -moz-box-shadow: 1.5px 2px 6px #000;
+        -webkit-box-shadow: 1.5px 2px 6px #000;
+        box-shadow: 1.5px 2px 6px #000;
+    }
+    div.tableContainer-deliver table {
+        text-align: center;
+        float: left;
+        width: 100%;
+    }
+    div.tableContainer-deliver table thead{
+        background-color:#ccccff;
+        vertical-align: bottom;
+    }
+    div.tableContainer-deliver table tr{
+        height:53px;
+    }
+    div.tableContainer {
+        clear: both;
+        
+        height: 820px; 
+        overflow: auto;
+        width: 100% /* Remember to leave 16px for the scrollbar! */
+    }
+    div.tableContainer table {
+        text-align: center;
+        float: left;
+        width: 100%;
+        
+       
+       
+    }
+    div.tableContainer table thead{
+        background-color:#ccccff;
+        vertical-align: bottom;
+    }
+    div.tableContainer table tr{
+        height:53px;
+    }
 /*DoctorsInfo*/
-tbody.DoctorsInfo_scrollContent {
-    margin-top:10px;
-    display: block;
-    height: 752px;
-    overflow: auto;
-    width: 100%;
-    
-}
-tbody td {
-    height: 32px;
-}
+    tbody.DoctorsInfo_scrollContent {
+        margin-top:10px;
+        display: block;
+        height: 752px;
+        overflow: auto;
+        width: 100%;
+        
+    }
+    tbody td {
+        height: 32px;
+    }
 
 
-thead.DoctorsInfo_fixedHeader tr {
-    display: block;
-    
-}
- 
+    thead.DoctorsInfo_fixedHeader tr {
+        display: block;
+        
+    }
+     
 
-thead.DoctorsInfo_fixedHeader th {
-   
-    width: 180px;
-    text-align: center;
-    height:40px;
-}
- 
+    thead.DoctorsInfo_fixedHeader th {
+       
+        width: 180px;
+        text-align: center;
+        height:40px;
+    }
+     
 
-thead.DoctorsInfo_fixedHeader th + th { 
-    width: 190px;
-}
- 
+    thead.DoctorsInfo_fixedHeader th + th { 
+        width: 190px;
+    }
+     
 
-thead.DoctorsInfo_fixedHeader th + th + th { 
-    width: 200px;
-}
-thead.DoctorsInfo_fixedHeader th + th + th + th{ 
-    width: 190px;
-}
-thead.DoctorsInfo_fixedHeader th + th + th + th + th{ 
-    width: 220px;
-}
-thead.DoctorsInfo_fixedHeader th + th + th + th + th + th{
-    width: 170px;
-}
-thead.DoctorsInfo_fixedHeader th + th + th + th + th + th + th{
-    width:170px;
-}
-thead.DoctorsInfo_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:190px;
-}
+    thead.DoctorsInfo_fixedHeader th + th + th { 
+        width: 200px;
+    }
+    thead.DoctorsInfo_fixedHeader th + th + th + th{ 
+        width: 190px;
+    }
+    thead.DoctorsInfo_fixedHeader th + th + th + th + th{ 
+        width: 220px;
+    }
+    thead.DoctorsInfo_fixedHeader th + th + th + th + th + th{
+        width: 170px;
+    }
+    thead.DoctorsInfo_fixedHeader th + th + th + th + th + th + th{
+        width:170px;
+    }
+    thead.DoctorsInfo_fixedHeader th + th + th + th + th + th + th + th{ 
+        width:190px;
+    }
 
-tbody.DoctorsInfo_scrollContent td {
-    width: 180px;
-    height:33px;
-    
-}
- 
+    tbody.DoctorsInfo_scrollContent td {
+        width: 180px;
+        height:33px;
+        
+    }
+     
 
-tbody.DoctorsInfo_scrollContent td + td { 
-    width: 190px;
-}
- 
+    tbody.DoctorsInfo_scrollContent td + td { 
+        width: 190px;
+    }
+     
 
-tbody.DoctorsInfo_scrollContent td + td + td { 
-    width: 200px;
-}
-tbody.DoctorsInfo_scrollContent td + td + td + td{ 
-    width: 190px;
-}
-tbody.DoctorsInfo_scrollContent td + td + td + td + td{ 
-    width: 220px;
-}
-tbody.DoctorsInfo_scrollContent td + td + td + td + td + td{
-    width: 170px;
-}
-tbody.DoctorsInfo_scrollContent td + td + td + td + td + td + td{ 
-    width: 170px;
-}
-tbody.DoctorsInfo_scrollContent td + td + td + td + td + td + td + td{
-    width: 190px;
-}
+    tbody.DoctorsInfo_scrollContent td + td + td { 
+        width: 200px;
+    }
+    tbody.DoctorsInfo_scrollContent td + td + td + td{ 
+        width: 190px;
+    }
+    tbody.DoctorsInfo_scrollContent td + td + td + td + td{ 
+        width: 220px;
+    }
+    tbody.DoctorsInfo_scrollContent td + td + td + td + td + td{
+        width: 170px;
+    }
+    tbody.DoctorsInfo_scrollContent td + td + td + td + td + td + td{ 
+        width: 170px;
+    }
+    tbody.DoctorsInfo_scrollContent td + td + td + td + td + td + td + td{
+        width: 190px;
+    }
 /*DeckInfo*/
-tbody.DeckInfo_scrollContent {
-    margin-top:10px;
-    display: block;
-    height: 752px;
-    overflow: auto;
-    width: 100%;
-    
-}
-tbody td {
-    height: 32px;
-}
+    tbody.DeckInfo_scrollContent {
+        margin-top:10px;
+        display: block;
+        height: 752px;
+        overflow: auto;
+        width: 100%;
+        
+    }
+    tbody td {
+        height: 32px;
+    }
 
 
-thead.DeckInfo_fixedHeader tr {
-    display: block;
-    
-}
- 
+    thead.DeckInfo_fixedHeader tr {
+        display: block;
+        
+    }
+     
 
-thead.DeckInfo_fixedHeader th {
-   
-    width: 150px;
-    text-align: center;
-    height:40px;
-}
- 
+    thead.DeckInfo_fixedHeader th {
+       
+        width: 150px;
+        text-align: center;
+        height:40px;
+    }
+     
 
-thead.DeckInfo_fixedHeader th + th { 
-    width: 175px;
-}
- 
+    thead.DeckInfo_fixedHeader th + th { 
+        width: 175px;
+    }
+     
 
-thead.DeckInfo_fixedHeader th + th + th { 
-    width: 220px;
-}
-thead.DeckInfo_fixedHeader th + th + th + th{ 
-    width: 160px;
-}
-thead.DeckInfo_fixedHeader th + th + th + th + th{ 
-    width: 160px;
-}
-thead.DeckInfo_fixedHeader th + th + th + th + th + th{
-    width: 160px;
-}
-thead.DeckInfo_fixedHeader th + th + th + th + th + th + th{
-    width:160px;
-}
-thead.DeckInfo_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:160px;
-}
-thead.DeckInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:190px;
-}
+    thead.DeckInfo_fixedHeader th + th + th { 
+        width: 220px;
+    }
+    thead.DeckInfo_fixedHeader th + th + th + th{ 
+        width: 160px;
+    }
+    thead.DeckInfo_fixedHeader th + th + th + th + th{ 
+        width: 160px;
+    }
+    thead.DeckInfo_fixedHeader th + th + th + th + th + th{
+        width: 160px;
+    }
+    thead.DeckInfo_fixedHeader th + th + th + th + th + th + th{
+        width:160px;
+    }
+    thead.DeckInfo_fixedHeader th + th + th + th + th + th + th + th{ 
+        width:160px;
+    }
+    thead.DeckInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
+        width:190px;
+    }
 
-tbody.DeckInfo_scrollContent td {
-    width: 150px;
-    height:33px;
-    
-}
- 
+    tbody.DeckInfo_scrollContent td {
+        width: 150px;
+        height:33px;
+        
+    }
+     
 
-tbody.DeckInfo_scrollContent td + td { 
-    width: 175px;
-}
- 
+    tbody.DeckInfo_scrollContent td + td { 
+        width: 175px;
+    }
+     
 
-tbody.DeckInfo_scrollContent td + td + td { 
-    width: 220px;
-}
-tbody.DeckInfo_scrollContent td + td + td + td{ 
-    width: 160px;
-}
-tbody.DeckInfo_scrollContent td + td + td + td + td{ 
-    width: 160px;
-}
-tbody.DeckInfo_scrollContent td + td + td + td + td + td{
-    width: 160px;
-}
-tbody.DeckInfo_scrollContent td + td + td + td + td + td + td{ 
-    width: 160px;
-}
-tbody.DeckInfo_scrollContent td + td + td + td + td + td + td + td{
-    width: 160px;
-}
-tbody.DeckInfo_scrollContent td + td + td + td + td + td + td + td + td{
-    width: 190px;
-}
+    tbody.DeckInfo_scrollContent td + td + td { 
+        width: 220px;
+    }
+    tbody.DeckInfo_scrollContent td + td + td + td{ 
+        width: 160px;
+    }
+    tbody.DeckInfo_scrollContent td + td + td + td + td{ 
+        width: 160px;
+    }
+    tbody.DeckInfo_scrollContent td + td + td + td + td + td{
+        width: 160px;
+    }
+    tbody.DeckInfo_scrollContent td + td + td + td + td + td + td{ 
+        width: 160px;
+    }
+    tbody.DeckInfo_scrollContent td + td + td + td + td + td + td + td{
+        width: 160px;
+    }
+    tbody.DeckInfo_scrollContent td + td + td + td + td + td + td + td + td{
+        width: 190px;
+    }
 /*orderings*/
-tbody.orderings_scrollContent {
-    margin-top:10px;
-    display: block;
-    height: 752px;
-    overflow: auto;
-    width: 100%;
-    
-}
-tbody td {
-    height: 32px;
-}
+    tbody.orderings_scrollContent {
+        margin-top:10px;
+        display: block;
+        height: 752px;
+        overflow: auto;
+        width: 100%;
+        
+    }
+    tbody td {
+        height: 32px;
+    }
 
 
-thead.orderings_fixedHeader tr {
-    display: block;
-    
-}
- 
+    thead.orderings_fixedHeader tr {
+        display: block;
+        
+    }
+     
 
-thead.orderings_fixedHeader th {
-    
-    width: 100px;
-    text-align: center;
-    height:40px;
-}
- 
+    thead.orderings_fixedHeader th {
+        
+        width: 100px;
+        text-align: center;
+        height:40px;
+    }
+     
 
-thead.orderings_fixedHeader th + th { 
-    width: 200px;
-}
- 
+    thead.orderings_fixedHeader th + th { 
+        width: 200px;
+    }
+     
 
-thead.orderings_fixedHeader th + th + th { 
-    width: 400px;
-}
-thead.orderings_fixedHeader th + th + th + th{ 
-    width: 200px;
-}
-thead.orderings_fixedHeader th + th + th + th + th{ 
-    width: 200px;
-}
-thead.orderings_fixedHeader th + th + th + th + th + th{
-    width: 200px;
-}
-thead.orderings_fixedHeader th + th + th + th + th + th + th{
-    width:200px;
-}
+    thead.orderings_fixedHeader th + th + th { 
+        width: 400px;
+    }
+    thead.orderings_fixedHeader th + th + th + th{ 
+        width: 200px;
+    }
+    thead.orderings_fixedHeader th + th + th + th + th{ 
+        width: 200px;
+    }
+    thead.orderings_fixedHeader th + th + th + th + th + th{
+        width: 200px;
+    }
+    thead.orderings_fixedHeader th + th + th + th + th + th + th{
+        width:200px;
+    }
 
 
-tbody.orderings_scrollContent td {
-    width: 100px;
-    height:33px;
-}
- 
+    tbody.orderings_scrollContent td {
+        width: 100px;
+        height:33px;
+    }
+     
 
-tbody.orderings_scrollContent td + td { 
-    width: 200px;
-}
- 
+    tbody.orderings_scrollContent td + td { 
+        width: 200px;
+    }
+     
 
-tbody.orderings_scrollContent td + td + td { 
-    width: 400px;
-}
-tbody.orderings_scrollContent td + td + td + td{ 
-    width: 200px;
-}
-tbody.orderings_scrollContent td + td + td + td + td{ 
-    width: 200px;
-}
-tbody.orderings_scrollContent td + td + td + td + td + td{
-    width: 200px;
-}
-tbody.orderings_scrollContent td + td + td + td + td + td + td{ 
-    width: 200px;
-}
+    tbody.orderings_scrollContent td + td + td { 
+        width: 400px;
+    }
+    tbody.orderings_scrollContent td + td + td + td{ 
+        width: 200px;
+    }
+    tbody.orderings_scrollContent td + td + td + td + td{ 
+        width: 200px;
+    }
+    tbody.orderings_scrollContent td + td + td + td + td + td{
+        width: 200px;
+    }
+    tbody.orderings_scrollContent td + td + td + td + td + td + td{ 
+        width: 200px;
+    }
 /*SurgeriesInfo*/
-tbody.SurgeriesInfo_scrollContent {
-    margin-top:10px;
-    display: block;
-    height: 752px;
-    overflow: auto;
-    width: 100%;
-    
-}
-tbody td {
-    height: 32px;
-}
+    tbody.SurgeriesInfo_scrollContent {
+        margin-top:10px;
+        display: block;
+        height: 752px;
+        overflow: auto;
+        width: 100%;
+        
+    }
+    tbody td {
+        height: 32px;
+    }
 
 
-thead.SurgeriesInfo_fixedHeader tr {
-    display: block;
-    
-}
- 
+    thead.SurgeriesInfo_fixedHeader tr {
+        display: block;
+        
+    }
+     
 
-thead.SurgeriesInfo_fixedHeader th {
-   
-    width: 160px;
-    text-align: center;
-    height:40px;
-}
- 
+    thead.SurgeriesInfo_fixedHeader th {
+       
+        width: 160px;
+        text-align: center;
+        height:40px;
+    }
+     
 
-thead.SurgeriesInfo_fixedHeader th + th { 
-    width: 100px;
-}
- 
+    thead.SurgeriesInfo_fixedHeader th + th { 
+        width: 100px;
+    }
+     
 
-thead.SurgeriesInfo_fixedHeader th + th + th { 
-    width: 100px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th{ 
-    width: 60px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th + th{ 
-    width: 100px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th{
-    width: 100px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th{
-    width:100px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:200px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:160px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th{ 
-    width:250px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th + th{ 
-    width:100px;
-}
-thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th + th + th{ 
-    width:90px;
-}
+    thead.SurgeriesInfo_fixedHeader th + th + th { 
+        width: 100px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th{ 
+        width: 60px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th + th{ 
+        width: 100px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th{
+        width: 100px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th{
+        width:100px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th{ 
+        width:200px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
+        width:160px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th{ 
+        width:250px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th + th{ 
+        width:100px;
+    }
+    thead.SurgeriesInfo_fixedHeader th + th + th + th + th + th + th + th + th + th + th + th{ 
+        width:90px;
+    }
 
 
-tbody.SurgeriesInfo_scrollContent td {
-    width: 160px;
-    height:33px;
-    
-}
- 
+    tbody.SurgeriesInfo_scrollContent td {
+        width: 160px;
+        height:33px;
+        
+    }
+     
 
-tbody.SurgeriesInfo_scrollContent td + td { 
-    width: 100px;
-}
- 
+    tbody.SurgeriesInfo_scrollContent td + td { 
+        width: 100px;
+    }
+     
 
-tbody.SurgeriesInfo_scrollContent td + td + td { 
-    width: 100px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td{ 
-    width: 60px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td + td{ 
-    width: 100px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td{
-    width: 100px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td{ 
-    width: 100px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td{
-    width:200px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td{
-    width: 160px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td{
-    width: 250px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td + td{
-    width: 100px;
-}
-tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td + td + td{
-    width: 90px;
-}
+    tbody.SurgeriesInfo_scrollContent td + td + td { 
+        width: 100px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td{ 
+        width: 60px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td + td{ 
+        width: 100px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td{
+        width: 100px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td{ 
+        width: 100px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td{
+        width:200px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td{
+        width: 160px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td{
+        width: 250px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td + td{
+        width: 100px;
+    }
+    tbody.SurgeriesInfo_scrollContent td + td + td + td + td + td + td + td + td + td + td + td{
+        width: 90px;
+    }
 /*KeyPatientsInfo*/
-tbody.KeyPatientsInfo_scrollContent {
-    margin-top:10px;
-    display: block;
-    height: 752px;
-    overflow: auto;
-    width: 100%;
-    
-}
-tbody td {
-    height: 32px;
-}
+    tbody.KeyPatientsInfo_scrollContent {
+        margin-top:10px;
+        display: block;
+        height: 752px;
+        overflow: auto;
+        width: 100%;
+        
+    }
+    tbody td {
+        height: 32px;
+    }
 
 
-thead.KeyPatientsInfo_fixedHeader tr {
-    display: block;
-    
-}
- 
+    thead.KeyPatientsInfo_fixedHeader tr {
+        display: block;
+        
+    }
+     
 
-thead.KeyPatientsInfo_fixedHeader th {
-    
-    width: 130px;
-    text-align: center;
-    height:40px;
-}
- 
+    thead.KeyPatientsInfo_fixedHeader th {
+        
+        width: 130px;
+        text-align: center;
+        height:40px;
+    }
+     
 
-thead.KeyPatientsInfo_fixedHeader th + th {
-    width: 130px;
-}
- 
+    thead.KeyPatientsInfo_fixedHeader th + th {
+        width: 130px;
+    }
+     
 
-thead.KeyPatientsInfo_fixedHeader th + th + th {
-    width: 130px;
-}
-thead.KeyPatientsInfo_fixedHeader th + th + th + th{ 
-    width: 130px;
-}
-thead.KeyPatientsInfo_fixedHeader th + th + th + th + th{ 
-    width: 130px;
-}
-thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th{ 
-    width: 180px;
-}
-thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th{ 
-    width:130px;
-}
-thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:130px;
-}
-thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:170px;
-}
-thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th + th + th{ 
-    width:270px;
-}
+    thead.KeyPatientsInfo_fixedHeader th + th + th {
+        width: 130px;
+    }
+    thead.KeyPatientsInfo_fixedHeader th + th + th + th{ 
+        width: 130px;
+    }
+    thead.KeyPatientsInfo_fixedHeader th + th + th + th + th{ 
+        width: 130px;
+    }
+    thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th{ 
+        width: 180px;
+    }
+    thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th{ 
+        width:130px;
+    }
+    thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th{ 
+        width:130px;
+    }
+    thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th + th{ 
+        width:170px;
+    }
+    thead.KeyPatientsInfo_fixedHeader th + th + th + th + th + th + th + th + th + th{ 
+        width:270px;
+    }
 
-tbody.KeyPatientsInfo_scrollContent td { 
-    
-    width: 130px;
-    height:33px;
-}
- 
+    tbody.KeyPatientsInfo_scrollContent td { 
+        
+        width: 130px;
+        height:33px;
+    }
+     
 
-tbody.KeyPatientsInfo_scrollContent td + td { 
-    width: 130px;
-}
- 
+    tbody.KeyPatientsInfo_scrollContent td + td { 
+        width: 130px;
+    }
+     
 
-tbody.KeyPatientsInfo_scrollContent td + td + td { 
-    width: 130px;
-}
-tbody.KeyPatientsInfo_scrollContent td + td + td + td{ 
-    width: 130px;
-}
-tbody.KeyPatientsInfo_scrollContent td + td + td + td + td{ 
-    width: 130px;
-}
-tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td{ 
-    width: 180px;
-}
-tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td{ 
-    width: 130px;
-}
-tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td{ 
-    width: 130px;
-}
-tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td + td{ 
-    width: 170px;
-}
-tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td + td + td{ 
-    width: 270px;
-}
+    tbody.KeyPatientsInfo_scrollContent td + td + td { 
+        width: 130px;
+    }
+    tbody.KeyPatientsInfo_scrollContent td + td + td + td{ 
+        width: 130px;
+    }
+    tbody.KeyPatientsInfo_scrollContent td + td + td + td + td{ 
+        width: 130px;
+    }
+    tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td{ 
+        width: 180px;
+    }
+    tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td{ 
+        width: 130px;
+    }
+    tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td{ 
+        width: 130px;
+    }
+    tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td + td{ 
+        width: 170px;
+    }
+    tbody.KeyPatientsInfo_scrollContent td + td + td + td + td + td + td + td + td + td{ 
+        width: 270px;
+    }
 /*deliver*/
-tbody.Patients_scrollContent {
-    margin-top:10px;
-    display: block;
-    height: 364px;
-    overflow: auto;
-    width: 100%;
-    
-}
-tbody td {
-    height: 32px;
-}
+    tbody.Patients_scrollContent {
+        margin-top:10px;
+        display: block;
+        height: 364px;
+        overflow: auto;
+        width: 100%;
+        
+    }
+    tbody td {
+        height: 32px;
+    }
 
 
-thead.Patients_fixedHeader tr {
-    display: block;
-    max-height:35px;
-}
-thead.Patients_fixedHeader tr th{
-    text-align: center;
-}
+    thead.Patients_fixedHeader tr {
+        display: block;
+        max-height:35px;
+    }
+    thead.Patients_fixedHeader tr th{
+        text-align: center;
+    }
 
-thead.Patients_fixedHeader th {
-    width: 50px;
-}
- 
+    thead.Patients_fixedHeader th {
+        width: 50px;
+    }
+     
 
-thead.Patients_fixedHeader th + th { 
-    width: 110px;
-}
- 
+    thead.Patients_fixedHeader th + th { 
+        width: 110px;
+    }
+     
 
-thead.Patients_fixedHeader th + th + th { 
-    width: 100px;
-}
-thead.Patients_fixedHeader th + th + th + th{ 
-    width: 100px;
-}
-thead.Patients_fixedHeader th + th + th + th + th{ 
-    width: 210px;
-}
-thead.Patients_fixedHeader th + th + th + th + th + th{
-    width: 100px;
-}
-thead.Patients_fixedHeader th + th + th + th + th + th + th{
-    width:100px;
-}
-thead.Patients_fixedHeader th + th + th + th + th + th + th + th{ 
-    width:160px;
-}
-thead.Patients_fixedHeader th + th + th + th + th + th + th + th + th{ 
-    width:200px;
-	text-align: center;
-}
+    thead.Patients_fixedHeader th + th + th { 
+        width: 100px;
+    }
+    thead.Patients_fixedHeader th + th + th + th{ 
+        width: 80px;
+    }
+    thead.Patients_fixedHeader th + th + th + th + th{ 
+        width: 180px;
+    }
+    thead.Patients_fixedHeader th + th + th + th + th + th{
+        width: 100px;
+    }
+    thead.Patients_fixedHeader th + th + th + th + th + th + th{
+        width:80px;
+    }
+    thead.Patients_fixedHeader th + th + th + th + th + th + th + th{ 
+        width:100px;
+    }
+    thead.Patients_fixedHeader th + th + th + th + th + th + th + th +th{ 
+        width:90px;
+    }
+    thead.Patients_fixedHeader th + th + th + th + th + th + th + th + th +th{ 
+        width:200px;
+    	text-align: center;
+    }
 
 
-tbody.Patients_scrollContent td {
-    width: 50px;
-    height:33px;
-    
-}
- 
+    tbody.Patients_scrollContent td {
+        width: 50px;
+        height:33px;
+        
+    }
+     
 
-tbody.Patients_scrollContent td + td { 
-    width: 110px;
-}
- 
+    tbody.Patients_scrollContent td + td { 
+        width: 110px;
+    }
+     
 
-tbody.Patients_scrollContent td + td + td { 
-    width: 100px;
-}
-tbody.Patients_scrollContent td + td + td + td{ 
-    width: 100px;
-}
-tbody.Patients_scrollContent td + td + td + td + td{ 
-    width: 210px;
-}
-tbody.Patients_scrollContent td + td + td + td + td + td{
-    width: 100px;
-}
-tbody.Patients_scrollContent td + td + td + td + td + td + td{ 
-    width: 100px;
-}
-tbody.Patients_scrollContent td + td + td + td + td + td + td + td{
-    width: 160px;
-}
-tbody.Patients_scrollContent td + td + td + td + td + td + td + td + td{
-    width: 200px;
-}
+    tbody.Patients_scrollContent td + td + td { 
+        width: 100px;
+    }
+    tbody.Patients_scrollContent td + td + td + td{ 
+        width: 80px;
+    }
+    tbody.Patients_scrollContent td + td + td + td + td{ 
+        width: 180px;
+    }
+    tbody.Patients_scrollContent td + td + td + td + td + td{
+        width: 100px;
+    }
+    tbody.Patients_scrollContent td + td + td + td + td + td + td{ 
+        width: 80px;
+    }
+    tbody.Patients_scrollContent td + td + td + td + td + td + td + td{
+        width: 100px;
+    }
+    tbody.Patients_scrollContent td + td + td + td + td + td + td + td + td{
+        width: 90px;
+    }
+    tbody.Patients_scrollContent td + td + td + td + td + td + td + td + td + td{
+        width: 200px;
+    }
 
 /*deliver bar chart table*/
-tbody.Patients_scrollContent1 {
-    margin-top:10px;
-    display: block;
-    height: 364px;
-    overflow: auto;
-    width: 100%;
-}
-thead.Patients_fixedHeader1 tr {
-    display: block;
-    max-height:35px;
-}
-thead.Patients_fixedHeader1 tr th{
-    text-align: center;
-} 
+    tbody.Patients_scrollContent1 {
+        margin-top:10px;
+        display: block;
+        height: 364px;
+        overflow: auto;
+        width: 100%;
+    }
+    thead.Patients_fixedHeader1 tr {
+        display: block;
+        max-height:35px;
+    }
+    thead.Patients_fixedHeader1 tr th{
+        text-align: center;
+    } 
 
-thead.Patients_fixedHeader1 th {
-    width: 50px;
-    vertical-align: :center;
-}
- 
+    thead.Patients_fixedHeader1 th {
+        width: 50px;
+        vertical-align: :center;
+    }
+     
 
-thead.Patients_fixedHeader1 th + th { 
-    width: 130px;
-}
- 
+    thead.Patients_fixedHeader1 th + th { 
+        width: 130px;
+    }
+     
 
-thead.Patients_fixedHeader1 th + th + th { 
-    width: 130px;
-}
-thead.Patients_fixedHeader1 th + th + th + th{ 
-    width: 130px;
-}
-thead.Patients_fixedHeader1 th + th + th + th + th{ 
-    width: 250px;
-}
-thead.Patients_fixedHeader1 th + th + th + th + th + th{
-    width: 130px;
-}
-thead.Patients_fixedHeader1 th + th + th + th + th + th + th{
-    width:130px;
-}
-thead.Patients_fixedHeader1 th + th + th + th + th + th + th + th{ 
-    width:250px;
-}
-thead.Patients_fixedHeader1 th + th + th + th + th + th + th + th + th{ 
-    width:200px;
-    text-align: center;
-}
+    thead.Patients_fixedHeader1 th + th + th { 
+        width: 130px;
+    }
+    thead.Patients_fixedHeader1 th + th + th + th{ 
+        width: 130px;
+    }
+    thead.Patients_fixedHeader1 th + th + th + th + th{ 
+        width: 230px;
+    }
+    thead.Patients_fixedHeader1 th + th + th + th + th + th{
+        width: 130px;
+    }
+    thead.Patients_fixedHeader1 th + th + th + th + th + th + th{
+        width: 130px;
+    }
+    thead.Patients_fixedHeader1 th + th + th + th + th + th + th + th{ 
+        width: 110px;
+    }
+    thead.Patients_fixedHeader1 th + th + th + th + th + th + th + th + th{ 
+        width: 140px;
+    }
+    thead.Patients_fixedHeader1 th + th + th + th + th + th + th + th + th + th{ 
+        width:200px;
+        text-align: center;
+    }
 
 
-tbody.Patients_scrollContent1 td {
-    width: 50px;
-    height:33px;
-    
-}
- 
+    tbody.Patients_scrollContent1 td {
+        width: 50px;
+        height:33px;
+        
+    }
+     
 
-tbody.Patients_scrollContent1 td + td { 
-    width: 130px;
-}
- 
+    tbody.Patients_scrollContent1 td + td { 
+        width: 130px;
+    }
+     
 
-tbody.Patients_scrollContent1 td + td + td { 
-    width: 130px;
-}
-tbody.Patients_scrollContent1 td + td + td + td{ 
-    width: 130px;
-}
-tbody.Patients_scrollContent1 td + td + td + td + td{ 
-    width: 250px;
-}
-tbody.Patients_scrollContent1 td + td + td + td + td + td{
-    width: 130px;
-}
-tbody.Patients_scrollContent1 td + td + td + td + td + td + td{ 
-    width: 130px;
-}
-tbody.Patients_scrollContent1 td + td + td + td + td + td + td + td{
-    width: 250px;
-}
-tbody.Patients_scrollContent1 td + td + td + td + td + td + td + td + td{
-    width: 200px;
-}
+    tbody.Patients_scrollContent1 td + td + td { 
+        width: 130px;
+    }
+    tbody.Patients_scrollContent1 td + td + td + td{ 
+        width: 130px;
+    }
+    tbody.Patients_scrollContent1 td + td + td + td + td{ 
+        width: 230px;
+    }
+    tbody.Patients_scrollContent1 td + td + td + td + td + td{
+        width: 130px;
+    }
+    tbody.Patients_scrollContent1 td + td + td + td + td + td + td{ 
+        width: 130px;
+    }
+    tbody.Patients_scrollContent1 td + td + td + td + td + td + td + td{ 
+        width: 110px;
+    }
+    tbody.Patients_scrollContent1 td + td + td + td + td + td + td + td + td{ 
+        width: 140px;
+    }
+    tbody.Patients_scrollContent1 td + td + td + td + td + td + td + td + td + td{
+        width: 200px;
+    }

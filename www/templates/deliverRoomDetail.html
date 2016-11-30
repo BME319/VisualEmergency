@@ -1,14 +1,14 @@
-<div class="row">
+﻿<div class="row">
 	<div id='chart1' ng-show="renderCharts[1]" style="height:420px" class="col-xs-12 col-md-5 col-md-offset-1"></div>
 	<div id='chart2' ng-show="renderCharts[2]" style="height:420px" class="col-xs-12 col-md-5"></div>
 </div>
 <div class="row">
   <div id="leftMargin" style="height:430px;display:inline"></div>
-	<div id='chart3' ng-show="renderCharts[3]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
-	<div id='chart4' ng-show="renderCharts[4]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths" ></div>
-	<div id='chart5' ng-show="renderCharts[5]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
-	<div id='chart6' ng-show="renderCharts[6]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
-	<div id='chart7' ng-show="renderCharts[7]" style="height:470px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart3' ng-show="renderCharts[3]" style="height:490px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart4' ng-show="renderCharts[4]" style="height:490px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths" ></div>
+	<div id='chart5' ng-show="renderCharts[5]" style="height:490px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart6' ng-show="renderCharts[6]" style="height:490px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
+	<div id='chart7' ng-show="renderCharts[7]" style="height:490px" class="col-xs-12 col-sm-6 col-md-4 col-lg-5ths"></div>
 	<div id='table' ng-show="renderCharts[0]" class="col-xs-9" >
     <div style="background-color:#9999ff;font-size:22px;display:inline;padding:3px 8px 3px 8px;font-weight:bold;border-radius: 2px; box-shadow: 0 0 2px  #fff inset">{{selectedchart.name}}：{{selectedchart.item}}</div>
   	<div class="tableContainer-deliver">
@@ -22,7 +22,8 @@
 	          <th>负伤地点</th>
 	          <th>战伤等级</th>
 	          <th>战伤计分</th>
-	          <th>救治人员</th>
+            <th>{{OutPatientRoomFlag?'':'床号'}}</th>
+	          <th>{{OutPatientRoomFlag?'':'当前病情'}}</th>
 	          <th>
             <!-- <input type="button" value="" style="float:right;margin-right:20px;margin-top:3px" class="btn btn-primary btn-sm btn-danger glyphicon glyphicon-remove" ng-click = "closeTable()"> -->
               <a href="" class="my-close-x" ng-click = "closeTable()"> <span class="glyphicon glyphicon-remove"></span> </a>
@@ -30,9 +31,9 @@
 	        </tr>
 	      </thead>
 	      <tbody class="Patients_scrollContent">
-	        <tr ng-repeat="patient in patients">
+	        <tr ng-repeat="patient in patients | orderBy:'Loc'">
 	          <td>
-	            <a href=""><img src="image/loc.png"></a>
+	            <a href="" ng-click="showLocation(patient)"><img src="image/loc.png"></a>
 	          </td>
 	          <td>{{patient.PId}}</td>
 	          <td>{{patient.PatientName}}</td>
@@ -40,18 +41,19 @@
 	          <td>{{patient.Location}}</td>
 	          <td>{{patient.InjuryLevel}}</td>
 	          <td>{{patient.InjuryScore}}</td>
-	          <td>{{patient.DoctorName}}</td>
+            <td>{{OutPatientRoomFlag?'':patient.Loc}}</td>
+	          <td>{{OutPatientRoomFlag?'':patient.Condition}}</td>
 	          <td>
 	            <input type="button"  data-toggle="modal" data-target="#ViewPatientDetails" value="生理" class="btn btn-primary" ng-click = "readPatientDetails(patient.PId)"/>
 	            <input type="button" data-toggle="modal" data-target="#ViewPatientBios" value="生化" class="btn btn-primary" ng-click = "readPatientBios(patient.PId)"/>
-              <input type="button" data-toggle="" data-target="" value="心电" class="btn" ng-class="buttonColor" on-click = "showHeartrate()"/>
+              <input type="button" data-toggle="" data-target="" value="心电" class="btn" ng-class="patient.buttonColor" ng-click = "showHeartrate(patient.PId)"/>
 	          </td>
 	        </tr>
 	      </tbody>
 	    </table>
   	</div>
   <!-- 生理参数信息模态框（Modal） -->
-  <div class="modal fade" id="ViewPatientDetails">
+  <div class="modal fade modal-large-font" id="ViewPatientDetails">
      <div class="modal-dialog">
         <div class="modal-content">
            <div class="modal-header">
@@ -83,7 +85,7 @@
      </div>
   </div>
   <!-- 生化参数信息模态框（Modal） -->
-  <div class="modal fade" id="ViewPatientBios">
+  <div class="modal fade modal-large-font" id="ViewPatientBios">
      <div class="modal-dialog">
         <div class="modal-content">
            <div class="modal-header">
@@ -109,6 +111,6 @@
            </div>
         </div>
      </div>
-  </div>	
+  </div>
 </div>
 </div>
